@@ -35,21 +35,6 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
         Route::get('audit-trails', [AuditTrailsController::class, 'list'])->name('audit-trails');
         Route::post('audit-trails-ajaxcall', [AuditTrailsController::class, 'ajaxcall'])->name('audit-trails-ajaxcall');
     });
-
-    $adminPrefix = "users";
-    Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
-        Route::get('import-subscriber', [SubscriberController::class, 'import'])->name('import-subscriber');
-        Route::post('save-import-subscriber', [SubscriberController::class, 'save_import'])->name('save-import-subscriber');
-
-        Route::get('subscriber-list', [SubscriberController::class, 'list'])->name('subscriber-list');
-        Route::get('subscriber-add', [SubscriberController::class, 'add'])->name('subscriber-add');
-        Route::post('save-subscriber-add', [SubscriberController::class, 'save_subscriber_add'])->name('save-subscriber-add');
-        Route::get('subscriber-edit/{id}', [SubscriberController::class, 'edit'])->name('subscriber-edit');
-        Route::post('save-subscriber-edit', [SubscriberController::class, 'save_subscriber_edit'])->name('save-subscriber-edit');
-        Route::get('subscriber-view/{id}', [SubscriberController::class, 'view'])->name('subscriber-view');
-        Route::post('subscriber-ajaxcall', [SubscriberController::class, 'ajaxcall'])->name('subscriber-ajaxcall');
-        
-    });
 });
 
 

@@ -58,26 +58,7 @@ if (!empty(Auth()->guard('admin')->user())) {
                     </a>
                 </li>
 
-                {{-- <li class="menu-item {{ ( $currentRoute  ==  "import-subscriber"  ? 'menu-item-active' : '' ) }} " aria-haspopup="true">
-                    <a href="{{ route('import-subscriber') }}" class="menu-link">
-                        <span class="svg-icon menu-icon">
-                            <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
-                            <i class="flaticon-users-1"></i>
-                            <!--end::Svg Icon-->
-                        </span>
-                        <span class="menu-text">Import Subscriber</span>
-                    </a>
-                </li> --}}
-                <li class="menu-item {{ ( $currentRoute  ==  "import-subscriber"  || $currentRoute  ==  "subscriber-list" || $currentRoute  ==  "subscriber-add" || $currentRoute  ==  "subscriber-edit" || $currentRoute  ==  "subscriber-view"  ? 'menu-item-active' : '' ) }} " aria-haspopup="true">
-                    <a href="{{ route('subscriber-list') }}" class="menu-link">
-                        <span class="svg-icon menu-icon">
-                            <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
-                            <i class="flaticon-users-1"></i>
-                            <!--end::Svg Icon-->
-                        </span>
-                        <span class="menu-text">Subscriber</span>
-                    </a>
-                </li>
+               
 
             </ul>
             <!--end::Menu Nav-->
