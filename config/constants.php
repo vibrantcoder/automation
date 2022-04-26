@@ -2,7 +2,7 @@
 
 return [
     'DECIMAL_POINT' => 2,
-    'SYSTEM_NAME' => 'Hari Om Gunj',
+    'SYSTEM_NAME' => 'Automation Testing management',
 
     'DATE_FORMATE' => [
         1 => 'd-m-Y',
