@@ -69,11 +69,11 @@ class BrandentryController extends Controller
             'Brandentry.add()'
         );
         $data['header'] = array(
-            'title' => 'Add Brand Entry',
+            'title' => 'Add Brand',
             'breadcrumb' => array(
                 'My Dashboard' => route('dashboard'),
-                'Brand Entry List' => route('brand-entry-list'),
-                'Add Brand Entry' => 'Add Brand Entry',
+                'Brand List' => route('brand-entry-list'),
+                'Add Brand' => 'Add Brand',
             )
         );
         return view('backend.pages.brandentry.add', $data);
@@ -179,11 +179,7 @@ class BrandentryController extends Controller
                 echo json_encode($list);
                 break;
 
-                case 'addMember':
-                    $details =  view('backend.pages.brandentry.add_brand');
-
-                    echo $details;
-                    break;
+            
 
             case 'delete-brand-entry':
 

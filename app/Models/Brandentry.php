@@ -101,39 +101,52 @@ class Brandentry extends Model
     }
 
     public function add_brand_entry($request){
-        ccd($request->all());
-        $checkRecord = Brandentry::from('brand_entry')
-             ->where('brand_entry.is_deleted', 'N')
-             ->where('brand_entry.brand_name', $request->input('brand_name'))
-             ->where('brand_entry.url', $request->input('url'))
-             ->where('brand_entry.country_code', $request->input('country_code'))
-             ->where('brand_entry.mobile_number', $request->input('mobile_number'))
-             ->where('brand_entry.generate_otp', $request->input('generate_otp'))
-             ->count();
+        
+        // $checkRecord = Brandentry::from('brand_entry')
+        //      ->where('brand_entry.is_deleted', 'N')
+        //      ->where('brand_entry.brand_name', $request->input('brand_name'))
+        //      ->where('brand_entry.url', $request->input('url'))
+        //      ->where('brand_entry.country_code', $request->input('country_code'))
+        //      ->where('brand_entry.mobile_number', $request->input('mobile_number'))
+        //      ->where('brand_entry.generate_otp', $request->input('generate_otp'))
+        //      ->count();
 
-             if($checkRecord == 0){
-                for ($i = 0 ; $i < count($request->input('brand_name')) ; $i++) {
-                    $objBrandentry = new Brandentry();
-                    $objBrandentry->brand_name = $request->input('brand_name')[$i];
-                    $objBrandentry->url = $request->input('url')[$i];
-                    $objBrandentry->country_code = $request->input('country_code')[$i];
-                    $objBrandentry->mobile_number = $request->input('mobile_number')[$i];
-                    $objBrandentry->generate_otp = $request->input('generate_otp')[$i];
-                    $objBrandentry->save();
-                }
-                    if($objBrandentry->save()){
-                        $currentRoute = Route::current()->getName();
-                        $inputData = $request->input();
-                        unset($inputData['_token']);
-                        $objAudittrails = new Audittrails();
-                        $res = $objAudittrails->add_audit('Insert','admin/'. $currentRoute , json_encode($inputData) ,'Brand Entry' );
-                        return 'true';
-                    }else{
-                        return 'false';
-                    }
+        //      if($checkRecord == 0){
+                // for ($i = 0 ; $i < count($request->input('brand_name')) ; $i++) {
+                //     $objBrandentry = new Brandentry();
+                //     $objBrandentry->brand_name = $request->input('brand_name')[$i];
+                //     $objBrandentry->url = $request->input('url')[$i];
+                //     $objBrandentry->country_code = $request->input('country_code')[$i];
+                //     $objBrandentry->mobile_number = $request->input('mobile_number')[$i];
+                //     $objBrandentry->generate_otp = $request->input('generateotp')[$i];
+                //     $objBrandentry->save();
+                // }
 
-             }
-             return 'record_exits';
+        for ($i = 0; $i < count($request->input('brand_name')); $i++) {
+            $brand_entry[] = [
+                'brand_name' => $request->input('brand_name')[$i],
+                'url' => $request->input('url')[$i],
+                'country_code' => $request->input('country_code')[$i],
+                'mobile_number' => $request->input('mobile_number')[$i],
+                'generate_otp' => $request->input('generateotp')[$i],
+                'is_deleted' => 'N',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ];
+        }
+        if(Brandentry::insert($brand_entry)){
+            $currentRoute = Route::current()->getName();
+            $inputData = $request->input();
+            unset($inputData['_token']);
+            $objAudittrails = new Audittrails();
+            $res = $objAudittrails->add_audit('Insert','admin/'. $currentRoute , json_encode($inputData) ,'Brand Entry' );
+            return 'true';
+        }else{
+            return 'false';
+        }
+
+            //  }
+            //  return 'record_exits';
 
     }
 
@@ -147,23 +160,23 @@ class Brandentry extends Model
     }
 
     public function edit_brand_entry($request){
-        $checkRecord = Brandentry::from('brand_entry')
-            ->where('brand_entry.is_deleted', 'N')
-            ->where('brand_entry.id','!=', $request->input('editId'))
-            ->where('brand_entry.brand_name', $request->input('brand_name'))
-            ->where('brand_entry.url', $request->input('url'))
-            ->where('brand_entry.country_code', $request->input('country_code'))
-            ->where('brand_entry.mobile_number', $request->input('mobile_number'))
-            ->where('brand_entry.generate_otp', $request->input('generate_otp'))
-            ->count();
+        // $checkRecord = Brandentry::from('brand_entry')
+        //     ->where('brand_entry.is_deleted', 'N')
+        //     ->where('brand_entry.id','!=', $request->input('editId'))
+        //     ->where('brand_entry.brand_name', $request->input('brand_name'))
+        //     ->where('brand_entry.url', $request->input('url'))
+        //     ->where('brand_entry.country_code', $request->input('country_code'))
+        //     ->where('brand_entry.mobile_number', $request->input('mobile_number'))
+        //     ->where('brand_entry.generate_otp', $request->input('generate_otp'))
+        //     ->count();
 
-            if($checkRecord == 0){
+        //     if($checkRecord == 0){
                 $objBrandentry = Brandentry::find($request->input('editId'));
                 $objBrandentry->brand_name = $request->input('brand_name');
                 $objBrandentry->url = $request->input('url');
                 $objBrandentry->country_code = $request->input('country_code');
                 $objBrandentry->mobile_number = $request->input('mobile_number');
-                $objBrandentry->generate_otp = $request->input('generate_otp');
+                $objBrandentry->generate_otp = $request->input('generateotp');
                 if($objBrandentry->save()){
                     $currentRoute = Route::current()->getName();
                     $inputData = $request->input();
@@ -175,8 +188,8 @@ class Brandentry extends Model
                     return 'false';
                 }
 
-            }
-            return 'record_exits';
+            // }
+            // return 'record_exits';
     }
 
     public function common_activity_user($data,$type){

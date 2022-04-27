@@ -43,26 +43,75 @@ var Brandentry = function(){
 
     var add = function(){
         $('.select2').select2();
-        $('body').on("click", ".add-document", function() {
-            $("#loader").show();
-            $.ajax({
-                type: "POST",
-                headers: {
-                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
-                },
-                url: baseurl + "admin/brand-entry-ajaxcall",
-                data: { 'action': 'addMember' },
-                success: function(data) {
-                    $('#loader').hide();
-                    $("#document-div").append(data);
-                    $('.select2').select2();
-                },
-                complete: function() {
-                    $('#loader').hide();
-                }
-            });
+        $('body').on("click", ".add-brand", function() {
+            
+            var html = '';
+            var html = '<div class="remove-div">'+
+                        '<div class="row">'+
+                        '<div class="col-md-6">'+
+                        '<div class="form-group">'+
+                        '<label>Brand Name <span class="text-danger">*</span></label>'+
+                        '<input class="form-control brand_name" type="text" name="brand_name[]" placeholder="Please enter brand name" autocomplete="off" />'+
+                        '<span class="error text-danger"></span>'+
+                        '</div>'+
+                        '</div>'+
+                        '<div class="col-md-6">'+
+                        '<div class="form-group">'+
+                        '<label>URL <span class="text-danger">*</span></label>'+
+                        '<input class="form-control urls" type="text" name="url[]" placeholder="Please enter URL" autocomplete="off" />'+
+                        '<span class="error text-danger"></span>'+
+                        '</div>'+
+                        '</div>'+
+                        '</div>'+
+                        '<div class="row">'+
+                        '<div class="col-md-2">'+
+                        '<div class="form-group">'+
+                        '<label>Country Code <span class="text-danger">*</span></label>'+
+                        '<input class="form-control country_code" type="text" name="country_code[]" placeholder="Please enter country code" autocomplete="off" />'+
+                        '<span class="error text-danger"></span>'+
+                        '<input class="form-control generateotp" type="hidden" name="generateotp[]" value="N" autocomplete="off" />'+
+                        '</div>'+
+                        '</div>'+
+                        '<div class="col-md-4">'+
+                        '<div class="form-group">'+
+                        '<label>Mobile Number <span class="text-danger">*</span></label>'+
+                        '<input class="form-control mobile_number onlyNumber" type="text" name="mobile_number[]" placeholder="Please enter mobile number" autocomplete="off" />'+
+                        '<span class="error text-danger"></span>'+
+                        '</div>'+
+                        '</div>'+
+                        '<div class="col-md-4">'+
+                        '<label>Generate OTP <span class="text-danger">*</span></label>'+
+                        '<div class="form-group">'+
+                        '<span class="switch switch-lg  switch-outline switch-icon switch-success">'+
+                        '<label>'+
+                        '<input type="checkbox"  class="generate_otp_switch" name="generate_otp_switch" value="yes" />'+
+                        '<span></span>'+
+                        '</label>'+
+                        '</span>                              '+
+                        '</div>'+
+                        '</div>'+
+                        '<div class="col-md-2">'+
+                        '<label>&nbsp;</label>'+
+                        '<div class="form-group">                                            '+
+                        '<a href="javascript:;" class="btn btn-success add-brand"><i class="fa fa-plus"></i></a>'+
+                        '<a href="javascript:;" class="ml-2 btn btn-danger remove-document"><i class="fa fa-minus"></i></a>'+
+                        '</div>'+
+                        '</div>'+
+                        '</div><hr>'+
+                        '</div>';
+
+            $("#document-div").append(html);
         });
 
+        $('body').on('change', '.generate_otp_switch', function(){
+            if ($(this).is(':checked')) {
+                var val = 'Y';
+            }else{
+                var val = 'N';
+            }
+            $(this).parent().parent().parent().parent().parent().find('.generateotp').val(val);
+            // $().val(val);
+        });
         $('body').on('click', '.remove-document', function(){
             $(this).closest('.remove-div').remove();
         });
@@ -187,6 +236,16 @@ var Brandentry = function(){
     var edit = function(){
         $('.select2').select2();
 
+        $('body').on('change', '.generate_otp_switch', function(){
+            if ($(this).is(':checked')) {
+                var val = 'Y';
+            }else{
+                var val = 'N';
+            }
+            $(this).parent().parent().parent().parent().parent().find('.generateotp').val(val);
+            // $().val(val);
+        });
+        
         var form = $('#edit-brand-entry');
         var rules = {
             brand_name: {required: true},

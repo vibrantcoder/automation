@@ -27,3 +27,54 @@
 .aside-menu .menu-nav > .menu-item.menu-item-active > .menu-heading, .aside-menu .menu-nav > .menu-item.menu-item-active > .menu-link {
     background-color: #1b1b28 !important;
 }
+
+.switch.switch-outline.switch-success input:checked ~ span:before {
+    border: 2px solid #1BC5BD !important;
+    background-color: transparent;
+}
+.switch.switch-outline.switch-success input ~ span:before{
+    border: 2px solid red !important;
+    background-color: transparent;
+}
+
+.switch.switch-outline.switch-success input:checked ~ span:after {
+    color: #ffffff;
+    background-color: #1BC5BD !important;
+}
+
+.switch.switch-outline.switch-success input ~ span:after {
+    color: #ffffff;
+    background-color: red !important;
+}
+
+.switch.switch-icon input ~ span:after {
+    font-family: Ki !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    line-height: 1 !important;
+    text-decoration: inherit !important;
+    text-rendering: optimizeLegibility !important;
+    text-transform: none !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    -webkit-font-smoothing: antialiased !important;
+    font-smoothing: antialiased !important;
+    content: "No" !important;
+    line-height: 0 !important;
+}
+
+.switch.switch-icon input:checked ~ span:after {
+    font-family: Ki !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    line-height: 1 !important;
+    text-decoration: inherit !important;
+    text-rendering: optimizeLegibility !important;
+    text-transform: none !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    -webkit-font-smoothing: antialiased !important;
+    font-smoothing: antialiased !important;
+    content: "Yes" !important;
+    line-height: 0 !important;
+}

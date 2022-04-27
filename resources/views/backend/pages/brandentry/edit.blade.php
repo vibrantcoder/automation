@@ -18,7 +18,7 @@
                         <div class="card-body">
                             <div id="document-div">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Brand Name <span class="text-danger">*</span></label>
                                             <input class="form-control brand_name" type="text" name="brand_name" placeholder="Please enter brand name" autocomplete="off" value="{{ $brand_entry_details[0]['brand_name'] }}" />
@@ -26,23 +26,26 @@
                                             <span class="error text-danger"></span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>URL <span class="text-danger">*</span></label>
                                             <input class="form-control urls" type="text" name="url" placeholder="Please enter URL" autocomplete="off" value="{{ $brand_entry_details[0]['url'] }}" />
                                             <span class="error text-danger"></span>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-2">
                                         <div class="form-group">
                                             <label>Country Code <span class="text-danger">*</span></label>
                                             <input class="form-control country_code" type="text" name="country_code" placeholder="Please enter country code" autocomplete="off" value="{{ $brand_entry_details[0]['country_code'] }}"/>
                                             <span class="error text-danger"></span>
+                                            <input class="form-control generateotp" type="hidden" name="generateotp" value="{{ $brand_entry_details[0]['generate_otp'] }}" autocomplete="off" />
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Mobile Number <span class="text-danger">*</span></label>
@@ -50,19 +53,18 @@
                                             <span class="error text-danger"></span>
                                         </div>
                                     </div>
+
                                     <div class="col-md-4">
+                                        <label>Generate OTP <span class="text-danger">*</span></label>
                                         <div class="form-group">
-                                            <label>Generate OTP
-                                            <span class="text-danger">*</span></label>
-                                            <select class="form-control select2 generate_otp" id="generate_otp"  name="generate_otp" >
-                                                <option value="">Please select generate otp</option>
-                                                <option value="Y" {{ $brand_entry_details[0]['generate_otp'] == 'Y' ? 'selected="selected"' : '' }}>Yes</option>
-                                                <option value="N" {{ $brand_entry_details[0]['generate_otp'] == 'N' ? 'selected="selected"' : '' }}>No</option>
-                                            </select>
-                                            <span class="error text-danger"></span>
+                                            <span class="switch switch-lg  switch-outline switch-icon switch-success">
+                                                <label>
+                                                    <input type="checkbox" {{ $brand_entry_details[0]['generate_otp'] == 'Y' ? 'checked="checked"' : '' }} class="generate_otp_switch" name="generate_otp_switch" value="yes" />
+                                                    <span></span>
+                                                </label>                                                
+                                            </span>                              
                                         </div>
                                     </div>
-
 
                                 </div>
                             </div>
