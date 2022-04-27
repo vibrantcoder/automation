@@ -27,6 +27,12 @@
 		<link rel="shortcut icon" href="{{  asset('public/upload/systemsetting/favicon-new.png') }}" />
         <link href="{{  asset('public/backend/css/style.css') }}" rel="stylesheet" type="text/css" />
 
+		<style>
+			:root {
+				--theme-color: #f4911e !important;
+			}
+		</style>
+		
         @if (!empty($css))
             @foreach ($css as $value)
                 @if(!empty($value))
