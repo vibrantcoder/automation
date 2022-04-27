@@ -25,14 +25,14 @@ if(file_exists( public_path().'/upload/systemsetting/'.get_system_setting_detail
                         <a href="#" class="text-center pt-2">
                             <img src="{{  asset('public/upload/systemsetting/logo-new.png') }}" class="max-h-150px" alt="" />
                         </a>                        
-                        <p class="">Enter your details to login to your account:</p>                        
+                        <h2>GRB Testing</h2>                        
                     </div>
                     <form class="form"  id="login-form" method="POST" enctype="multipart/form-data" action="{{ route('check-login') }}">@csrf
                         <div class="form-group">
-                            <input class="form-control form-control-solid  py-7 px-6" type="text" name="email" placeholder="Please enter your register email" autocomplete="off" />
+                            <input class="form-control form-control-solid  py-7 px-6" type="text" name="email" placeholder="Email" autocomplete="off" />
                         </div>
                         <div class="form-group">
-                            <input class="form-control form-control-solid  py-7 px-6" type="password" name="password" placeholder="Please enter your password"  autocomplete="off" />
+                            <input class="form-control form-control-solid  py-7 px-6" type="password" name="password" placeholder="Password"  autocomplete="off" />
                         </div>
                        <hr>
                         <div class="form-group text-center mt-10">
