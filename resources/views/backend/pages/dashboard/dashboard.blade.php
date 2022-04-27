@@ -1,19 +1,50 @@
 @extends('backend.layout.layout')
 @section('section')
 
-<!--begin::Main-->
-<div class="d-flex flex-column flex-root m-10">
-    <!--begin::Error-->
-      <!--begin::Dashboard-->
-      <div class="error error-3 d-flex flex-row-fluid bgi-size-cover bgi-position-center" style="background-image: url({{  asset('public/backend/media/error/bg3.jpg') }});">
-        <!--begin::Content-->
-        <div class="px-10 px-md-30 py-10 py-md-0 d-flex flex-column justify-content-md-center">
-            <h1 class="error-title text-stroke text-transparent" style="font-size: 6rem !important">Comming Soon</h1>
+<!--begin::Entry-->
+<div class="d-flex flex-column-fluid">
+    <!--begin::Container-->
+    <div class="container-fluid">
+        @csrf
+        <!--begin::Card-->
+        <div class="card card-custom gutter-b">
+            <div class="card-header flex-wrap py-3">
+
+                <div class="card-title">
+                    <h3 class="card-label">{{ $header['title'] }}</h3>
+                </div>
+
+                <div class="card-toolbar">
+                    <a href="{{ route('update-report') }}" class="btn btn-primary font-weight-bolder mr-5 update-records">
+                        Update Report
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <!--begin: Datatable-->
+                <table class="table table-bordered table-checkable" id="reports-list">
+                    <thead>
+                        <tr>
+                            <th>Sr. No</th>
+                            <th>Event Time Stamp</th>
+                            <th>Result Value</th>
+                            <th>Sender From</th>
+                            <th>Sender SCCPAddress</th>
+                            <th>Recipient Code</th>
+                            <th>TextBody</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <!--end: Datatable-->
+            </div>
         </div>
-        <!--end::Content-->
+        <!--end::Card-->
     </div>
-    <!--end::Dashboard-->
-    <!--end::Error-->
+    <!--end::Container-->
 </div>
+<!--end::Entry-->
 
 @endsection

@@ -5,7 +5,10 @@ namespace App\Http\Controllers\backend\dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Users;
+use App\Models\Resultreport;
 use Config;
+use LDAP\Result;
+
 class DashboardController extends Controller
 {
     function __construct()
@@ -19,16 +22,18 @@ class DashboardController extends Controller
         $data['description'] =  Config::get('constants.SYSTEM_NAME') . ' || dashboard';
         $data['keywords'] =  Config::get('constants.SYSTEM_NAME') . ' || dashboard';
         $data['css'] = array(
+            'toastr/toastr.min.css'
         );
         $data['plugincss'] = array(
+            'plugins/custom/datatables/datatables.bundle.css'
         );
         $data['pluginjs'] = array(
-            'plugins/validate/jquery.validate.min.js',
+            'toastr/toastr.min.js',
+            'plugins/custom/datatables/datatables.bundle.js',
+            'pages/crud/datatables/data-sources/html.js'
         );
         $data['js'] = array(
             'comman_function.js',
-            'ajaxfileupload.js',
-            'jquery.form.min.js',
             'dashboard.js',
         );
         $data['funinit'] = array(
@@ -160,5 +165,25 @@ class DashboardController extends Controller
         }
         echo json_encode($return);
         exit;
+    }
+
+    public function update_report(Request $request){
+
+        $objResultreport = new Resultreport();
+        $res = $objResultreport->update_report();
+        return redirect()->route('my-report');
+        
+    }
+
+    public function ajaxcall(Request $request){
+        $action = $request->input('action');
+        switch ($action) {
+            case 'getdatatable':
+                $objResultreport = new Resultreport();
+                $list = $objResultreport->getdatatable();
+
+                echo json_encode($list);
+                break;
+        }
     }
 }

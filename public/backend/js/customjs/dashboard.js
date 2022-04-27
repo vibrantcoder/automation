@@ -1,5 +1,21 @@
 var  Dashboard = function(){
     var dash= function(){
+        
+        var dataArr = {};
+        var columnWidth = { "width": "5%", "targets": 0 };
+        var arrList = {
+            'tableID': '#reports-list',
+            'ajaxURL': baseurl + "admin/my-report-ajaxcall",
+            'ajaxAction': 'getdatatable',
+            'postData': dataArr,
+            'hideColumnList': [],
+            'noSortingApply': [0],
+            'noSearchApply': [0],
+            'defaultSortColumn': [0],
+            'defaultSortOrder': 'DESC',
+            'setColumnWidth': columnWidth
+        };
+        getDataTable(arrList);
 
     }
 

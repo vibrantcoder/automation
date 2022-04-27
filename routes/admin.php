@@ -16,6 +16,8 @@ Route::get('admin-logout', [LoginController::class, 'logout'])->name('admin-logo
 $adminPrefix = "admin";
 Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     Route::get('my-report', [DashboardController::class, 'dashboard'])->name('my-report');
+    Route::get('update-report', [DashboardController::class, 'update_report'])->name('update-report');
+    Route::post('my-report-ajaxcall', [DashboardController::class, 'ajaxcall'])->name('my-report-ajaxcall');
 
     Route::get('admin-update-profile', [DashboardController::class, 'update_profile'])->name('admin-update-profile');
     Route::post('admin-save-profile', [DashboardController::class, 'save_profile'])->name('admin-save-profile');
