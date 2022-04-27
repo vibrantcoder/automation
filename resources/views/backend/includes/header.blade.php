@@ -29,7 +29,9 @@
     <link href="{{  asset('public/backend/css/style.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-
+        :root {
+            --theme-color: #f4911e !important;
+        }
     </style>
     @if (!empty($css))
         @foreach ($css as $value)
@@ -53,5 +55,6 @@
         var date_formate = "dd-M-yyyy";
         var decimal_point = "{{ Config::get('constants.DECIMAL_POINT') }}";
     </script>
+    
 </head>
 <!--end::Head-->

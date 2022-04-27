@@ -78,3 +78,33 @@
     content: "Yes" !important;
     line-height: 0 !important;
 }
+
+
+.brand {
+    background-color: #ffffff !important;    
+}
+
+.aside-menu {
+    background-color: #f4911e !important;
+}
+
+.aside-menu .menu-nav > .menu-item.menu-item-active > .menu-heading, .aside-menu .menu-nav > .menu-item.menu-item-active > .menu-link {
+    background-color: #e51937 !important;
+}
+
+.aside-menu .menu-nav > .menu-item.menu-item-active > .menu-heading, .aside-menu .menu-nav > .menu-item.menu-item-active > .menu-link {
+    background-color: #e51937 !important;
+}
+
+.aside-menu .menu-nav > .menu-item.menu-item-active > .menu-heading, .aside-menu .menu-nav > .menu-item.menu-item-active > .menu-link {
+    background-color: #e51937 !important;
+}
+
+.aside {
+    background-color: #f4911e;
+}
+
+.aside-menu .menu-nav > .menu-item > .menu-heading .menu-text, .aside-menu .menu-nav > .menu-item > .menu-link .menu-text {
+    color: #ffffff !important;
+    font-weight: bold !important;
+}
