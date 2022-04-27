@@ -13,6 +13,10 @@
                 </div>
 
                 <div class="card-toolbar">
+                    <a href="{{  asset('public/excel/branddata.xlsx')   }}" class="btn btn-icon btn-danger mr-4" download title="Download excel file">
+                        <i class="far fa-file-excel"></i>
+                    </a>
+
                     <!--begin::Button-->
                     <a href="{{ route('add-brand-entry') }}" class="btn btn-primary font-weight-bolder mr-5">
                        Add Brand Entry
