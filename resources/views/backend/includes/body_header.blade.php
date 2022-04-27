@@ -20,7 +20,7 @@ if(file_exists( public_path().'/upload/userprofile/'.$data['userimage']) && $dat
         <div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
             <!--begin::Header Menu-->
             <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
-                <h4 class="system-name" style="margin-top: 20px">{{  Config::get('constants.SYSTEM_NAME'); }}</h4>
+                {{-- <h4 class="system-name" style="margin-top: 20px">{{  Config::get('constants.SYSTEM_NAME'); }}</h4> --}}
             </div>
             <!--end::Header Menu-->
         </div>

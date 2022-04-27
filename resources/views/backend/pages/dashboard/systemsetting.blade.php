@@ -109,7 +109,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6">
+                        {{-- <div class="col-md-6">
                             <div class="form-group">
                                 <label>Login Image</label>
                                 <div class="">
@@ -126,7 +126,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         {{-- <div class="col-md-6">
                             <div class="form-group">
                                 <label>Business Favicon Icon</label>

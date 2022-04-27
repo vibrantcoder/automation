@@ -41,7 +41,7 @@ class BrandentryController extends Controller
         $data['header'] = array(
             'title' => 'Brand Entry List',
             'breadcrumb' => array(
-                'My Reports' => route('my-report'),
+                'Reports ' => route('my-report'),
                 'Brand Entry List' => 'Brand Entry List',
             )
         );
@@ -74,7 +74,7 @@ class BrandentryController extends Controller
         $data['header'] = array(
             'title' => 'Add Brand',
             'breadcrumb' => array(
-                'My Reports' => route('my-report'),
+                'Reports ' => route('my-report'),
                 'Brand List' => route('brand-entry-list'),
                 'Add Brand' => 'Add Brand',
             )
@@ -135,7 +135,7 @@ class BrandentryController extends Controller
         $data['header'] = array(
             'title' => 'Edit Brand Entry',
             'breadcrumb' => array(
-                'My Reports' => route('my-report'),
+                'Reports ' => route('my-report'),
                 'Brand Entry List' => route('brand-entry-list'),
                 'Edit Brand Entry' => 'Edit Brand Entry',
             )

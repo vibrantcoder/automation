@@ -85,7 +85,7 @@
 }
 
 .aside-menu {
-    background-color: #f4911e !important;
+    background-color: #ffffff !important;
 }
 
 .aside-menu .menu-nav > .menu-item.menu-item-active > .menu-heading, .aside-menu .menu-nav > .menu-item.menu-item-active > .menu-link {
@@ -101,10 +101,10 @@
 }
 
 .aside {
-    background-color: #f4911e;
+    background-color: #ffffff;
 }
 
 .aside-menu .menu-nav > .menu-item > .menu-heading .menu-text, .aside-menu .menu-nav > .menu-item > .menu-link .menu-text {
-    color: #ffffff !important;
+    color: #000 !important;
     font-weight: bold !important;
 }

@@ -35,9 +35,9 @@ class DashboardController extends Controller
             'Dashboard.init()'
         );
         $data['header'] = array(
-            'title' => 'My Reports',
+            'title' => 'Reports ',
             'breadcrumb' => array(
-                'My Reports' => 'My Reports',
+                'Reports ' => 'Reports ',
             )
         );
         return view('backend.pages.dashboard.dashboard', $data);
@@ -71,7 +71,7 @@ class DashboardController extends Controller
         $data['header'] = array(
             'title' => 'Update Profile',
             'breadcrumb' => array(
-                'My Reports' => route('my-report'),
+                'Reports ' => route('my-report'),
                 'Update Profile' => 'Update Profile',
             )
         );
@@ -128,7 +128,7 @@ class DashboardController extends Controller
         $data['header'] = array(
             'title' => 'Change Password',
             'breadcrumb' => array(
-                'My Reports' => route('my-report'),
+                'Reports ' => route('my-report'),
                 'Change Password' => 'Change Password',
             )
         );

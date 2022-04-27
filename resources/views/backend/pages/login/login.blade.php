@@ -1,22 +1,15 @@
 @extends('backend.layout.login_layout')
 
 @section('section')
-@php
 
-if(file_exists( public_path().'/upload/systemsetting/'.get_system_setting_detail()->website_logo) && get_system_setting_detail()->website_logo != null){
-    $login_image = url("public/upload/systemsetting/".get_system_setting_detail()->website_logo);
-}else{
-    $login_image = url("public/upload/systemsetting/default.jpg");
-}
-@endphp
 
 
 <!--begin::Main-->
 <div class="d-flex flex-column flex-root">
     <!--begin::Login-->
     <div class="login login-5 login-signin-on d-flex flex-row-fluid" id="kt_login" >
-        <div class="d-flex flex-center bgi-size-cover bgi-no-repeat flex-row-fluid" style="background-image: url({{ $login_image }})">
-            <div class="login-form   p-7 position-relative overflow-hidden" style="background: white !important; color: black">
+        <div class="d-flex flex-center bgi-size-cover bgi-no-repeat flex-row-fluid" >
+            <div class="login-form   p-7 position-relative overflow-hidden shadow" style="border: 7px solid #cbcccf !important; background: white !important; color: black">
              
                 <!--end::Login Header-->
                 <!--begin::Login Sign in form-->
