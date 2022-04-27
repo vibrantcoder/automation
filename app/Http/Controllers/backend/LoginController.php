@@ -55,7 +55,7 @@ class LoginController extends Controller
             Session::push('logindata', $loginData);
             $return['status'] = 'success';
             $return['message'] = 'You have successfully logged in.';
-            $return['redirect'] = route('my-report');
+            $return['redirect'] = route('brand-entry-list');
         } else {
                 $return['status'] = 'error';
                 $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
