@@ -24,7 +24,7 @@
     <link href="{{  asset('public/backend/css/themes/layout/aside/dark.css') }}" rel="stylesheet" type="text/css" />
 
     <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="{{  asset('public/upload/system/favicon.png') }}" />
+    <link rel="shortcut icon" href="{{  asset('public/upload/systemsetting/favicon-new.png') }}" />
 
     <link href="{{  asset('public/backend/css/style.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

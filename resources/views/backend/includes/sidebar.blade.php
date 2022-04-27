@@ -13,8 +13,8 @@ if (!empty(Auth()->guard('admin')->user())) {
     <div class="brand flex-column-auto" id="kt_brand">
         <!--begin::Logo-->
         <a href="{{ route('my-report') }}" class="brand-logo">
-            {{-- <img alt="Logo" src="{{  asset('public/backend/media/logos/logo-light.png') }}" class="max-h-55px" /> --}}
-            <h2 style="color: white;">{{get_system_setting_detail()->system_name}}</h2>
+            <img alt="Logo" src="{{  asset('public/upload/systemsetting/logo-new.png') }}" class="max-h-55px" />
+            
         </a>
         <!--end::Logo-->
         <!--begin::Toggle-->

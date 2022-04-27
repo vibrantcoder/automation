@@ -1,5 +1,4 @@
 @extends('backend.layout.login_layout')
-
 @section('section')
 @php
 if(file_exists( public_path().'/upload/systemsetting/'.get_system_setting_detail()->website_logo) && get_system_setting_detail()->website_logo != null){
