@@ -5,6 +5,7 @@ use App\Http\Controllers\backend\dashboard\DashboardController;
 use App\Http\Controllers\backend\LoginController;
 use App\Http\Controllers\backend\dashboard\SystemsettingController;
 use App\Http\Controllers\backend\audittrails\AuditTrailsController;
+use App\Http\Controllers\backend\brand_entry\BrandentryController;
 use App\Http\Controllers\backend\dashboard\SmtpsettingController;
 
 use App\Http\Controllers\backend\users\UsersController;
@@ -26,15 +27,30 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
 
     Route::get('admin-system-setting',[SystemsettingController::class,'system_setting'])->name('admin-system-setting');
     Route::post('save-system-setting',[SystemsettingController::class,'system_setting'])->name('save-system-setting');
-   
+
     // Route::get('smtp-setting',[SmtpsettingController::class,'smtp_setting'])->name('smtp-setting');
     // Route::post('save-smtp-setting',[SmtpsettingController::class,'smtp_setting'])->name('save-smtp-setting');
+
+    //brand-entry
+    Route::get('brand-entry-list', [BrandentryController::class, 'list'])->name('brand-entry-list');
+    Route::post('brand-entry-ajaxcall', [BrandentryController::class, 'ajaxcall'])->name('brand-entry-ajaxcall');
+    Route::get('add-brand-entry', [BrandentryController::class, 'add'])->name('add-brand-entry');
+    Route::post('add-save-brand-entry', [BrandentryController::class, 'add_brand_entry'])->name('add-save-brand-entry');
+    Route::get('edit-brand-entry/{id}', [BrandentryController::class, 'edit'])->name('edit-brand-entry');
+    Route::post('edit-save-brand-entry', [BrandentryController::class, 'edit_brand_entry'])->name('edit-save-brand-entry');
+
 
     $adminPrefix = "audittrails";
     Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
         Route::get('audit-trails', [AuditTrailsController::class, 'list'])->name('audit-trails');
         Route::post('audit-trails-ajaxcall', [AuditTrailsController::class, 'ajaxcall'])->name('audit-trails-ajaxcall');
     });
+
+    // $adminPrefix = "brand-entry";
+    // Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
+
+    //     Route::post('audit-trails-ajaxcall', [AuditTrailsController::class, 'ajaxcall'])->name('audit-trails-ajaxcall');
+    // });
 });
 
 
