@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
 use Session;
 use Route;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\BrandExport;
 
 class Brandentry extends Model
 {
@@ -140,6 +142,7 @@ class Brandentry extends Model
             unset($inputData['_token']);
             $objAudittrails = new Audittrails();
             $res = $objAudittrails->add_audit('Insert','admin/'. $currentRoute , json_encode($inputData) ,'Brand Entry' );
+            Excel::store(new BrandExport, 'branddata.xlsx', 'exceldata');
             return 'true';
         }else{
             return 'false';
@@ -183,6 +186,7 @@ class Brandentry extends Model
                     unset($inputData['_token']);
                     $objAudittrails = new Audittrails();
                     $res = $objAudittrails->add_audit('Edit','admin/'. $currentRoute , json_encode($inputData) ,'Brand Entry' );
+                    Excel::store(new BrandExport, 'branddata.xlsx', 'exceldata');
                     return 'true';
                 }else{
                     return 'false';
@@ -210,4 +214,6 @@ class Brandentry extends Model
             return false ;
         }
     }
+
+    
 }

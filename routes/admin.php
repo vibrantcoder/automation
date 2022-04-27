@@ -15,7 +15,7 @@ Route::get('admin-logout', [LoginController::class, 'logout'])->name('admin-logo
 
 $adminPrefix = "admin";
 Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
-    Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('my-report', [DashboardController::class, 'dashboard'])->name('my-report');
 
     Route::get('admin-update-profile', [DashboardController::class, 'update_profile'])->name('admin-update-profile');
     Route::post('admin-save-profile', [DashboardController::class, 'save_profile'])->name('admin-save-profile');
@@ -38,6 +38,7 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     Route::post('add-save-brand-entry', [BrandentryController::class, 'add_brand_entry'])->name('add-save-brand-entry');
     Route::get('edit-brand-entry/{id}', [BrandentryController::class, 'edit'])->name('edit-brand-entry');
     Route::post('edit-save-brand-entry', [BrandentryController::class, 'edit_brand_entry'])->name('edit-save-brand-entry');
+    Route::get('export-brand-details', [BrandentryController::class, 'get_brand_data'])->name('export-brand-details');
 
 
     $adminPrefix = "audittrails";
@@ -46,11 +47,6 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
         Route::post('audit-trails-ajaxcall', [AuditTrailsController::class, 'ajaxcall'])->name('audit-trails-ajaxcall');
     });
 
-    // $adminPrefix = "brand-entry";
-    // Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
-
-    //     Route::post('audit-trails-ajaxcall', [AuditTrailsController::class, 'ajaxcall'])->name('audit-trails-ajaxcall');
-    // });
 });
 
 

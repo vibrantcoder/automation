@@ -40,7 +40,7 @@ class AuditTrailsController extends Controller
         $data['header'] = array(
             'title' => 'Audit Trails List',
             'breadcrumb' => array(
-                'Dashboard' => route('dashboard'),
+                'My Reports' => route('my-report'),
                 'Audit Trails List' => 'Audit Trails List',
             )
         );

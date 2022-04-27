@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Brandentry;
 use Illuminate\Http\Request;
 use Config;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\BrandExport;
+
 class BrandentryController extends Controller
 {
     function __construct()
@@ -38,7 +41,7 @@ class BrandentryController extends Controller
         $data['header'] = array(
             'title' => 'Brand Entry List',
             'breadcrumb' => array(
-                'My Dashboard' => route('dashboard'),
+                'My Reports' => route('my-report'),
                 'Brand Entry List' => 'Brand Entry List',
             )
         );
@@ -71,7 +74,7 @@ class BrandentryController extends Controller
         $data['header'] = array(
             'title' => 'Add Brand',
             'breadcrumb' => array(
-                'My Dashboard' => route('dashboard'),
+                'My Reports' => route('my-report'),
                 'Brand List' => route('brand-entry-list'),
                 'Add Brand' => 'Add Brand',
             )
@@ -132,7 +135,7 @@ class BrandentryController extends Controller
         $data['header'] = array(
             'title' => 'Edit Brand Entry',
             'breadcrumb' => array(
-                'My Dashboard' => route('dashboard'),
+                'My Reports' => route('my-report'),
                 'Brand Entry List' => route('brand-entry-list'),
                 'Edit Brand Entry' => 'Edit Brand Entry',
             )
@@ -198,5 +201,10 @@ class BrandentryController extends Controller
                 echo json_encode($return);
                 exit;
         }
+    }
+
+    public function get_brand_data()
+    {        
+        return Excel::store(new BrandExport, 'branddata.xlsx', 'exceldata');        
     }
 }

@@ -12,7 +12,7 @@ if (!empty(Auth()->guard('admin')->user())) {
     <!--begin::Brand-->
     <div class="brand flex-column-auto" id="kt_brand">
         <!--begin::Logo-->
-        <a href="{{ route('dashboard') }}" class="brand-logo">
+        <a href="{{ route('my-report') }}" class="brand-logo">
             {{-- <img alt="Logo" src="{{  asset('public/backend/media/logos/logo-light.png') }}" class="max-h-55px" /> --}}
             <h2 style="color: white;">{{get_system_setting_detail()->system_name}}</h2>
         </a>
@@ -41,8 +41,8 @@ if (!empty(Auth()->guard('admin')->user())) {
             <!--begin::Menu Nav-->
             <ul class="menu-nav">
 
-                <li class="menu-item {{ ( $currentRoute  ==  "admin-system-setting"   || $currentRoute  ==  "audit-trails"   || $currentRoute  ==  "dashboard"   || $currentRoute  ==  "admin-update-profile" || $currentRoute  ==  "admin-change-password" || $currentRoute  ==  "smtp-setting"     ? 'menu-item-active' : '' ) }} " aria-haspopup="true">
-                    <a href="{{ route('dashboard') }}" class="menu-link">
+                <li class="menu-item {{ ( $currentRoute  ==  "admin-system-setting"   || $currentRoute  ==  "audit-trails"   || $currentRoute  ==  "my-report"   || $currentRoute  ==  "admin-update-profile" || $currentRoute  ==  "admin-change-password" || $currentRoute  ==  "smtp-setting"     ? 'menu-item-active' : '' ) }} " aria-haspopup="true">
+                    <a href="{{ route('my-report') }}" class="menu-link">
                         <span class="svg-icon menu-icon">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -54,7 +54,7 @@ if (!empty(Auth()->guard('admin')->user())) {
                             </svg>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-text">Dashboard</span>
+                        <span class="menu-text">My Reports</span>
                     </a>
                 </li>
 
