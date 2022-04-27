@@ -125,10 +125,25 @@ class Brandentry extends Model
                 // }
 
         for ($i = 0; $i < count($request->input('brand_name')); $i++) {
+            $url = '';
+            $country_code = '';
+
+            if($request->input('url')[$i] == '' || $request->input('url')[$i] == null){
+                $url = 'N/A';
+            }else{
+                $url = $request->input('url')[$i];
+            }
+
+            if($request->input('country_code')[$i] == '' || $request->input('country_code')[$i] == null){
+                $country_code = 'N/A';
+            }else{
+                $country_code = $request->input('country_code')[$i];
+            }                        
+
             $brand_entry[] = [
                 'brand_name' => $request->input('brand_name')[$i],
-                'url' => $request->input('url')[$i],
-                'country_code' => $request->input('country_code')[$i],
+                'url' => $url,
+                'country_code' => $country_code,
                 'mobile_number' => $request->input('mobile_number')[$i],
                 'generate_otp' => $request->input('generateotp')[$i],
                 'is_deleted' => 'N',
@@ -142,7 +157,7 @@ class Brandentry extends Model
             unset($inputData['_token']);
             $objAudittrails = new Audittrails();
             $res = $objAudittrails->add_audit('Insert','admin/'. $currentRoute , json_encode($inputData) ,'Brand Entry' );
-            Excel::store(new BrandExport, 'branddata.xlsx', 'exceldata');
+            Excel::store(new BrandExport, 'BrandDetails.xlsx', 'exceldata');
             return 'true';
         }else{
             return 'false';
@@ -174,6 +189,14 @@ class Brandentry extends Model
         //     ->count();
 
         //     if($checkRecord == 0){
+
+            if($request->input('url') == '' || $request->input('url') == null){
+                $request->input('url') == 'N/A';
+            }
+            if($request->input('country_code') == '' || $request->input('country_code') == null){
+                $request->input('country_code') == 'N/A';
+            }
+
                 $objBrandentry = Brandentry::find($request->input('editId'));
                 $objBrandentry->brand_name = $request->input('brand_name');
                 $objBrandentry->url = $request->input('url');
@@ -186,7 +209,7 @@ class Brandentry extends Model
                     unset($inputData['_token']);
                     $objAudittrails = new Audittrails();
                     $res = $objAudittrails->add_audit('Edit','admin/'. $currentRoute , json_encode($inputData) ,'Brand Entry' );
-                    Excel::store(new BrandExport, 'branddata.xlsx', 'exceldata');
+                    Excel::store(new BrandExport, 'BrandDetails.xlsx', 'exceldata');
                     return 'true';
                 }else{
                     return 'false';

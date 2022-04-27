@@ -39,10 +39,10 @@
 
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label>Country Code <span class="text-danger">*</span></label>
+                                            <label>Country Code</label>
                                             <input class="form-control country_code" type="text" name="country_code[]" placeholder="Please enter country code" autocomplete="off" />
                                             <span class="error text-danger"></span>
-                                            <input class="form-control generateotp" type="hidden" name="generateotp[]" value="no" autocomplete="off" />
+                                            <input class="form-control generateotp" type="hidden" name="generateotp[]" value="N" autocomplete="off" />
                                         </div>
                                     </div>
 

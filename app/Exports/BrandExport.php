@@ -7,12 +7,17 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
+use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
-class BrandExport implements FromArray, WithHeadings, ShouldAutoSize
+
+class BrandExport implements FromArray, WithHeadings, ShouldAutoSize, WithColumnFormatting
 {
     /**
     * @return \Illuminate\Support\Collection
     */   
+
+    
 
     public function array(): array
     {
@@ -43,6 +48,18 @@ class BrandExport implements FromArray, WithHeadings, ShouldAutoSize
             'Country Code',
             'Mobile Number',
             'Generate OTP',
+        ];
+    }
+
+    public function columnFormats(): array
+    {
+        return [
+            'A' => NumberFormat::FORMAT_TEXT,
+            'B' => NumberFormat::FORMAT_TEXT,
+            'C' => NumberFormat::FORMAT_TEXT,
+            'D' => NumberFormat::FORMAT_TEXT,
+            'E' => NumberFormat::FORMAT_NUMBER,
+            'F' => NumberFormat::FORMAT_TEXT,
         ];
     }
 }

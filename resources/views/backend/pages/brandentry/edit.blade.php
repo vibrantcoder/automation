@@ -39,7 +39,7 @@
                                 <div class="row">
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <label>Country Code <span class="text-danger">*</span></label>
+                                            <label>Country Code</label>
                                             <input class="form-control country_code" type="text" name="country_code" placeholder="Please enter country code" autocomplete="off" value="{{ $brand_entry_details[0]['country_code'] }}"/>
                                             <span class="error text-danger"></span>
                                             <input class="form-control generateotp" type="hidden" name="generateotp" value="{{ $brand_entry_details[0]['generate_otp'] }}" autocomplete="off" />

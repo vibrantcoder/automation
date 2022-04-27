@@ -66,7 +66,7 @@ var Brandentry = function(){
                         '<div class="row">'+
                         '<div class="col-md-2">'+
                         '<div class="form-group">'+
-                        '<label>Country Code <span class="text-danger">*</span></label>'+
+                        '<label>Country Code'+
                         '<input class="form-control country_code" type="text" name="country_code[]" placeholder="Please enter country code" autocomplete="off" />'+
                         '<span class="error text-danger"></span>'+
                         '<input class="form-control generateotp" type="hidden" name="generateotp[]" value="N" autocomplete="off" />'+
@@ -181,29 +181,29 @@ var Brandentry = function(){
                 }
             });
 
-            $('.urls').each(function() {
-                var elem = $(this);
-                if ($(this).is(':visible')) {
-                    if ($(this).val() == '' || $(this).val() == 0) {
-                        $(this).parent().find('.error').text('Please enter URL');
-                        customValid = false;
-                    } else {
-                        $(this).parent().find('.error').text('');
-                    }
-                }
-            });
+            // $('.urls').each(function() {
+            //     var elem = $(this);
+            //     if ($(this).is(':visible')) {
+            //         if ($(this).val() == '' || $(this).val() == 0) {
+            //             $(this).parent().find('.error').text('Please enter URL');
+            //             customValid = false;
+            //         } else {
+            //             $(this).parent().find('.error').text('');
+            //         }
+            //     }
+            // });
 
-            $('.country_code').each(function() {
-                var elem = $(this);
-                if ($(this).is(':visible')) {
-                    if ($(this).val() == '' || $(this).val() == 0) {
-                        $(this).parent().find('.error').text('Please enter country code');
-                        customValid = false;
-                    } else {
-                        $(this).parent().find('.error').text('');
-                    }
-                }
-            });
+            // $('.country_code').each(function() {
+            //     var elem = $(this);
+            //     if ($(this).is(':visible')) {
+            //         if ($(this).val() == '' || $(this).val() == 0) {
+            //             $(this).parent().find('.error').text('Please enter country code');
+            //             customValid = false;
+            //         } else {
+            //             $(this).parent().find('.error').text('');
+            //         }
+            //     }
+            // });
 
             $('.mobile_number').each(function() {
                 var elem = $(this);
@@ -249,8 +249,8 @@ var Brandentry = function(){
         var form = $('#edit-brand-entry');
         var rules = {
             brand_name: {required: true},
-            url: {required: true},
-            country_code: {required: true},
+            // url: {required: true},
+            // country_code: {required: true},
             mobile_number: {required: true},
             generate_otp: {required: true},
         };
@@ -260,13 +260,13 @@ var Brandentry = function(){
                 required : "Please enter brand name",
 
             },
-            url :{
-                required : "Please enter url",
+            // url :{
+            //     required : "Please enter url",
 
-            },
-            country_code : {
-                required : "Please enter country code"
-            },
+            // },
+            // country_code : {
+            //     required : "Please enter country code"
+            // },
             mobile_number : {
                 required : "Please enter mobile number"
             },
