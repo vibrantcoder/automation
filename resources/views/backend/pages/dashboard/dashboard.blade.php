@@ -6,6 +6,42 @@
     <!--begin::Container-->
     <div class="container-fluid">
         @csrf
+           
+        <div class="row">
+            <div class="col-lg-6">
+                <!--begin::Card-->
+                <div class="card card-custom gutter-b">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h3 class="card-label">List Of Sender</h3>
+                        </div>
+                    </div>
+                    <div class="card-body" style="height: 500px !important;">
+                        <!--begin::Chart-->
+                        <div id="sender_chat" class="d-flex justify-content-center"></div>
+                        <!--end::Chart-->
+                    </div>
+                </div>
+                <!--end::Card-->
+            </div>
+            <div class="col-lg-6">
+                <!--begin::Card-->
+                <div class="card card-custom gutter-b">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h3 class="card-label">Result Value</h3>
+                        </div>
+                    </div>
+                    <div class="card-body" style="height: 500px !important;">
+                        <!--begin::Chart-->
+                        <div id="result_chat"></div>
+                        <!--end::Chart-->
+                    </div>
+                </div>
+                <!--end::Card-->
+            </div>
+        </div>
+
         <!--begin::Card-->
         <div class="card card-custom gutter-b">
             <div class="card-header flex-wrap py-3">
@@ -42,6 +78,8 @@
             </div>
         </div>
         <!--end::Card-->
+     
+
     </div>
     <!--end::Container-->
 </div>

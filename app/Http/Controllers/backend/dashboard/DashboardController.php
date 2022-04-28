@@ -30,7 +30,8 @@ class DashboardController extends Controller
         $data['pluginjs'] = array(
             'toastr/toastr.min.js',
             'plugins/custom/datatables/datatables.bundle.js',
-            'pages/crud/datatables/data-sources/html.js'
+            'pages/crud/datatables/data-sources/html.js',
+            'pages/features/charts/apexcharts.js'
         );
         $data['js'] = array(
             'comman_function.js',
@@ -183,6 +184,20 @@ class DashboardController extends Controller
                 $list = $objResultreport->getdatatable();
 
                 echo json_encode($list);
+                break;
+            
+            case 'sender-chat':
+                $objResultreport = new Resultreport();
+                $data = $objResultreport->get_sender_chat();
+                
+                echo json_encode($data);
+                break;
+
+            case 'result-chat':
+                $objResultreport = new Resultreport();
+                $data = $objResultreport->get_sender_chat();
+
+                echo json_encode($data);
                 break;
         }
     }

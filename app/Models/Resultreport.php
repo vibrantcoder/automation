@@ -131,4 +131,19 @@ class Resultreport extends Model
             return 'false';
         }
     }
+
+    public function get_sender_chat(){
+        $res = Resultreport::groupBy('result_reports.sender_from')
+                        ->select('result_reports.sender_from', DB::raw('COUNT(result_reports.id)as count'),)
+                        ->get()
+                        ->toArray();
+        $data['sender'] = [];
+        $data['count'] = [];
+        foreach($res as $key => $value){
+            array_push($data['sender'], $value['sender_from']);
+            array_push($data['count'], $value['count']);
+        }
+
+        return $data;
+    }
 }

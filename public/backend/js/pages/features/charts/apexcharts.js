@@ -1,3 +1,4 @@
+
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 var __webpack_exports__ = {};
@@ -938,9 +939,6 @@ var KTApexChartsDemo = function () {
 	}
 
 	var _demo11 = function () {
-
-
-
 		const apexChart = "#chart_11";
 		var options = {
 			series: [44, 55, 41, 17, 15],
