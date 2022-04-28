@@ -105,8 +105,8 @@ var  Dashboard = function(){
         });
 
         $('body').on('click', '#excel_download', function(){
-            $('#result_value').val('all').trigger('change');
-            $('#sender_from').val('all').trigger('change');
+            var result_value = $("#result_value").val();
+            var sender_from = $("#sender_from").val();
             $('#datepicker_from').val('');
             $('#datepicker_to').val('');
 

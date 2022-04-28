@@ -36,6 +36,7 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
 
     //brand-entry
     Route::get('brand-entry-list', [BrandentryController::class, 'list'])->name('brand-entry-list');
+    Route::POST('run-script', [BrandentryController::class, 'run_script'])->name('run-script');
     Route::post('brand-entry-ajaxcall', [BrandentryController::class, 'ajaxcall'])->name('brand-entry-ajaxcall');
     Route::get('add-brand-entry', [BrandentryController::class, 'add'])->name('add-brand-entry');
     Route::post('add-save-brand-entry', [BrandentryController::class, 'add_brand_entry'])->name('add-save-brand-entry');

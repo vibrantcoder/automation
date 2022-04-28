@@ -39,6 +39,16 @@ var Brandentry = function(){
                 }
             });
         });
+
+        $('body').on('click', '.run-script', function() {
+            $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+                },
+                url: baseurl +"admin/run-script",
+            });
+        });
     }
 
     var add = function(){

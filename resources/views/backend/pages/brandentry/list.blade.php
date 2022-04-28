@@ -13,7 +13,7 @@
                 </div>
 
                 <div class="card-toolbar">
-                    <a href="javascript:;" class="btn btn-icon  mr-4" style="background: #356fa0 !important" download title="Run Python Scripts">
+                    <a href="javascript:;" class="btn btn-icon  mr-4 run-script" style="background: #356fa0 !important" title="Run Python Scripts">
                         <i class="far fa-file-code text-white"></i>
                     </a>
                    

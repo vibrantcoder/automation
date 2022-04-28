@@ -228,7 +228,9 @@ class Resultreport extends Model
     }
 
     public function download_excel_download($from, $to, $result_value, $sender_from){
+        
         $query = Resultreport ::from('result_reports');
+
                 if($result_value != 'all'){
                     $query->where("result_reports.result_value",$result_value);
                 }
