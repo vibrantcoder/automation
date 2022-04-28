@@ -190,15 +190,16 @@ class DashboardController extends Controller
                 $objResultreport = new Resultreport();
                 $data = $objResultreport->get_sender_chat();
                 
-                echo json_encode($data);
-                break;
-
-            case 'result-chat':
-                $objResultreport = new Resultreport();
-                $data = $objResultreport->get_sender_chat();
 
                 echo json_encode($data);
                 break;
+
+            // case 'result-chat':
+            //     $objResultreport = new Resultreport();
+            //     $data = $objResultreport->get_sender_chat();
+                
+            //     echo json_encode($data);
+            //     break;
         }
     }
 }

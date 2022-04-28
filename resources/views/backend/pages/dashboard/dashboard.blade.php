@@ -8,7 +8,7 @@
         @csrf
            
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <!--begin::Card-->
                 <div class="card card-custom gutter-b">
                     <div class="card-header">
@@ -24,22 +24,7 @@
                 </div>
                 <!--end::Card-->
             </div>
-            <div class="col-lg-6">
-                <!--begin::Card-->
-                <div class="card card-custom gutter-b">
-                    <div class="card-header">
-                        <div class="card-title">
-                            <h3 class="card-label">Result Value</h3>
-                        </div>
-                    </div>
-                    <div class="card-body" style="height: 500px !important;">
-                        <!--begin::Chart-->
-                        <div id="result_chat"></div>
-                        <!--end::Chart-->
-                    </div>
-                </div>
-                <!--end::Card-->
-            </div>
+           
         </div>
 
         <!--begin::Card-->

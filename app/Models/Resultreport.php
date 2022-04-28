@@ -14,8 +14,7 @@ class Resultreport extends Model
     protected $table = 'result_reports';
 
     public function getdatatable($employee_list = "")
-    {
-        // ccd($employee_list);
+    {        
         $requestData = $_REQUEST;
         $columns = array(
             0 => 'result_reports.id',
@@ -145,5 +144,54 @@ class Resultreport extends Model
         }
 
         return $data;
+    }
+
+    public function get_sender_chat_result(){
+        $res_type = Resultreport::from('result_reports')
+                        ->groupBy('result_reports.result_value')
+                        ->select('result_reports.result_value')
+                        ->get()
+                        ->toArray();
+
+        $data = collect(range(11, 0));
+        
+        $details = [];
+        $month_array = [];
+        $result_value = [];
+        $temp_array = [];
+        foreach($res_type as $res_key => $res_value){
+            array_push($result_value, $res_value['result_value']);
+        }
+
+        foreach($data as $key => $value){
+            $dt = today()->startOfMonth()->subMonth($value);
+            $month_name = $dt->shortMonthName."-".$dt->format('Y');
+            $date = '01-'.$month_name;
+            array_push($month_array, $month_name);
+          
+           
+            foreach($res_type as $res_key => $res_value){
+                $count = Resultreport::from('result_reports')
+                            ->where('result_reports.result_value', $res_value['result_value'])
+                            ->whereMonth('result_reports.event_time', date('m', strtotime($date)))                            
+                            ->count();    
+            }
+            
+        }
+        // $result_value['name'] = ["Allowed", "Not Allowed"] ;
+        $result_value = [
+            [
+                'name'=> 'Allowed',
+                'data' => ['5', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55', '60'],
+            ],
+            [
+                'name'=> 'Not Allowed',
+                'data' => ['60', '55', '31', '23', '45', '77', '74', '85', '12', '45', '78', '45'],
+            ],
+            
+        ];
+        $details['month'] = $month_array;
+        $details['result_value'] = $result_value;       
+        return $details;
     }
 }

@@ -55,92 +55,16 @@ var  Dashboard = function(){
                     legend: {
                         position: 'top'
                     },
-                  
-                    
                     colors: [primary, success, warning, danger, info]
                 };
 
                 var chart = new ApexCharts(document.querySelector(apexChart), options);
-                chart.render();
+                chart.render();               
             },
-            complete: function(){
-                $("#loader").hide();
-            }
+            // complete: function(){
+            //     $("#loader").hide();
+            // }
         });
-       
-        $.ajax({
-            type: "POST",
-            headers: {
-                'X-CSRF-TOKEN': $('input[name="_token"]').val(),
-            },
-            url: baseurl + "admin/my-report-ajaxcall",
-            data: { 'action': 'result-chat'},
-            success: function(data) {
-                $("#loader").show();
-                var output = JSON.parse(data);
-                const apexChart = "#result_chat";
-                var options = {
-                    series: [{
-                        name: 'Net Profit',
-                        data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
-                    }, {
-                        name: 'Revenue',
-                        data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
-                    }, {
-                        name: 'Free Cash Flow',
-                        data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
-                    }],
-                    chart: {
-                        type: 'bar',
-                        height: 450
-                    },
-                    plotOptions: {
-                        bar: {
-                            horizontal: false,
-                            columnWidth: '55%',
-                            endingShape: 'rounded'
-                        },
-                    },
-                    dataLabels: {
-                        enabled: false
-                    },
-                    stroke: {
-                        show: true,
-                        width: 2,
-                        colors: ['transparent']
-                    },
-                    xaxis: {
-                        categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
-                    },
-                    yaxis: {
-                        title: {
-                            text: '$ (thousands)'
-                        }
-                    },
-                    fill: {
-                        opacity: 1
-                    },
-                    tooltip: {
-                        y: {
-                            formatter: function (val) {
-                                return "$ " + val + " thousands"
-                            }
-                        }
-                    },
-                    exporting: {
-                        enabled: false
-                    },
-                    colors: [primary, success, warning]
-                };
-
-                var chart = new ApexCharts(document.querySelector(apexChart), options);
-                chart.render();
-            },
-            complete: function(){
-                $("#loader").hide();
-            }
-        });
-
     }
 
     var update = function(){
