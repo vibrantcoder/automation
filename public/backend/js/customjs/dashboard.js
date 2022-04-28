@@ -1,5 +1,120 @@
 var  Dashboard = function(){
     var dash= function(){
+        $('.select2').select2();
+
+        $("#datepicker_from").datepicker({
+            format: 'd-M-yyyy',
+            todayHighlight: true,
+            autoclose: true,
+            orientation: "bottom auto"
+        });
+
+        $("#datepicker_to").datepicker({
+            format: 'd-M-yyyy',
+            todayHighlight: true,
+            autoclose: true,
+            orientation: "bottom auto"
+        });
+
+        $('body').on('click', '#get_data', function(){
+            var html = '';
+            html = '<table class="table table-bordered table-checkable" id="reports-list">'+
+                    '<thead>'+
+                    '<tr>'+
+                    '<th>Sr. No</th>'+
+                    '<th>Event Time Stamp</th>'+
+                    '<th>Result Value</th>'+
+                    '<th>Sender From</th>'+
+                    '<th>Sender SCCPAddress</th>'+
+                    '<th>Recipient Code</th>'+
+                    '<th>TextBody</th>'+
+                    '</tr>'+
+                    '</thead>'+
+                    '<tbody>'+
+                    '</tbody>'+
+                    '</table>';
+            $("#reports-list-div").html(html);
+
+            var result_value = $("#result_value").val();
+            var sender_from = $("#sender_from").val();
+            var from = $("#datepicker_from").val();
+            var to = $("#datepicker_to").val();
+
+            var dataArr = {'result_value' : result_value, 'sender_from':sender_from, 'from':from, 'to':to};
+            var columnWidth = { "width": "5%", "targets": 0 };
+            var arrList = {
+                'tableID': '#reports-list',
+                'ajaxURL': baseurl + "admin/my-report-ajaxcall",
+                'ajaxAction': 'getdatatable',
+                'postData': dataArr,
+                'hideColumnList': [],
+                'noSortingApply': [0],
+                'noSearchApply': [0],
+                'defaultSortColumn': [0],
+                'defaultSortOrder': 'DESC',
+                'setColumnWidth': columnWidth
+            };
+            getDataTable(arrList);            
+        });
+
+        $('body').on('click', '.clearSearch', function(){
+            var html = '';
+            html = '<table class="table table-bordered table-checkable" id="reports-list">'+
+                    '<thead>'+
+                    '<tr>'+
+                    '<th>Sr. No</th>'+
+                    '<th>Event Time Stamp</th>'+
+                    '<th>Result Value</th>'+
+                    '<th>Sender From</th>'+
+                    '<th>Sender SCCPAddress</th>'+
+                    '<th>Recipient Code</th>'+
+                    '<th>TextBody</th>'+
+                    '</tr>'+
+                    '</thead>'+
+                    '<tbody>'+
+                    '</tbody>'+
+                    '</table>';
+            $("#reports-list-div").html(html);
+
+            $('#result_value').val('all').trigger('change');
+            $('#sender_from').val('all').trigger('change');
+            $('#datepicker_from').val('');
+            $('#datepicker_to').val('');
+
+            var result_value = $("#result_value").val();
+            var sender_from = $("#sender_from").val();
+            var from = $("#datepicker_from").val();
+            var to = $("#datepicker_to").val();
+
+            var dataArr = {'result_value' : result_value, 'sender_from':sender_from, 'from':from, 'to':to};
+            var columnWidth = { "width": "5%", "targets": 0 };
+            var arrList = {
+                'tableID': '#reports-list',
+                'ajaxURL': baseurl + "admin/my-report-ajaxcall",
+                'ajaxAction': 'getdatatable',
+                'postData': dataArr,
+                'hideColumnList': [],
+                'noSortingApply': [0],
+                'noSearchApply': [0],
+                'defaultSortColumn': [0],
+                'defaultSortOrder': 'DESC',
+                'setColumnWidth': columnWidth
+            };
+            getDataTable(arrList);
+
+        });
+
+        $('body').on('click', '#excel_download', function(){
+            $('#result_value').val('all').trigger('change');
+            $('#sender_from').val('all').trigger('change');
+            $('#datepicker_from').val('');
+            $('#datepicker_to').val('');
+
+            var dataArr = {'result_value' : result_value, 'sender_from':sender_from, 'from':from, 'to':to};
+            var url =  baseurl + "admin/download-excel-download?result_value="+result_value+"&sender_from="+sender_from+"&from="+from+"&to="+to ;
+            window.location = url;
+
+        });
 
         const primary = '#6993FF';
         const success = '#1BC5BD';
@@ -7,7 +122,13 @@ var  Dashboard = function(){
         const warning = '#FFA800';
         const danger = '#F64E60';
 
-        var dataArr = {};
+        var result_value = $("#result_value").val();
+        var sender_from = $("#sender_from").val();
+        var from = $("#datepicker_from").val();
+        var to = $("#datepicker_to").val();
+
+        var dataArr = {'result_value' : result_value, 'sender_from':sender_from, 'from':from, 'to':to};
+
         var columnWidth = { "width": "5%", "targets": 0 };
         var arrList = {
             'tableID': '#reports-list',

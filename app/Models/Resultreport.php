@@ -13,8 +13,9 @@ class Resultreport extends Model
     use HasFactory;
     protected $table = 'result_reports';
 
-    public function getdatatable($employee_list = "")
+    public function getdatatable($data_array)
     {        
+       
         $requestData = $_REQUEST;
         $columns = array(
             0 => 'result_reports.id',
@@ -26,8 +27,25 @@ class Resultreport extends Model
             6 => 'result_reports.text_body',
 
         );
-        $query = Audittrails ::from('result_reports');
+        $query = Resultreport ::from('result_reports');
+                if($data_array['result_value'] != 'all'){
+                    $query->where("result_reports.result_value",$data_array['result_value']);
+                }
+               
+                if($data_array['sender_from'] != 'all'){
+                    $query->where("result_reports.sender_from",$data_array['sender_from']);
+                }                
 
+                if($data_array['from'] != '' || $data_array['from'] != null ){
+                    $from = date("Y-m-d",strtotime($data_array['from']));
+                    $query->whereDate('result_reports.event_time', '>=', $from);
+                }
+
+                if($data_array['to'] != '' || $data_array['to'] != null ){
+                    $to = date("Y-m-d",strtotime($data_array['to']));
+                    $query->whereDate('result_reports.event_time', '<=', $to);
+                }
+        
         if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
             $searchVal = $requestData['search']['value'];
             $query->where(function($query) use ($columns, $searchVal, $requestData) {
@@ -193,5 +211,45 @@ class Resultreport extends Model
         $details['month'] = $month_array;
         $details['result_value'] = $result_value;       
         return $details;
+    }
+
+    public function get_sender_sender_from(){
+        return Resultreport::groupBy('result_reports.sender_from')
+                        ->select('result_reports.sender_from')
+                        ->get()
+                        ->toArray();       
+    }
+   
+    public function get_sender_result_value(){
+        return Resultreport::groupBy('result_reports.result_value')
+                        ->select('result_reports.result_value')
+                        ->get()
+                        ->toArray();       
+    }
+
+    public function download_excel_download($from, $to, $result_value, $sender_from){
+        $query = Resultreport ::from('result_reports');
+                if($result_value != 'all'){
+                    $query->where("result_reports.result_value",$result_value);
+                }
+               
+                if($sender_from != 'all'){
+                    $query->where("result_reports.sender_from",$sender_from);
+                }                
+
+                if($from != '' || $from != null ){
+                    $from = date("Y-m-d",strtotime($from));
+                    $query->whereDate('result_reports.event_time', '>=', $from);
+                }
+
+                if($to != '' || $to != null ){
+                    $to = date("Y-m-d",strtotime($to));
+                    $query->whereDate('result_reports.event_time', '<=', $to);
+                }
+                
+        $result = $query->select('result_reports.id', 'result_reports.event_time', 'result_reports.result_value', 'result_reports.sender_from', 'result_reports.sender_address', 'result_reports.recipient_code', 'result_reports.text_body')
+                        ->get();
+
+        return  $result;
     }
 }

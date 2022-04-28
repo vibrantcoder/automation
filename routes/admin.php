@@ -17,6 +17,7 @@ $adminPrefix = "admin";
 Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     Route::get('my-report', [DashboardController::class, 'dashboard'])->name('my-report');
     Route::get('update-report', [DashboardController::class, 'update_report'])->name('update-report');
+    Route::get('download-excel-download', [DashboardController::class, 'download_excel_download'])->name('download-excel-download');
     Route::post('my-report-ajaxcall', [DashboardController::class, 'ajaxcall'])->name('my-report-ajaxcall');
 
     Route::get('admin-update-profile', [DashboardController::class, 'update_profile'])->name('admin-update-profile');

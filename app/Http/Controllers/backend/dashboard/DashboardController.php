@@ -8,6 +8,8 @@ use App\Models\Users;
 use App\Models\Resultreport;
 use Config;
 use LDAP\Result;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ReportExport;
 
 class DashboardController extends Controller
 {
@@ -18,6 +20,12 @@ class DashboardController extends Controller
 
     public function dashboard(Request $request){
 
+        $objResultreport = new Resultreport();
+        $data['sender_from'] = $objResultreport->get_sender_sender_from();
+
+        $objResultreport = new Resultreport();
+        $data['result_value'] = $objResultreport->get_sender_result_value();
+     
         $data['title'] =  Config::get('constants.SYSTEM_NAME') . ' || dashboard';
         $data['description'] =  Config::get('constants.SYSTEM_NAME') . ' || dashboard';
         $data['keywords'] =  Config::get('constants.SYSTEM_NAME') . ' || dashboard';
@@ -176,12 +184,32 @@ class DashboardController extends Controller
         
     }
 
+    public function download_excel_download(Request $request){        
+        if($request->from){
+            $data['from'] = $request->from;
+        }else{
+            $data['from'] = "";
+        }
+
+        if($request->to){
+            $data['to'] = $request->to;
+        }else{
+            $data['to'] = "";
+        }
+
+        $data['result_value'] = $request->result_value;
+        $data['sender_from'] = $request->sender_from;       
+
+        return Excel::download(new ReportExport($data), 'Output-'.time().'.xlsx');
+    }
+
     public function ajaxcall(Request $request){
         $action = $request->input('action');
         switch ($action) {
             case 'getdatatable':
+                $details = $request->input('data');
                 $objResultreport = new Resultreport();
-                $list = $objResultreport->getdatatable();
+                $list = $objResultreport->getdatatable($details);
 
                 echo json_encode($list);
                 break;
