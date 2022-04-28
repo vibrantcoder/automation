@@ -97,27 +97,29 @@ class Resultreport extends Model
                    
         $json = json_encode($xmlObject);
         $dataArray = json_decode($json, true); 
-       
+        $resultArr = [];
         foreach($dataArray['event'] as $key => $value){
-            $res_event_timestamp = $value['@attributes']['eventTimestamp'];
-            $res_value = $value['result']['@attributes']['value'];
-            $res_sender_from = $value['sender']['@attributes']['from'];
-            $res_sccpAddress = $value['recipients']['recipient']['@attributes']['sccpAddress'];
-            $res_recipients_code = $value['recipients']['recipient']['@attributes']['code'];
-            $res_text_body = $value['payload']['message']['textBody'];
-
-            $resultArr[] = [
-                'event_time' => date("Y-m-d H:i:s", strtotime($value['@attributes']['eventTimestamp'])),
-                'result_value' => $value['result']['@attributes']['value'],
-                'sender_from' => $value['sender']['@attributes']['from'],
-                'sender_address' => $value['recipients']['recipient']['@attributes']['sccpAddress'],
-                'recipient_code' => $value['recipients']['recipient']['@attributes']['code'],
-                'text_body' => $value['payload']['message']['textBody'],
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
-            ]; 
+            $count =  Resultreport::where('result_reports.event_time', date("Y-m-d H:i:s", strtotime($value['@attributes']['eventTimestamp'])))
+                            ->where('result_reports.result_value', $value['result']['@attributes']['value'])
+                            ->where('result_reports.sender_from', $value['sender']['@attributes']['from'])
+                            ->where('result_reports.sender_address', $value['recipients']['recipient']['@attributes']['sccpAddress'])
+                            ->where('result_reports.recipient_code', $value['recipients']['recipient']['@attributes']['code'])
+                            ->count();
+            if($count == 0){
+                $resultArr[] = [
+                    'event_time' => date("Y-m-d H:i:s", strtotime($value['@attributes']['eventTimestamp'])),
+                    'result_value' => $value['result']['@attributes']['value'],
+                    'sender_from' => $value['sender']['@attributes']['from'],
+                    'sender_address' => $value['recipients']['recipient']['@attributes']['sccpAddress'],
+                    'recipient_code' => $value['recipients']['recipient']['@attributes']['code'],
+                    'text_body' => $value['payload']['message']['textBody'],
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ]; 
+            }
+            
         }
-
+       
         if(Resultreport::insert($resultArr)){
             $currentRoute = Route::current()->getName();
             $inputData = $resultArr;    
