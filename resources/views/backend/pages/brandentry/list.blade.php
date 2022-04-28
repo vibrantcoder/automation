@@ -13,7 +13,11 @@
                 </div>
 
                 <div class="card-toolbar">
-                    <a href="{{  asset('public/excel/BrandDetails.xlsx')   }}" class="btn btn-icon btn-danger mr-4" download title="Download excel file">
+                    <a href="javascript:;" class="btn btn-icon  mr-4" style="background: #356fa0 !important" download title="Run Python Scripts">
+                        <i class="far fa-file-code text-white"></i>
+                    </a>
+                   
+                    <a href="{{ asset('public/excel/BrandDetails.xlsx') }}" class="btn btn-icon btn-danger mr-4" download title="Download excel file">
                         <i class="far fa-file-excel"></i>
                     </a>
 
