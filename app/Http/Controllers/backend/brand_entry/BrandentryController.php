@@ -17,9 +17,9 @@ class BrandentryController extends Controller
     }
 
     public function list(){
-        $data['title'] = Config::get('constants.SYSTEM_NAME') . ' || Brand Entry List' ;
-        $data['description'] = Config::get('constants.SYSTEM_NAME') . ' || Brand Entry List' ;
-        $data['keywords'] = Config::get('constants.SYSTEM_NAME') . ' || Brand Entry List' ;
+        $data['title'] = Config::get('constants.SYSTEM_NAME') . ' || Brand & Execution List' ;
+        $data['description'] = Config::get('constants.SYSTEM_NAME') . ' || Brand & Execution List' ;
+        $data['keywords'] = Config::get('constants.SYSTEM_NAME') . ' || Brand & Execution List' ;
         $data['css'] = array(
         );
         $data['plugincss'] = array(
@@ -39,10 +39,10 @@ class BrandentryController extends Controller
             'Brandentry.init()',
         );
         $data['header'] = array(
-            'title' => 'Brand Entry List',
+            'title' => 'Brand & Execution List',
             'breadcrumb' => array(
                 'Reports ' => route('my-report'),
-                'Brand Entry List' => 'Brand Entry List',
+                'Brand & Execution List' => 'Brand & Execution List',
             )
         );
         return view('backend.pages.brandentry.list', $data);

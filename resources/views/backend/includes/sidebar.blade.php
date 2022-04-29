@@ -10,10 +10,10 @@ if (!empty(Auth()->guard('admin')->user())) {
 <!--begin::Aside-->
 <div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside" >
     <!--begin::Brand-->
-    <div class="brand flex-column-auto" id="kt_brand">
+    <div class="brand flex-column-auto" id="kt_brand" style="padding-left: 10px !important;padding-right: 20px !important;">
         <!--begin::Logo-->
-        <a href="{{ route('my-report') }}" class="brand-logo">
-            <img alt="Logo" src="{{  asset('public/upload/systemsetting/logo-new.png') }}" class="max-h-55px" />
+        <a href="{{ route('brand-entry-list') }}" class="brand-logo">
+            <img alt="Logo" src="{{  asset('public/upload/systemsetting/logo-new.png') }}" class="" style="max-height: 30px !important;"/>
             
         </a>
         <!--end::Logo-->
