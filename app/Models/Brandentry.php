@@ -133,7 +133,7 @@ class Brandentry extends Model
             }else{
                 $url = $request->input('url')[$i];
             }
-
+            
             if($request->input('country_code')[$i] == '' || $request->input('country_code')[$i] == null){
                 $country_code = 'Not Applicable';
             }else{
@@ -189,18 +189,24 @@ class Brandentry extends Model
         //     ->count();
 
         //     if($checkRecord == 0){
-
+            $url ='';
+            $country_code ='';
             if($request->input('url') == '' || $request->input('url') == null){
-                $request->input('url') == 'Not Applicable';
+                $url = 'Not Applicable';
+            }
+            else{
+                $url = $request->input('url');
             }
             if($request->input('country_code') == '' || $request->input('country_code') == null){
-                $request->input('country_code') == 'Not Applicable';
+                $country_code = 'Not Applicable';
+            }else{
+                $country_code = $request->input('country_code');
             }
 
                 $objBrandentry = Brandentry::find($request->input('editId'));
                 $objBrandentry->brand_name = $request->input('brand_name');
-                $objBrandentry->url = $request->input('url');
-                $objBrandentry->country_code = $request->input('country_code');
+                $objBrandentry->url = $url;
+                $objBrandentry->country_code = $country_code;
                 $objBrandentry->mobile_number = $request->input('mobile_number');
                 $objBrandentry->generate_otp = $request->input('generateotp');
                 if($objBrandentry->save()){

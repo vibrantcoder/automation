@@ -18,7 +18,7 @@ class Adminuser extends Seeder
             'first_name' => "Admin",
             'last_name' => "Admin",
             'full_name' => "Admin Admin",
-            'email' => "admin@master.com",
+            'email' => "admin@demo.com",
             'password' => Hash::make('Master@2021'),
             'email_verified_at' => date('Y-m-d H:i:s'),
             'userimage' => 'default.png',

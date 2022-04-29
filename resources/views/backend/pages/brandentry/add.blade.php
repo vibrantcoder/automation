@@ -27,7 +27,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>URL <span class="text-danger">*</span></label>
+                                            <label>URL</label>
                                             <input class="form-control urls" type="text" name="url[]" placeholder="Please enter URL" autocomplete="off" />
                                             <span class="error text-danger"></span>
                                         </div>
