@@ -235,6 +235,7 @@ class Brandentry extends Model
 
         $objBrandentry->updated_at = date("Y-m-d H:i:s");
         if($objBrandentry->save()){
+            Excel::store(new BrandExport, 'BrandDetails.xlsx', 'exceldata');
             $currentRoute = Route::current()->getName();
             $objAudittrails = new Audittrails();
             $res = $objAudittrails->add_audit($event, 'admin/'.$currentRoute, json_encode($data), 'Brand Entry');
