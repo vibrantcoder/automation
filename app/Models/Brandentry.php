@@ -129,13 +129,13 @@ class Brandentry extends Model
             $country_code = '';
 
             if($request->input('url')[$i] == '' || $request->input('url')[$i] == null){
-                $url = 'N/A';
+                $url = 'Not Applicable';
             }else{
                 $url = $request->input('url')[$i];
             }
 
             if($request->input('country_code')[$i] == '' || $request->input('country_code')[$i] == null){
-                $country_code = 'N/A';
+                $country_code = 'Not Applicable';
             }else{
                 $country_code = $request->input('country_code')[$i];
             }                        
@@ -191,10 +191,10 @@ class Brandentry extends Model
         //     if($checkRecord == 0){
 
             if($request->input('url') == '' || $request->input('url') == null){
-                $request->input('url') == 'N/A';
+                $request->input('url') == 'Not Applicable';
             }
             if($request->input('country_code') == '' || $request->input('country_code') == null){
-                $request->input('country_code') == 'N/A';
+                $request->input('country_code') == 'Not Applicable';
             }
 
                 $objBrandentry = Brandentry::find($request->input('editId'));

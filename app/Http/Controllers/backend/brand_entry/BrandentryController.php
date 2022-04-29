@@ -208,7 +208,8 @@ class BrandentryController extends Controller
         return Excel::store(new BrandExport, 'branddata.xlsx', 'exceldata');        
     }
 
-    public function run_script(){        
-        return exec('c:\WINDOWS\system32\cmd.exe /c START C:\Sapizon\demo\runner.bat');
+    public function run_script(){
+
+        exec('c:\WINDOWS\system32\cmd.exe /c START C:\Sapizon\demo\runner.bat');
     }
 }
