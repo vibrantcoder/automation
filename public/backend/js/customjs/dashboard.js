@@ -107,8 +107,8 @@ var  Dashboard = function(){
         $('body').on('click', '#excel_download', function(){
             var result_value = $("#result_value").val();
             var sender_from = $("#sender_from").val();
-            $('#datepicker_from').val('');
-            $('#datepicker_to').val('');
+            var from = $("#datepicker_from").val();
+            var to = $("#datepicker_to").val();
 
             var dataArr = {'result_value' : result_value, 'sender_from':sender_from, 'from':from, 'to':to};
             var url =  baseurl + "admin/download-excel-download?result_value="+result_value+"&sender_from="+sender_from+"&from="+from+"&to="+to ;
