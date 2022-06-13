@@ -32,7 +32,7 @@
                                             <span class="error text-danger"></span>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
 
                                 <div class="row">
@@ -60,14 +60,14 @@
                                                 <label>
                                                     <input type="checkbox"  class="generate_otp_switch" name="generate_otp_switch" value="yes" />
                                                     <span></span>
-                                                </label>                                                
-                                            </span>                              
+                                                </label>
+                                            </span>
                                         </div>
                                     </div>
 
                                     <div class="col-md-2">
                                         <label>&nbsp;</label>
-                                        <div class="form-group">                                            
+                                        <div class="form-group">
                                             <a href="javascript:;" class="btn btn-success add-brand"><i class="fa fa-plus"></i></a>
                                         </div>
                                     </div>

@@ -90,7 +90,8 @@ class Users extends Model
 
     public function getdatatable()
     {
-
+        // $loginUser = Session::all();
+        // ccd($loginUser['logindata'][0]['usertype']);
         $requestData = $_REQUEST;
         $columns = array(
             0 => 'users.id',

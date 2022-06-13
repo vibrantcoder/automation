@@ -10,6 +10,8 @@ use App\Http\Controllers\backend\dashboard\SmtpsettingController;
 use App\Http\Controllers\backend\user_management\UserManagementController;
 use App\Http\Controllers\backend\users\UsersController;
 use App\Http\Controllers\backend\users\SubscriberController;
+use App\Http\Controllers\backend\device\DiviceController;
+use App\Http\Controllers\backend\mobile_number\MobilenumberController;
 
 Route::get('admin-logout', [LoginController::class, 'logout'])->name('admin-logout');
 
@@ -52,6 +54,24 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     Route::post('edit-save-user-management', [UserManagementController::class, 'edit_user_management'])->name('edit-save-user-management');
 
     Route::post('user-management-ajaxcall', [UserManagementController::class, 'ajaxcall'])->name('user-management-ajaxcall');
+
+    //device
+    Route::get('device-list', [DiviceController::class, 'list'])->name('device-list');
+    Route::get('add-device', [DiviceController::class, 'add'])->name('add-device');
+    Route::post('add-save-device', [DiviceController::class, 'add_device'])->name('add-save-device');
+    Route::get('edit-device/{id}', [DiviceController::class, 'edit'])->name('edit-device');
+    Route::post('edit-save-device', [DiviceController::class, 'edit_device'])->name('edit-save-device');
+
+    Route::post('device-ajaxcall', [DiviceController::class, 'ajaxcall'])->name('device-ajaxcall');
+
+    //mobile number
+    Route::get('mobile-number-list', [MobilenumberController::class, 'list'])->name('mobile-number-list');
+    Route::get('add-mobile-number', [MobilenumberController::class, 'add'])->name('add-mobile-number');
+    Route::post('add-save-mobile-number', [MobilenumberController::class, 'add_mobile_number'])->name('add-save-mobile-number');
+
+    Route::post('mobile-number-ajaxcall', [MobilenumberController::class, 'ajaxcall'])->name('mobile-number-ajaxcall');
+
+
 
 
     $adminPrefix = "audittrails";
