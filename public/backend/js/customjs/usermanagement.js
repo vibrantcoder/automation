@@ -49,7 +49,7 @@ var Usermanagement = function(){
             // country_code: {required: true},
             last_name: {required: true},
             email: {required: true , email: true},
-            mobile_no: {required: true},
+
 
         };
 
@@ -65,9 +65,7 @@ var Usermanagement = function(){
                 required : "Please enter email",
                 email : 'Please enter valid email address',
             },
-            mobile_no : {
-                required: "Please enter mobile number",
-            }
+
         }
         handleFormValidateWithMsg(form, rules,message, function(form) {
             handleAjaxFormSubmit(form,true);
@@ -82,7 +80,7 @@ var Usermanagement = function(){
             // country_code: {required: true},
             last_name: {required: true},
             email: {required: true , email: true},
-            mobile_no: {required: true},
+
 
         };
 
@@ -98,9 +96,7 @@ var Usermanagement = function(){
                 required : "Please enter email",
                 email : 'Please enter valid email address',
             },
-            mobile_no : {
-                required: "Please enter mobile number",
-            }
+
         }
         handleFormValidateWithMsg(form, rules,message, function(form) {
             handleAjaxFormSubmit(form,true);

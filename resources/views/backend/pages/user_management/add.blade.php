@@ -43,7 +43,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Mobile Number <span class="text-danger">*</span></label>
+                                            <label>Mobile Number</label>
                                             <input class="form-control mobile_number onlyNumber" type="text" name="mobile_no" placeholder="Please enter mobile number" autocomplete="off" />
                                         </div>
                                     </div>
