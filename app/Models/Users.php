@@ -150,6 +150,16 @@ class Users extends Model
 
             $actionhtml =  $actionhtml. '<a href="#" data-toggle="modal" data-target="#deleteModel" class="btn btn-icon  delete-user-management" data-id="' . $row["id"] . '"  title="Delete User Management"><i class="fa fa-trash text-danger" ></i></a>';
 
+            if($row['mobile_no'] == '' || $row['mobile_no'] == null){
+                $mobile_no = 'N/A';
+            }else{
+                $mobile_no = $row['mobile_no'];
+            }
+            if($row['designation'] == '' || $row['designation'] == null){
+                $designation = 'N/A';
+            }else{
+                $designation = $row['designation'];
+            }
             $i++;
             $nestedData = array();
             $nestedData[] = $i;
@@ -157,8 +167,8 @@ class Users extends Model
             $nestedData[] = $row['first_name'];
             $nestedData[] = $row['last_name'];
             $nestedData[] = $row['email'];
-            $nestedData[] = $row['mobile_no'];
-            $nestedData[] = $row['designation'];
+            $nestedData[] = $mobile_no;
+            $nestedData[] = $designation;
             $nestedData[] = $actionhtml;
             $data[] = $nestedData;
         }
@@ -180,6 +190,7 @@ class Users extends Model
         if($count == 0){
             $countNumber = Users::from('users')
             ->where("users.mobile_no", $request->input('mobile_no'))
+            ->where("users.mobile_no", '!=', null)
             ->where("users.is_deleted", 'N')
             ->count();
             if($countNumber == 0){
@@ -202,6 +213,8 @@ class Users extends Model
                 $objUsers->created_at = date('Y-m-d H:i:s');
                 $objUsers->updated_at = date('Y-m-d H:i:s');
                 if($objUsers->save()){
+                    // $randomNo = rand(000000, 999999);
+                    // $destinationPath = public_path('/upload/teammember/');
                     event (new UserCreated($request->first_name,$request->last_name,$request->email,$random_pwd));
                     $currentRoute = Route::current()->getName();
                     $inputData = $request->input();
@@ -255,6 +268,7 @@ class Users extends Model
             $countNumber = Users::from('users')
             ->where('users.id', '!=', $request->input('editId'))
             ->where("users.mobile_no", $request->input('mobile_no'))
+            ->where("users.mobile_no", '!=', null)
             ->where("users.is_deleted", 'N')
             ->count();
             if($countNumber == 0){
