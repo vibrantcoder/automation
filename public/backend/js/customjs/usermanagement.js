@@ -62,7 +62,7 @@ var Usermanagement = function(){
                 required : "Please enter last name",
             },
             email : {
-                required : "Please enter your email",
+                required : "Please enter email",
                 email : 'Please enter valid email address',
             },
             mobile_no : {
@@ -95,7 +95,7 @@ var Usermanagement = function(){
                 required : "Please enter last name",
             },
             email : {
-                required : "Please enter your email",
+                required : "Please enter email",
                 email : 'Please enter valid email address',
             },
             mobile_no : {
