@@ -122,7 +122,7 @@
                     <tr>
                         <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; line-height: 48px;">
 
-						    	<img alt="Logo" src="{{  asset('public/upload/systemsetting/logo-new.png') }}" class="logo-default max-h-60px" style="height: 120px"/>
+						    	<img alt="Logo" src="{{  asset('public/upload/systemsetting/logo-new.png') }}" class="logo-default max-h-40px" style="height: 70px"/>
 
                             <h1 style="font-size: 26px; font-weight: 400; margin: 2;">Hey, {{ $data['first_name'] }} {{ $data['last_name'] }} </h1>
                             <h1 style="font-size: 28px; font-weight: 400; margin: 2;">Welcome!</h1>

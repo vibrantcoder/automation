@@ -11,6 +11,7 @@ use Hash;
 use Route;
 use Session;
 use Str;
+use File;
 class Users extends Model
 {
     use HasFactory;
@@ -194,14 +195,15 @@ class Users extends Model
             ->where("users.is_deleted", 'N')
             ->count();
             if($countNumber == 0){
+                $randomNo = $this->genarate_random_number();
                 $random_pwd = Str::random(10);
                 $objUsers = new Users();
+                $objUsers->user_no = $randomNo;
                 $objUsers->first_name = $request->input('first_name');
                 $objUsers->last_name = $request->input('last_name');
                 if($request->input('mobile_no') != '' || $request->input('mobile_no') != null){
                     $objUsers->mobile_no = $request->input('mobile_no');
-                }
-                else{
+                } else{
                     $objUsers->mobile_no = null;
                 }
 
@@ -213,8 +215,14 @@ class Users extends Model
                 $objUsers->created_at = date('Y-m-d H:i:s');
                 $objUsers->updated_at = date('Y-m-d H:i:s');
                 if($objUsers->save()){
-                    // $randomNo = rand(000000, 999999);
-                    // $destinationPath = public_path('/upload/teammember/');
+
+                    // $destinationPath = public_path('/upload/systemsetting/');
+                    $path = public_path('/upload/audit_log/'.$request->input('first_name').'-'.$request->input('last_name').'-'.$randomNo);
+
+                    if(!File::isDirectory($path)){
+                        File::makeDirectory($path, 0777, true, true);
+                    }
+
                     event (new UserCreated($request->first_name,$request->last_name,$request->email,$random_pwd));
                     $currentRoute = Route::current()->getName();
                     $inputData = $request->input();
@@ -231,6 +239,16 @@ class Users extends Model
         return 'email_exits';
     }
 
+    public function genarate_random_number(){
+        $randomNo = rand(000000, 999999);
+        $count = Users::from('users')
+                        ->where('users.user_no', $randomNo)
+                        ->count();
+        if($count == 0){
+            return $randomNo;
+        }
+        $this->genarate_random_number();
+    }
     public function send_user_login_mail($first_name,$last_name,$email,$random_pwd){
 
 
