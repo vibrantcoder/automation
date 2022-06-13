@@ -187,7 +187,13 @@ class Users extends Model
                 $objUsers = new Users();
                 $objUsers->first_name = $request->input('first_name');
                 $objUsers->last_name = $request->input('last_name');
-                $objUsers->mobile_no = $request->input('mobile_no');
+                if($request->input('mobile_no') != '' || $request->input('mobile_no') != null){
+                    $objUsers->mobile_no = $request->input('mobile_no');
+                }
+                else{
+                    $objUsers->mobile_no = null;
+                }
+
                 $objUsers->email = $request->input('email');
                 $objUsers->designation = $request->input('designation');
                 $objUsers->password = Hash::make($random_pwd);
@@ -255,7 +261,12 @@ class Users extends Model
                 $objUsers = Users::find($request->input('editId'));
                 $objUsers->first_name = $request->input('first_name');
                 $objUsers->last_name = $request->input('last_name');
-                $objUsers->mobile_no = $request->input('mobile_no');
+                if($request->input('mobile_no') != '' || $request->input('mobile_no') != null){
+                    $objUsers->mobile_no = $request->input('mobile_no');
+                }
+                else{
+                    $objUsers->mobile_no = null;
+                }
                 $objUsers->email = $request->input('email');
                 $objUsers->designation = $request->input('designation');
                 $objUsers->updated_at = date('Y-m-d H:i:s');
