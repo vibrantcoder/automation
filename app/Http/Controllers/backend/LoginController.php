@@ -77,4 +77,9 @@ class LoginController extends Controller
         Auth::guard('admin')->logout();
     }
 
+    public function testingmail(){
+        $objSendmail = new SendMail();
+        $sendmail = $objSendmail->sendMailltesting();
+    }
+
 }

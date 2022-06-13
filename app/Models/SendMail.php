@@ -13,6 +13,18 @@ class SendMail extends Model
 {
     use HasFactory;
 
+
+    public function sendMailltesting(){
+        $mailData['data']='';
+        $mailData['subject'] = 'Automation Testing System';
+        $mailData['attachment'] = array();
+        $mailData['template'] ="emailtemplate.test";
+        $mailData['mailto'] = 'parthkhunt12@gmail.com';
+
+        $sendMail = new Sendmail;
+        return $sendMail->sendSMTPMail($mailData);
+    }
+
     public function sendSMTPMail($mailData)
     {
                 $pathToFile = $mailData['attachment'];
