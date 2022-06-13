@@ -94,7 +94,12 @@ class UserManagementController extends Controller
                 $return['status'] = 'warning';
                 $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
                 $return['message'] = 'User email already exits';
-            }else{
+            }elseif($result == "number_exits"){
+                $return['status'] = 'warning';
+                $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                $return['message'] = 'User mobile number already exits';
+            }
+            else{
                 $return['status'] = 'error';
                 $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
                $return['message'] = 'Something goes to wrong';
@@ -157,7 +162,13 @@ class UserManagementController extends Controller
                 $return['status'] = 'warning';
                 $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
                 $return['message'] = 'User email already exits';
-            }else{
+            }
+            elseif($result == "number_exits"){
+                $return['status'] = 'warning';
+                $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                $return['message'] = 'User mobile number already exits';
+            }
+            else{
                 $return['status'] = 'error';
                 $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
                $return['message'] = 'Something goes to wrong';

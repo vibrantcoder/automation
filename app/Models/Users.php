@@ -178,7 +178,11 @@ class Users extends Model
                     ->count();
 
         if($count == 0){
-
+            $countNumber = Users::from('users')
+            ->where("users.mobile_no", $request->input('mobile_no'))
+            ->where("users.is_deleted", 'N')
+            ->count();
+            if($countNumber == 0){
                 $random_pwd = Str::random(10);
                 $objUsers = new Users();
                 $objUsers->first_name = $request->input('first_name');
@@ -202,6 +206,8 @@ class Users extends Model
                 }else{
                     return 'false';
                 }
+            }
+            return 'number_exits';
         }
         return 'email_exits';
     }
@@ -240,6 +246,12 @@ class Users extends Model
 
         if($count == 0){
 
+            $countNumber = Users::from('users')
+            ->where('users.id', '!=', $request->input('editId'))
+            ->where("users.mobile_no", $request->input('mobile_no'))
+            ->where("users.is_deleted", 'N')
+            ->count();
+            if($countNumber == 0){
                 $objUsers = Users::find($request->input('editId'));
                 $objUsers->first_name = $request->input('first_name');
                 $objUsers->last_name = $request->input('last_name');
@@ -257,6 +269,8 @@ class Users extends Model
                 }else{
                     return 'false';
                 }
+            }
+            return 'number_exits';
         }
         return 'email_exits';
     }
