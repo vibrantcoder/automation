@@ -7,7 +7,7 @@ use App\Http\Controllers\backend\dashboard\SystemsettingController;
 use App\Http\Controllers\backend\audittrails\AuditTrailsController;
 use App\Http\Controllers\backend\brand_entry\BrandentryController;
 use App\Http\Controllers\backend\dashboard\SmtpsettingController;
-
+use App\Http\Controllers\backend\user_management\UserManagementController;
 use App\Http\Controllers\backend\users\UsersController;
 use App\Http\Controllers\backend\users\SubscriberController;
 
@@ -43,6 +43,15 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     Route::get('edit-brand-entry/{id}', [BrandentryController::class, 'edit'])->name('edit-brand-entry');
     Route::post('edit-save-brand-entry', [BrandentryController::class, 'edit_brand_entry'])->name('edit-save-brand-entry');
     Route::get('export-brand-details', [BrandentryController::class, 'get_brand_data'])->name('export-brand-details');
+
+    //user management
+    Route::get('user-management-list', [UserManagementController::class, 'list'])->name('user-management-list');
+    Route::get('add-user-management', [UserManagementController::class, 'add'])->name('add-user-management');
+    Route::post('add-save-user-management', [UserManagementController::class, 'add_user_management'])->name('add-save-user-management');
+    Route::get('edit-user-management/{id}', [UserManagementController::class, 'edit'])->name('edit-user-management');
+    Route::post('edit-save-user-management', [UserManagementController::class, 'edit_user_management'])->name('edit-save-user-management');
+
+    Route::post('user-management-ajaxcall', [UserManagementController::class, 'ajaxcall'])->name('user-management-ajaxcall');
 
 
     $adminPrefix = "audittrails";
