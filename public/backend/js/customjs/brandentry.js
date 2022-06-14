@@ -163,7 +163,10 @@ var Brandentry = function(){
 
                     data: { 'device': device, 'mobile_number': mobile_number, 'opertoer': opertoer},
                     success: function(data) {
+                        $('#runScript').modal('hide');
 
+                        toastr.success('Script run successfully', 'Success');
+                        // showToster('success', 'Script run successfully');
                     },
                     complete: function(){
                         $("#loader").hide();

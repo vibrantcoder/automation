@@ -214,5 +214,6 @@ class BrandentryController extends Controller
         // Excel Code
         Excel::store(new BrandExportNew($request->device, $request->mobile_number, $request->opertoer), 'BrandDetailsNew.xlsx', 'exceldata');
         exec('c:\WINDOWS\system32\cmd.exe /c START C:\Sapizon\demo\runner.bat');
+        return true;
     }
 }
