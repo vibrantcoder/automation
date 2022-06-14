@@ -218,7 +218,7 @@ class Users extends Model
                 if($objUsers->save()){
 
                     // $destinationPath = public_path('/upload/systemsetting/');
-                    $path = public_path('/upload/audit_log/'.$request->input('first_name').'-'.$request->input('last_name').'-'.$randomNo);
+                    $path = public_path('/upload/audit_log/'. Str::lower($request->input('first_name')).'-'.Str::lower($request->input('last_name')).'-'.$randomNo);
 
                     if(!File::isDirectory($path)){
                         File::makeDirectory($path, 0777, true, true);

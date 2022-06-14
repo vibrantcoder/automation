@@ -66,7 +66,7 @@ class Mobilenumber extends Model
 
             $actionhtml  = '';
 
-              $actionhtml =  $actionhtml. '<a href="'.route('edit-device', $row['id']).'" class="btn btn-icon"><i class="fa fa-pencil-square-o text-warning" title="Edit Mobile Number"> </i></a>';
+              $actionhtml =  $actionhtml. '<a href="'.route('edit-mobile-number', $row['id']).'" class="btn btn-icon"><i class="fa fa-pencil-square-o text-warning" title="Edit Mobile Number"> </i></a>';
 
 
               if($row['status'] == 'A'){
@@ -137,5 +137,102 @@ class Mobilenumber extends Model
 
         }
         return 'mobile_number_exits';
+    }
+    public function get_mobile_number_details($editId){
+        return Mobilenumber::from('mobile_number')
+                           ->where('mobile_number.id', $editId)
+                           ->where('mobile_number.is_deleted', 'N')
+                           ->select('mobile_number.country_id', 'mobile_number.id', 'mobile_number.mobile_number', 'mobile_number.operator', 'mobile_number.status')
+                           ->get()
+                           ->toArray();
+    }
+
+    public function edit_mobile_number($request){
+         $count = Mobilenumber::from('mobile_number')
+                ->where('mobile_number.id', '!=', $request->input('editId'))
+                ->where('mobile_number.mobile_number', $request->input('mobile_number'))
+                ->where('mobile_number.is_deleted', 'N')
+                ->count();
+
+            if($count == 0){
+                $loginUser = Session::all();
+                $objDevice =Mobilenumber::find($request->input('editId'));
+                $objDevice->country_id = $request->input('country_code');
+                $objDevice->mobile_number = $request->input('mobile_number');
+                $objDevice->operator = $request->input('operator');
+                $objDevice->status = $request->input('status');
+                $objDevice->updated_by = $loginUser['logindata'][0]['id'];
+                $objDevice->is_deleted = 'N';
+                $objDevice->updated_at = date('Y-m-d H:i:s');
+                if($objDevice->save()){
+
+                    // $destinationPath = public_path('/upload/systemsetting/');
+                    $currentRoute = Route::current()->getName();
+                    $inputData = $request->input();
+                    unset($inputData['_token']);
+                    $objAudittrails = new Audittrails();
+                    $res = $objAudittrails->add_audit('Edit','admin/'. $currentRoute , json_encode($inputData) ,'Mobile Number' );
+                    return 'true';
+                }else{
+                    return 'false';
+                }
+
+        }
+        return 'mobile_number_exits';
+    }
+
+    public function common_activity_user($data ,$type){
+        $loginUser = Session::all();
+
+        $objMobilenumber = Mobilenumber::find($data['id']);
+        if($type == 0){
+            $objMobilenumber->is_deleted = "Y";
+            $event = 'Delete Mobile Number';
+        }
+        if($type == 1){
+            $objMobilenumber->status = "A";
+            $event = 'Active Mobile Number';
+        }
+        if($type == 2){
+            $objMobilenumber->status = "I";
+            $event = 'Deactive Mobile Number';
+        }
+        $objMobilenumber->updated_by = $loginUser['logindata'][0]['id'];
+        $objMobilenumber->updated_at = date("Y-m-d H:i:s");
+        if($objMobilenumber->save()){
+            $currentRoute = Route::current()->getName();
+            $objAudittrails = new Audittrails();
+            $res = $objAudittrails->add_audit($event, 'admin/'.$currentRoute, json_encode($data), 'Mobile Number');
+            return true;
+        }else{
+            return false ;
+        }
+    }
+
+    public function get_mobile_number_list(){
+        return Mobilenumber::from('mobile_number')
+                           ->join('countries', 'countries.id', '=', 'mobile_number.country_id')
+                           ->where('mobile_number.status', 'A')
+                           ->where('mobile_number.is_deleted', 'N')
+                           ->select('mobile_number.id', 'mobile_number.mobile_number', 'countries.shortname', 'countries.phonecode')
+                           ->get()
+                           ->toArray();
+    }
+
+    public function get_mobile_operator_list($id){
+        return Mobilenumber::from('mobile_number')
+                           ->where('mobile_number.id', $id)
+                           ->select('mobile_number.id', 'mobile_number.operator')
+                           ->get()
+                           ->toArray();
+    }
+
+    public function get_mobile_operator_lists($id){
+        return Mobilenumber::from('mobile_number')
+                           ->join('countries', 'countries.id', '=', 'mobile_number.country_id')
+                           ->where('mobile_number.id', $id)
+                           ->select('mobile_number.id', 'mobile_number.operator', 'mobile_number.mobile_number', 'countries.phonecode')
+                           ->get()
+                           ->toArray();
     }
 }

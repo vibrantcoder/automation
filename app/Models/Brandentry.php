@@ -103,7 +103,7 @@ class Brandentry extends Model
     }
 
     public function add_brand_entry($request){
-        
+
         // $checkRecord = Brandentry::from('brand_entry')
         //      ->where('brand_entry.is_deleted', 'N')
         //      ->where('brand_entry.brand_name', $request->input('brand_name'))
@@ -133,12 +133,12 @@ class Brandentry extends Model
             }else{
                 $url = $request->input('url')[$i];
             }
-            
+
             if($request->input('country_code')[$i] == '' || $request->input('country_code')[$i] == null){
                 $country_code = 'Not Applicable';
             }else{
                 $country_code = $request->input('country_code')[$i];
-            }                        
+            }
 
             $brand_entry[] = [
                 'brand_name' => $request->input('brand_name')[$i],
@@ -245,5 +245,5 @@ class Brandentry extends Model
         }
     }
 
-    
+
 }

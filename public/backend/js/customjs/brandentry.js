@@ -40,21 +40,149 @@ var Brandentry = function(){
             });
         });
 
-        $('body').on('click', '.run-script', function() {
+        // $('body').on('click', '.run-script', function() {
+        //     $.ajax({
+        //         type: "POST",
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+        //         },
+        //         url: baseurl +"admin/run-script",
+        //     });
+        // });
+
+
+
+        $("body").on("click", ".run-script", function() {
+
+          var data = { _token: $('#_token').val() };
+          $.ajax({
+              type: "POST",
+              headers: {
+                  'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+              },
+              url: baseurl +"admin/common-ajaxcall",
+              data: { 'action': 'get-device-name', 'data': data },
+              success: function(data) {
+                var output = JSON.parse(data);
+                var deviceList = output['device_list'];
+                var html = '<option value="">Please select device</option>';
+                for(var i = 0; i < deviceList.length ; i++){
+                    var temp = '';
+                    var temp = '<option value="'+ deviceList[i].id +'">'+ deviceList[i].device_name +'</option>';
+                    var html = html + temp;
+                }
+
+                var mobileNumber = output['mobile_number_list'];
+                var mobiledata = '<option value="">Please select mobile number</option>';
+                for(var i = 0; i < mobileNumber.length ; i++){
+                    var list = '';
+                    var list = '<option value="'+ mobileNumber[i].id +'">'+ mobileNumber[i].phonecode+'-'+mobileNumber[i].mobile_number +'</option>';
+                    var mobiledata = mobiledata + list;
+                }
+                $("#device").html(html);
+                $("#mobile_number").html(mobiledata);
+                $('.select2').select2();
+
+            },
+
+              complete: function(){
+                $("#loader").hide();
+              }
+          });
+
+        });
+
+
+
+        $('body').on('change', '.mobile-number', function() {
+
+            var mobileId = $(this).val();
+
+            var data = { mobileId: mobileId};
             $.ajax({
                 type: "POST",
                 headers: {
                     'X-CSRF-TOKEN': $('input[name="_token"]').val(),
                 },
-                url: baseurl +"admin/run-script",
+                url: baseurl + "admin/common-ajaxcall",
+
+                data: { 'action': 'change-mobile-number', 'data': data },
+                success: function(data) {
+                    var output = JSON.parse(data);
+
+                    for(var i = 0; i < output.length ; i++){
+                        var temp = '';
+                        var temp = '<option value="'+ output[i].id +'" selected="selected">'+ output[i].operator +'</option>';
+                        var html = html + temp;
+                    }
+                    $("#operator").html(html);
+                    $('.select2').select2();
+                },
+                complete: function(){
+                    $("#loader").hide();
+                  }
             });
         });
+
+        $('body').on('click', '.run-modal-script-btn', function() {
+            var device = $("#device").val();
+            var mobile_number = $("#mobile_number").val();
+            var opertoer = $("#operator").val();
+            var validtoer = true;
+
+            if(device == '' || device == null){
+                validtoer = false;
+                $("#device-error").text('Please select device');
+            }else{
+                $("#device-error").text('');
+            }
+
+            if(mobile_number == '' || mobile_number == null){
+                validtoer = false;
+                $("#mobile-number-error").text('Please select mobile number');
+            }else{
+                $("#mobile-number-error").text('');
+            }
+
+            if(opertoer == '' || opertoer == null){
+                validtoer = false;
+                $("#operator-error").text('Please select operator');
+            }else{
+                $("#operator-error").text('');
+            }
+
+
+            if(validtoer){
+
+                $.ajax({
+                    type: "POST",
+                    headers: {
+                        'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+                    },
+                    url: baseurl +"admin/run-script",
+
+                    data: { 'device': device, 'mobile_number': mobile_number, 'opertoer': opertoer},
+                    success: function(data) {
+
+                    },
+                    complete: function(){
+                        $("#loader").hide();
+                      }
+                });
+            }
+        });
+
+
+
+
+
+
     }
 
     var add = function(){
         $('.select2').select2();
         $('body').on("click", ".add-brand", function() {
-            
+
             var html = '';
             var html = '<div class="remove-div">'+
                         '<div class="row">'+
@@ -255,7 +383,7 @@ var Brandentry = function(){
             $(this).parent().parent().parent().parent().parent().find('.generateotp').val(val);
             // $().val(val);
         });
-        
+
         var form = $('#edit-brand-entry');
         var rules = {
             brand_name: {required: true},

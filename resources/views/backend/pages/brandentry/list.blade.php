@@ -13,7 +13,7 @@
                 </div>
 
                 <div class="card-toolbar">
-                    <a href="javascript:;" class="btn btn-icon btn-danger mr-4 run-script"  title="Run Python Scripts">
+                    <a href="javascript:;" data-toggle="modal" data-target="#runScript"   class="btn btn-icon btn-danger mr-4 run-script"  title="Run Python Scripts">
                         <span class="svg-icon svg-icon-light svg-icon-2x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Media\Play.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <rect x="0" y="0" width="24" height="24"/>
@@ -21,7 +21,7 @@
                             </g>
                         </svg>
                     </a>
-                   
+
                     <a href="{{ asset('public/excel/BrandDetails.xlsx') }}" class="btn btn-icon  mr-4" style="background: #1D6F42 !important;" download title="Download excel file">
                         <i class="far fa-file-excel text-white"></i>
                     </a>
@@ -59,6 +59,8 @@
     <!--end::Container-->
 </div>
 <!--end::Entry-->
+
+{{-- modal --}}
 
 
 @endsection

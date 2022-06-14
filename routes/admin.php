@@ -6,6 +6,7 @@ use App\Http\Controllers\backend\LoginController;
 use App\Http\Controllers\backend\dashboard\SystemsettingController;
 use App\Http\Controllers\backend\audittrails\AuditTrailsController;
 use App\Http\Controllers\backend\brand_entry\BrandentryController;
+use App\Http\Controllers\backend\CommonController;
 use App\Http\Controllers\backend\dashboard\SmtpsettingController;
 use App\Http\Controllers\backend\user_management\UserManagementController;
 use App\Http\Controllers\backend\users\UsersController;
@@ -68,6 +69,8 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     Route::get('mobile-number-list', [MobilenumberController::class, 'list'])->name('mobile-number-list');
     Route::get('add-mobile-number', [MobilenumberController::class, 'add'])->name('add-mobile-number');
     Route::post('add-save-mobile-number', [MobilenumberController::class, 'add_mobile_number'])->name('add-save-mobile-number');
+    Route::get('edit-mobile-number/{id}', [MobilenumberController::class, 'edit'])->name('edit-mobile-number');
+    Route::post('edit-save-mobile-number', [MobilenumberController::class, 'edit_mobile_number'])->name('edit-save-mobile-number');
 
     Route::post('mobile-number-ajaxcall', [MobilenumberController::class, 'ajaxcall'])->name('mobile-number-ajaxcall');
 

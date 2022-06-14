@@ -111,7 +111,7 @@ if (!empty(Auth()->guard('admin')->user())) {
                     </a>
                 </li>
 
-                <li class="menu-item {{ ( $currentRoute  ==  "mobile-number-list" || $currentRoute  ==  "edit-user-management" || $currentRoute  ==  "add-user-management" ? 'menu-item-active' : '' ) }} " aria-haspopup="true">
+                <li class="menu-item {{ ( $currentRoute  ==  "mobile-number-list" || $currentRoute  ==  "add-mobile-number" || $currentRoute  ==  "edit-mobile-number" ? 'menu-item-active' : '' ) }} " aria-haspopup="true">
                     <a href="{{ route('mobile-number-list') }}" class="menu-link">
                         <span class="svg-icon menu-icon">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->

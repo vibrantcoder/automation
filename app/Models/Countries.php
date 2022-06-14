@@ -14,6 +14,8 @@ class Countries extends Model
     public function get_countries_details(){
         return Countries::from('countries')
                       ->select('countries.id', 'countries.shortname', 'countries.name', 'countries.phonecode')
+                      ->orderBy('countries.phonecode', 'asc')
+                      ->orderBy('countries.shortname')
                       ->get()
                       ->toArray();
     }

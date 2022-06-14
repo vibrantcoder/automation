@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Config;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\BrandExport;
+use App\Exports\BrandExportNew;
 
 class BrandentryController extends Controller
 {
@@ -182,7 +183,7 @@ class BrandentryController extends Controller
                 echo json_encode($list);
                 break;
 
-            
+
 
             case 'delete-brand-entry':
 
@@ -204,12 +205,14 @@ class BrandentryController extends Controller
     }
 
     public function get_brand_data()
-    {        
-        return Excel::store(new BrandExport, 'branddata.xlsx', 'exceldata');        
+    {
+        return Excel::store(new BrandExport, 'branddata.xlsx', 'exceldata');
     }
 
-    public function run_script(){
+    public function run_script(Request $request){
 
+        // Excel Code
+        Excel::store(new BrandExportNew($request->device, $request->mobile_number, $request->opertoer), 'BrandDetailsNew.xlsx', 'exceldata');
         exec('c:\WINDOWS\system32\cmd.exe /c START C:\Sapizon\demo\runner.bat');
     }
 }

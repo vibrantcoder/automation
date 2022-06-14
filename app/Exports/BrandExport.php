@@ -15,15 +15,15 @@ class BrandExport implements FromArray, WithHeadings, ShouldAutoSize, WithColumn
 {
     /**
     * @return \Illuminate\Support\Collection
-    */   
+    */
 
-    
+
 
     public function array(): array
     {
         $res=  Brandentry::where('brand_entry.is_deleted', 'N')
                         ->select( 'brand_entry.brand_name', 'brand_entry.url', 'brand_entry.country_code', 'brand_entry.mobile_number', 'brand_entry.generate_otp')
-                        ->get();        
+                        ->get();
         $data = [];
         $i = 1;
         foreach($res as $key => $value){
@@ -35,7 +35,7 @@ class BrandExport implements FromArray, WithHeadings, ShouldAutoSize, WithColumn
             $data[$key]['generate_otp'] = $value['generate_otp'];
             $i++;
         }
-        
+
         return $data;
     }
 

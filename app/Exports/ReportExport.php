@@ -27,10 +27,10 @@ class ReportExport implements FromArray, WithHeadings, ShouldAutoSize, WithColum
 
     public function array(): array
     {
-        
+
         $objResultreport = new Resultreport();
         $res = $objResultreport->download_excel_download($this->from, $this->to, $this->result_value, $this->sender_from);
-       
+
         $data = [];
         $i = 1;
         foreach($res as $key => $value){
@@ -43,7 +43,7 @@ class ReportExport implements FromArray, WithHeadings, ShouldAutoSize, WithColum
             $data[$key]['text_body'] = $value['text_body'];
             $i++;
         }
-        
+
         return $data;
     }
 

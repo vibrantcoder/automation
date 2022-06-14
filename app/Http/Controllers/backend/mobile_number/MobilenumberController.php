@@ -93,7 +93,73 @@ class MobilenumberController extends Controller
             $return['status'] = 'success';
             $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
             $return['message'] = 'Mobile number successfully added.';
-            $return['redirect'] = route('device-list');
+            $return['redirect'] = route('mobile-number-list');
+        }else{
+            if ($result == "mobile_number_exits") {
+                $return['status'] = 'warning';
+                $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                $return['message'] = 'Mobile number already exits';
+            }else{
+                $return['status'] = 'error';
+                $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+               $return['message'] = 'Something goes to wrong';
+            }
+
+        }
+        echo json_encode($return);
+        exit;
+    }
+
+    public function edit($editId){
+        $objCountries = new Countries();
+        $data['countries_details'] = $objCountries->get_countries_details();
+
+        $objMobilenumber = new Mobilenumber();
+        $data['mobile_number_details'] = $objMobilenumber->get_mobile_number_details($editId);
+        // ccd($data['mobile_number_details']);
+
+        $data['title'] = Config::get('constants.SYSTEM_NAME') . ' || Edit Mobile Number';
+        $data['description'] = Config::get('constants.SYSTEM_NAME') . ' || Edit Mobile Number';
+        $data['keywords'] = Config::get('constants.SYSTEM_NAME') . ' || Edit Mobile Number';
+        $data['css'] = array(
+            'toastr/toastr.min.css'
+        );
+        $data['plugincss'] = array(
+        );
+        $data['pluginjs'] = array(
+            'toastr/toastr.min.js',
+            'plugins/validate/jquery.validate.min.js',
+            // 'pages/crud/forms/widgets/bootstrap-switch.js',
+        );
+        $data['js'] = array(
+            'comman_function.js',
+            'ajaxfileupload.js',
+            'jquery.form.min.js',
+            'mobile_number.js',
+        );
+        $data['funinit'] = array(
+            'Mobile_number.edit()'
+        );
+        $data['header'] = array(
+            'title' => 'Edit Mobile Number',
+            'breadcrumb' => array(
+                'Reports ' => route('my-report'),
+                'Mobile Number List' => route('mobile-number-list'),
+                'Edit Mobile Number' => 'Edit Mobile Number',
+            )
+        );
+        return view('backend.pages.mobile_number.edit', $data);
+    }
+
+    public function edit_mobile_number(Request $request){
+        $objMobilenumber = new Mobilenumber();
+        $result = $objMobilenumber->edit_mobile_number($request);
+
+        if ($result == "true") {
+            $return['status'] = 'success';
+            $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+            $return['message'] = 'Mobile number successfully updated.';
+            $return['redirect'] = route('mobile-number-list');
         }else{
             if ($result == "mobile_number_exits") {
                 $return['status'] = 'warning';
@@ -123,57 +189,57 @@ class MobilenumberController extends Controller
                 echo json_encode($list);
                 break;
 
-                // case 'delete-device':
+                case 'delete-mobile-number':
 
-                //     $objDevice = new Device();
-                //     $result = $objDevice->common_activity_user($request->input('data'), 0);
+                    $objMobilenumber = new Mobilenumber();
+                    $result = $objMobilenumber->common_activity_user($request->input('data'), 0);
 
-                //     if ($result) {
-                //         $return['status'] = 'success';
-                //         $return['message'] = 'Device successfully deleted';
-                //         $return['redirect'] = route('device-list');
-                //     } else {
-                //         $return['status'] = 'error';
-                //         $return['jscode'] = '$("#loader").hide();';
-                //         $return['message'] = 'Something goes to wrong';
-                //     }
-                //     echo json_encode($return);
-                //     exit;
+                    if ($result) {
+                        $return['status'] = 'success';
+                        $return['message'] = 'Mobile number successfully deleted';
+                        $return['redirect'] = route('mobile-number-list');
+                    } else {
+                        $return['status'] = 'error';
+                        $return['jscode'] = '$("#loader").hide();';
+                        $return['message'] = 'Something goes to wrong';
+                    }
+                    echo json_encode($return);
+                    exit;
 
-                // case 'active-device':
+                case 'active-mobile-number':
 
-                //     $objDevice = new Device();
-                //     $result = $objDevice->common_activity_user($request->input('data'), 1);
+                    $objMobilenumber = new Mobilenumber();
+                    $result = $objMobilenumber->common_activity_user($request->input('data'), 1);
 
-                //     if ($result) {
-                //         $return['status'] = 'success';
-                //         $return['message'] = 'Device successfully actived';
-                //         $return['redirect'] = route('device-list');
-                //     } else {
-                //         $return['status'] = 'error';
-                //         $return['jscode'] = '$("#loader").hide();';
-                //         $return['message'] = 'Something goes to wrong';
-                //     }
-                //     echo json_encode($return);
-                //     exit;
+                    if ($result) {
+                        $return['status'] = 'success';
+                        $return['message'] = 'Mobile number successfully actived';
+                        $return['redirect'] = route('mobile-number-list');
+                    } else {
+                        $return['status'] = 'error';
+                        $return['jscode'] = '$("#loader").hide();';
+                        $return['message'] = 'Something goes to wrong';
+                    }
+                    echo json_encode($return);
+                    exit;
 
 
-                // case 'deactive-device':
+                case 'deactive-mobile-number':
 
-                //     $objDevice = new Device();
-                //     $result = $objDevice->common_activity_user($request->input('data'), 2);
+                    $objMobilenumber = new Mobilenumber();
+                    $result = $objMobilenumber->common_activity_user($request->input('data'), 2);
 
-                //     if ($result) {
-                //         $return['status'] = 'success';
-                //         $return['message'] = 'Device successfully inactived';
-                //         $return['redirect'] = route('device-list');
-                //     } else {
-                //         $return['status'] = 'error';
-                //         $return['jscode'] = '$("#loader").hide();';
-                //         $return['message'] = 'Something goes to wrong';
-                //     }
-                //     echo json_encode($return);
-                //     exit;
+                    if ($result) {
+                        $return['status'] = 'success';
+                        $return['message'] = 'Mobile number successfully inactived';
+                        $return['redirect'] = route('mobile-number-list');
+                    } else {
+                        $return['status'] = 'error';
+                        $return['jscode'] = '$("#loader").hide();';
+                        $return['message'] = 'Something goes to wrong';
+                    }
+                    echo json_encode($return);
+                    exit;
 
         }
     }

@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Codenumber;
+use App\Models\Device;
+use App\Models\Mobilenumber;
 use App\Models\Systemsetting;
 
 function date_formate($date){
@@ -37,6 +39,16 @@ function auto_increment_no($no_for){
 function get_system_setting_detail(){
     $objSystemsetting = new Systemsetting();
     return $objSystemsetting->get_system_setting_detail();
+}
+
+function get_device_name($id){
+    $objDevice = new Device();
+    return $objDevice->get_divice_name($id);
+}
+
+function get_operator_name($id){
+    $objMobilenumber = new Mobilenumber();
+    return $objMobilenumber->get_mobile_operator_lists($id);
 }
 
 ?>

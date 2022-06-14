@@ -199,4 +199,21 @@ class Device extends Model
             return false ;
         }
     }
+
+    public function get_device_details(){
+        return Device::from('device')
+                     ->where('device.status', 'A')
+                     ->where('device.is_deleted', 'N')
+                     ->select('device.id', 'device.device_name')
+                     ->get()
+                     ->toArray();
+    }
+
+    public function get_divice_name($id){
+        return Device::from('device')
+                    ->where('device.id', $id)
+                    ->select('device.id', 'device.device_name')
+                    ->get()
+                    ->toArray();
+    }
 }
