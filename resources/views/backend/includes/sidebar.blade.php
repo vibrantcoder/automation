@@ -94,7 +94,7 @@ if (!empty(Auth()->guard('admin')->user())) {
                     </a>
                 </li>
 
-                <li class="menu-item {{ ( $currentRoute  ==  "device-list" || $currentRoute  ==  "edit-user-management" || $currentRoute  ==  "add-user-management" ? 'menu-item-active' : '' ) }} " aria-haspopup="true">
+                <li class="menu-item {{ ( $currentRoute  ==  "device-list" || $currentRoute  ==  "add-device" || $currentRoute  ==  "edit-device" ? 'menu-item-active' : '' ) }} " aria-haspopup="true">
                     <a href="{{ route('device-list') }}" class="menu-link">
                         <span class="svg-icon menu-icon">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->

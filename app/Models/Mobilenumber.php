@@ -106,6 +106,7 @@ class Mobilenumber extends Model
 
     public function add_mobile_number($request){
         $count = Mobilenumber::from('mobile_number')
+                ->where('mobile_number.country_id', $request->input('country_code'))
                 ->where('mobile_number.mobile_number', $request->input('mobile_number'))
                 ->where('mobile_number.is_deleted', 'N')
                 ->count();
@@ -150,6 +151,7 @@ class Mobilenumber extends Model
     public function edit_mobile_number($request){
          $count = Mobilenumber::from('mobile_number')
                 ->where('mobile_number.id', '!=', $request->input('editId'))
+                ->where('mobile_number.country_id', $request->input('country_code'))
                 ->where('mobile_number.mobile_number', $request->input('mobile_number'))
                 ->where('mobile_number.is_deleted', 'N')
                 ->count();

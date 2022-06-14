@@ -9,6 +9,7 @@ use Config;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\BrandExport;
 use App\Exports\BrandExportNew;
+use App\Models\Runscript;
 
 class BrandentryController extends Controller
 {
@@ -210,6 +211,9 @@ class BrandentryController extends Controller
     }
 
     public function run_script(Request $request){
+
+        $objRunscript = new Runscript();
+        $data = $objRunscript->save_run_script($request->device, $request->mobile_number, $request->opertoer);
 
         // Excel Code
         Excel::store(new BrandExportNew($request->device, $request->mobile_number, $request->opertoer), 'BrandDetailsNew.xlsx', 'exceldata');
