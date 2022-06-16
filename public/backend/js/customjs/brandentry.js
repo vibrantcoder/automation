@@ -39,19 +39,7 @@ var Brandentry = function(){
                 }
             });
         });
-
-        // $('body').on('click', '.run-script', function() {
-        //     $.ajax({
-        //         type: "POST",
-        //         headers: {
-        //             'X-CSRF-TOKEN': $('input[name="_token"]').val(),
-        //         },
-        //         url: baseurl +"admin/run-script",
-        //     });
-        // });
-
-
-
+       
         $("body").on("click", ".run-script", function() {
 
           var data = { _token: $('#_token').val() };
@@ -63,8 +51,9 @@ var Brandentry = function(){
               url: baseurl +"admin/common-ajaxcall",
               data: { 'action': 'get-device-name', 'data': data },
               success: function(data) {
-                var output = JSON.parse(data);
+                var output = JSON.parse(data);                
                 var deviceList = output['device_list'];
+                
                 var html = '<option value="">Please select device</option>';
                 for(var i = 0; i < deviceList.length ; i++){
                     var temp = '';
@@ -79,8 +68,15 @@ var Brandentry = function(){
                     var list = '<option value="'+ mobileNumber[i].id +'">'+ mobileNumber[i].phonecode+'-'+mobileNumber[i].mobile_number +'</option>';
                     var mobiledata = mobiledata + list;
                 }
+
+                var brand_entry_list = output['brand_entry_list'];                
+                for(var k = 0; k < brand_entry_list.length ; k++){
+                    var list = '';
+                    var list = '<option value="'+ brand_entry_list[k].id +'">'+ brand_entry_list[k].brand_name + '</option>';
+                    var brandlist = brandlist + list;
+                }
                 $("#device").html(html);
-                $("#mobile_number").html(mobiledata);
+                $("#brnad_name").html(brandlist);
                 $('.select2').select2();
 
             },

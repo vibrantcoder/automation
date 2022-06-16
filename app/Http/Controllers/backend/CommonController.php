@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Models\Device;
 use App\Models\Mobilenumber;
+use App\Models\Brandentry;
 use Illuminate\Http\Request;
 
 class CommonController extends Controller
@@ -26,9 +27,12 @@ class CommonController extends Controller
                 $objDevice = new Device();
                 $data['device_list'] = $objDevice->get_device_details();
 
+                $objBrandentry = new Brandentry();
+                $data['brand_entry_list'] = $objBrandentry->get_brand_entry_list();
+
                 $objMobilenumber = new Mobilenumber();
                 $data['mobile_number_list'] = $objMobilenumber->get_mobile_number_list();
-
+                
 
                 echo json_encode($data);
                 exit;

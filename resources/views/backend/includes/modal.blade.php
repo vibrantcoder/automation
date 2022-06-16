@@ -98,11 +98,23 @@
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="padding: 0% !important">
                 <form id="add-run-script"  method="POST" action="{{ route('add-save-mobile-number') }}">
                     @csrf
                     <div class="card-body">
                         <div id="document-div">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Brand Name <span class="text-danger">*</span></label><br>
+                                        <select class="form-control select2 brnad_name" id="brnad_name"  name="brnad_name[]" multiple="multiple" data-placeholder="Please select device">                                            
+                                        </select>
+                                        <span id="device-error" class="error text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">

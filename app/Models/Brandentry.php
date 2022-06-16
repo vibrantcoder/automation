@@ -104,26 +104,6 @@ class Brandentry extends Model
 
     public function add_brand_entry($request){
 
-        // $checkRecord = Brandentry::from('brand_entry')
-        //      ->where('brand_entry.is_deleted', 'N')
-        //      ->where('brand_entry.brand_name', $request->input('brand_name'))
-        //      ->where('brand_entry.url', $request->input('url'))
-        //      ->where('brand_entry.country_code', $request->input('country_code'))
-        //      ->where('brand_entry.mobile_number', $request->input('mobile_number'))
-        //      ->where('brand_entry.generate_otp', $request->input('generate_otp'))
-        //      ->count();
-
-        //      if($checkRecord == 0){
-                // for ($i = 0 ; $i < count($request->input('brand_name')) ; $i++) {
-                //     $objBrandentry = new Brandentry();
-                //     $objBrandentry->brand_name = $request->input('brand_name')[$i];
-                //     $objBrandentry->url = $request->input('url')[$i];
-                //     $objBrandentry->country_code = $request->input('country_code')[$i];
-                //     $objBrandentry->mobile_number = $request->input('mobile_number')[$i];
-                //     $objBrandentry->generate_otp = $request->input('generateotp')[$i];
-                //     $objBrandentry->save();
-                // }
-
         for ($i = 0; $i < count($request->input('brand_name')); $i++) {
             $url = '';
             $country_code = '';
@@ -245,5 +225,11 @@ class Brandentry extends Model
         }
     }
 
+    public function get_brand_entry_list(){
+        return Brandentry::where('brand_entry.is_deleted','N')
+                        ->select('brand_entry.brand_name', 'brand_entry.id')
+                        ->get()
+                        ->toArray();
+    }
 
 }

@@ -15,6 +15,7 @@ class Adminuser extends Seeder
     public function run()
     {
         DB::table('users')->insert([
+            'user_no'=>000000,
             'first_name' => "Admin",
             'last_name' => "Admin",
             'full_name' => "Admin Admin",
