@@ -27,7 +27,11 @@ class BrandExportNew implements  FromArray, WithHeadings, ShouldAutoSize, WithCo
 
     public function array(): array
     {
-        $logindata = Session::all();
+        if (!empty(Auth()->guard('admin')->user())) {
+            $logindata = Auth()->guard('admin')->user();
+        }
+
+        // ccd($logindata);
 
         $device_name = get_device_name($this->device);
         $operator = get_operator_name($this->opertoer);
@@ -35,25 +39,24 @@ class BrandExportNew implements  FromArray, WithHeadings, ShouldAutoSize, WithCo
         // ccd($coutry_code);
 
         $res=  Brandentry::where('brand_entry.is_deleted', 'N')
+                ->whereIn('brand_entry.id', $this->brand_list)
                 ->select( 'brand_entry.brand_name', 'brand_entry.url', 'brand_entry.country_code', 'brand_entry.mobile_number', 'brand_entry.generate_otp')
                 ->get();
+        
         $data = [];
         $i = 1;
         foreach($res as $key => $value){
-        $data[$key]['srno'] = $i;
-        $data[$key]['brand_name'] = $value['brand_name'];
-        $data[$key]['url'] = $value['url'];
-        $data[$key]['country_code'] =$coutry_code[0]['phonecode'];
-        $data[$key]['mobile_number'] = $coutry_code[0]['mobile_number'];
-        $data[$key]['generate_otp'] = $value['generate_otp'];
-        $data[$key]['device_name'] = $device_name[0]['device_name'];
-        $data[$key]['device_id'] = $device_name[0]['id'];
-        $data[$key]['operator'] = $coutry_code[0]['operator'];
-        $data[$key]['run_by'] = $logindata['logindata'][0]['id'];
-        $data[$key]['username'] = $logindata['logindata'][0]['first_name'] .' '.$logindata['logindata'][0]['first_name'];
-
-
-
+            $data[$key]['srno'] = $i;
+            $data[$key]['brand_name'] = $value['brand_name'];
+            $data[$key]['url'] = $value['url'];
+            $data[$key]['country_code'] =$coutry_code[0]['phonecode'];
+            $data[$key]['mobile_number'] = $coutry_code[0]['mobile_number'];
+            $data[$key]['generate_otp'] = $value['generate_otp'];
+            $data[$key]['device_name'] = $device_name[0]['device_name'];
+            $data[$key]['device_id'] = $device_name[0]['id'];
+            $data[$key]['operator'] = $coutry_code[0]['operator'];
+            $data[$key]['run_by'] = $logindata['id'];
+            $data[$key]['username'] = $logindata['first_name'] .' '.$logindata['last_name'];
         $i++;
         }
 

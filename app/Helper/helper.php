@@ -4,6 +4,7 @@ use App\Models\Codenumber;
 use App\Models\Device;
 use App\Models\Mobilenumber;
 use App\Models\Systemsetting;
+use App\Models\Users;
 
 function date_formate($date){
     return date("d-M-Y", strtotime($date));
@@ -49,6 +50,8 @@ function get_device_name($id){
 function get_operator_name($id){
     $objMobilenumber = new Mobilenumber();
     return $objMobilenumber->get_mobile_operator_lists($id);
+  
 }
+
 
 ?>

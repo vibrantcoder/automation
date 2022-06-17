@@ -225,7 +225,10 @@ class BrandentryController extends Controller
 
     public function run_script(Request $request){        
         // Excel Code
-        Excel::store(new BrandExportNew($request->all()), 'BrandDetailsNew.xlsx', 'exceldata');
+        $logindata = Auth()->guard('admin')->user();
+
+        // Excel::store(new BrandExportNew($request->all()), 'BrandDetailsNew.xlsx', 'exceldata'.$logindata['user_no']);
+        Excel::store(new BrandExportNew($request->all()), $logindata['user_no'].'-BrandDetailsNew.xlsx', 'exceldata');
         // exec('c:\WINDOWS\system32\cmd.exe /c START C:\Sapizon\demo\runner.bat');
         return true;
     }

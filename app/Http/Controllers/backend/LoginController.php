@@ -45,6 +45,7 @@ class LoginController extends Controller
             $loginData = '';
             $request->session()->forget('logindata');
             $loginData = array(
+                'user_no' => Auth::guard('admin')->user()->user_no,
                 'first_name' => Auth::guard('admin')->user()->first_name,
                 'last_name' => Auth::guard('admin')->user()->last_name,
                 'email' => Auth::guard('admin')->user()->email,
