@@ -22,34 +22,15 @@ class CommonController extends Controller
         $action = $request->input('action');
 
         switch ($action) {
-            case 'get-device-name':
+            case 'change-mobile-number':
 
-                $objDevice = new Device();
-                $data['device_list'] = $objDevice->get_device_details();
-
-                $objBrandentry = new Brandentry();
-                $data['brand_entry_list'] = $objBrandentry->get_brand_entry_list();
+                $details = $request->input('data');
 
                 $objMobilenumber = new Mobilenumber();
-                $data['mobile_number_list'] = $objMobilenumber->get_mobile_number_list();
-                
+                $mobile_operator_list = $objMobilenumber->get_mobile_operator_list($details['mobileId']);
 
-                echo json_encode($data);
+                echo json_encode($mobile_operator_list);
                 exit;
-
-                case 'change-mobile-number':
-
-                    $details = $request->input('data');
-
-                    $objMobilenumber = new Mobilenumber();
-                    $mobile_operator_list = $objMobilenumber->get_mobile_operator_list($details['mobileId']);
-
-                    echo json_encode($mobile_operator_list);
-                    exit;
-
-
-
-            }
-
+        }
     }
 }

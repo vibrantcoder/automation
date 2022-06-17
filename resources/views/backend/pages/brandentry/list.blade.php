@@ -60,7 +60,87 @@
 </div>
 <!--end::Entry-->
 
-{{-- modal --}}
 
+{{-- modal --}}
+<div class="modal fade" id="runScript" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Run Script</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <form id="run-script"  method="POST" action="{{ route('run-script') }}">@csrf
+                <div class="modal-body" style="padding: 0% !important">
+                    
+                        @csrf
+                        <div class="card-body">
+                            <div id="document-div">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Brand List<span class="text-danger">*</span></label><br>
+                                            <select class="form-control selectpicker select brnad_name" multiple aria-label="Default select example" id="brnad_name" name="brnad_name[]" data-placeholder="Please select device" data-live-search="true">                                                
+                                                @foreach ($brand_entry_list as $bl_key => $bl_value)
+                                                    <option value="{{ $bl_value['id'] }}">{{ $bl_value['brand_name'] }}</option>      
+                                                @endforeach
+                                            </select>
+                                            <span id="brand-name-error" class="error text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Device <span class="text-danger">*</span></label><br>
+                                            <select class="form-control select2 device" id="device"  name="device">
+                                                <option value="">Please select device</option>
+                                                    @foreach ($device_list as $dl_key => $dl_value)
+                                                        <option value="{{ $dl_value['id'] }}">{{ $dl_value['device_name'] }}</option>      
+                                                    @endforeach
+                                            </select>                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Mobile Number <span class="text-danger">*</span></label><br>
+                                            <select class="form-control select2 mobile-number" id="mobile_number"  name="mobile_number">
+                                                <option value="">Please select mobile number</option>
+                                                @foreach ($mobile_number_list as $ml_key => $ml_value)
+                                                    <option value="{{ $ml_value['id'] }}">{{ $ml_value['mobile_number'] }}</option>      
+                                                @endforeach
+                                            </select>                                            
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Operator <span class="text-danger">*</span></label><br>
+                                            <select class="form-control select2" id="operator"  name="operator">
+                                                <option value="">Please select operator</option>
+                                            </select>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Run Script</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 @endsection

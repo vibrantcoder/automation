@@ -1,5 +1,7 @@
 var Brandentry = function(){
     var list = function(){
+        $('.select2').select2();
+
         var dataArr = {};
         var columnWidth = { "width": "5%", "targets": 0 };
         var arrList = {
@@ -40,56 +42,6 @@ var Brandentry = function(){
             });
         });
        
-        $("body").on("click", ".run-script", function() {
-
-          var data = { _token: $('#_token').val() };
-          $.ajax({
-              type: "POST",
-              headers: {
-                  'X-CSRF-TOKEN': $('input[name="_token"]').val(),
-              },
-              url: baseurl +"admin/common-ajaxcall",
-              data: { 'action': 'get-device-name', 'data': data },
-              success: function(data) {
-                var output = JSON.parse(data);                
-                var deviceList = output['device_list'];
-                
-                var html = '<option value="">Please select device</option>';
-                for(var i = 0; i < deviceList.length ; i++){
-                    var temp = '';
-                    var temp = '<option value="'+ deviceList[i].id +'">'+ deviceList[i].device_name +'</option>';
-                    var html = html + temp;
-                }
-
-                var mobileNumber = output['mobile_number_list'];
-                var mobiledata = '<option value="">Please select mobile number</option>';
-                for(var i = 0; i < mobileNumber.length ; i++){
-                    var list = '';
-                    var list = '<option value="'+ mobileNumber[i].id +'">'+ mobileNumber[i].phonecode+'-'+mobileNumber[i].mobile_number +'</option>';
-                    var mobiledata = mobiledata + list;
-                }
-
-                var brand_entry_list = output['brand_entry_list'];                
-                for(var k = 0; k < brand_entry_list.length ; k++){
-                    var list = '';
-                    var list = '<option value="'+ brand_entry_list[k].id +'">'+ brand_entry_list[k].brand_name + '</option>';
-                    var brandlist = brandlist + list;
-                }
-                $("#device").html(html);
-                $("#brnad_name").html(brandlist);
-                $('.select2').select2();
-
-            },
-
-              complete: function(){
-                $("#loader").hide();
-              }
-          });
-
-        });
-
-
-
         $('body').on('change', '.mobile-number', function() {
 
             var mobileId = $(this).val();
@@ -120,61 +72,86 @@ var Brandentry = function(){
             });
         });
 
-        $('body').on('click', '.run-modal-script-btn', function() {
-            var device = $("#device").val();
-            var mobile_number = $("#mobile_number").val();
-            var opertoer = $("#operator").val();
-            var validtoer = true;
+        var validateTrip = true;
+        var customValid = true;
 
-            if(device == '' || device == null){
-                validtoer = false;
-                $("#device-error").text('Please select device');
-            }else{
-                $("#device-error").text('');
-            }
+        $('#run-script').validate({
+            debug: true,
+            errorElement: 'span', //default input error message container
+            errorClass: 'help-block', // default input error message class
 
-            if(mobile_number == '' || mobile_number == null){
-                validtoer = false;
-                $("#mobile-number-error").text('Please select mobile number');
-            }else{
-                $("#mobile-number-error").text('');
-            }
+            rules: {                
+                device: {required: true},
+                mobile_number: {required: true},
+                operator: {required: true},
+            },
 
-            if(opertoer == '' || opertoer == null){
-                validtoer = false;
-                $("#operator-error").text('Please select operator');
-            }else{
-                $("#operator-error").text('');
-            }
+            messages: {             
+                device:{    
+                    required : "Please enter mobile number"
+                },
+                mobile_number:{    
+                    required : "Please select otp option"
+                },
+                operator:{    
+                    required : "Please select otp option"
+                },
+            },
 
+            invalidHandler: function(event, validator) {
+                validateTrip = false;
+                customValid = customerInfoValid();
 
-            if(validtoer){
+            },
 
-                $.ajax({
-                    type: "POST",
-                    headers: {
-                        'X-CSRF-TOKEN': $('input[name="_token"]').val(),
-                    },
-                    url: baseurl +"admin/run-script",
+            submitHandler: function(form) {
+                $(".submitbtn:visible").attr("disabled", "disabled");
+                $("#loader").show();
+                customValid = customerInfoValid();
+                console.log(customValid);
+                if (customValid) {
+                    var options = {
+                        resetForm: false, // reset the form after successful submit
+                        success: function(output) {
+                            handleAjaxResponse(output);
+                        }
+                    };
+                    $(form).ajaxSubmit(options);
+                } else {
+                    $(".submitbtn:visible").prop("disabled", false);
+                    $("#loader").hide();
+                }
+            },
 
-                    data: { 'device': device, 'mobile_number': mobile_number, 'opertoer': opertoer},
-                    success: function(data) {
-                        $('#runScript').modal('hide');
-
-                        toastr.success('Script run successfully', 'Success');
-                        // showToster('success', 'Script run successfully');
-                    },
-                    complete: function(){
-                        $("#loader").hide();
-                      }
-                });
-            }
+            errorPlacement: function(error, element) {
+                customValid = customerInfoValid();
+                var elem = $(element);
+                if (elem.hasClass("select2-hidden-accessible")) {
+                    element = $("#select2-" + elem.attr("id") + "-container").parent();
+                    error.insertAfter(element);
+                } else {
+                    if (elem.hasClass("radio-btn")) {
+                        element = elem.parent().parent().parent().parent().parent().parent().parent();
+                        error.insertAfter(element);
+                    } else {
+                        error.insertAfter(element);
+                    }
+                }
+            },
         });
 
 
-
-
-
+        function customerInfoValid() {
+            var customValid = true;
+            var brand_name =  $("#brnad_name").val();
+            if(brand_name == '' || brand_name == null){
+                customValid = false;
+                $("#brand-name-error").text('Please select brand name');                
+            }else{
+                $("#brand-name-error").text('');
+            }            
+            return customValid;
+        }
 
     }
 
@@ -261,7 +238,6 @@ var Brandentry = function(){
 
 
             invalidHandler: function(event, validator) {
-
                 validateTrip = false;
                 customValid = customerInfoValid();
 
@@ -318,29 +294,6 @@ var Brandentry = function(){
                 }
             });
 
-            // $('.urls').each(function() {
-            //     var elem = $(this);
-            //     if ($(this).is(':visible')) {
-            //         if ($(this).val() == '' || $(this).val() == 0) {
-            //             $(this).parent().find('.error').text('Please enter URL');
-            //             customValid = false;
-            //         } else {
-            //             $(this).parent().find('.error').text('');
-            //         }
-            //     }
-            // });
-
-            // $('.country_code').each(function() {
-            //     var elem = $(this);
-            //     if ($(this).is(':visible')) {
-            //         if ($(this).val() == '' || $(this).val() == 0) {
-            //             $(this).parent().find('.error').text('Please enter country code');
-            //             customValid = false;
-            //         } else {
-            //             $(this).parent().find('.error').text('');
-            //         }
-            //     }
-            // });
 
             $('.mobile_number').each(function() {
                 var elem = $(this);
@@ -397,13 +350,7 @@ var Brandentry = function(){
                 required : "Please enter brand name",
 
             },
-            // url :{
-            //     required : "Please enter url",
-
-            // },
-            // country_code : {
-            //     required : "Please enter country code"
-            // },
+           
             mobile_number : {
                 required : "Please enter mobile number"
             },

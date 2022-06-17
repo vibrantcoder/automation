@@ -12,12 +12,17 @@ use App\Models\Brandentry;
 use Session;
 
 class BrandExportNew implements  FromArray, WithHeadings, ShouldAutoSize, WithColumnFormatting
-{
-    function __construct($device, $mobile_number, $opertoer)
+{   
+    protected $brand_list = [];
+    protected $device = '';
+    protected $mobile_number= '';
+    protected $opertoer = '';    
+    function __construct($requestData)
     {
-        $this->device = $device;
-        $this->mobile_number = $mobile_number;
-        $this->opertoer = $opertoer;
+        $this->brand_list = $requestData['brnad_name'];
+        $this->device = $requestData['device'];
+        $this->mobile_number = $requestData['mobile_number'];
+        $this->opertoer = $requestData['operator'];
     }
 
     public function array(): array

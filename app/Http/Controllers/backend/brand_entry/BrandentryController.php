@@ -9,7 +9,8 @@ use Config;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\BrandExport;
 use App\Exports\BrandExportNew;
-use App\Models\Runscript;
+use App\Models\Device;
+use App\Models\Mobilenumber;
 
 class BrandentryController extends Controller
 {
@@ -19,6 +20,15 @@ class BrandentryController extends Controller
     }
 
     public function list(){
+        $objBrandentry = new Brandentry();
+        $data['brand_entry_list'] = $objBrandentry->get_brand_entry_list();
+
+        $objDevice = new Device();
+        $data['device_list'] = $objDevice->get_device_details();               
+
+        $objMobilenumber = new Mobilenumber();
+        $data['mobile_number_list'] = $objMobilenumber->get_mobile_number_list();        
+        
         $data['title'] = Config::get('constants.SYSTEM_NAME') . ' || Brand & Execution List' ;
         $data['description'] = Config::get('constants.SYSTEM_NAME') . ' || Brand & Execution List' ;
         $data['keywords'] = Config::get('constants.SYSTEM_NAME') . ' || Brand & Execution List' ;
@@ -29,7 +39,8 @@ class BrandentryController extends Controller
         );
         $data['pluginjs'] = array(
             'plugins/custom/datatables/datatables.bundle.js',
-            'js/pages/crud/datatables/data-sources/html.js'
+            'js/pages/crud/datatables/data-sources/html.js',
+            'plugins/validate/jquery.validate.min.js',
         );
         $data['js'] = array(
             'comman_function.js',
@@ -51,6 +62,8 @@ class BrandentryController extends Controller
     }
 
     public function add(){
+
+       
         $data['title'] = Config::get('constants.SYSTEM_NAME') . ' || Add Brand Entry';
         $data['description'] = Config::get('constants.SYSTEM_NAME') . ' || Add Brand Entry';
         $data['keywords'] = Config::get('constants.SYSTEM_NAME') . ' || Add Brand Entry';
@@ -210,13 +223,9 @@ class BrandentryController extends Controller
         return Excel::store(new BrandExport, 'branddata.xlsx', 'exceldata');
     }
 
-    public function run_script(Request $request){
-
-        $objRunscript = new Runscript();
-        $data = $objRunscript->save_run_script($request->device, $request->mobile_number, $request->opertoer);
-
+    public function run_script(Request $request){        
         // Excel Code
-        Excel::store(new BrandExportNew($request->device, $request->mobile_number, $request->opertoer), 'BrandDetailsNew.xlsx', 'exceldata');
+        Excel::store(new BrandExportNew($request->all()), 'BrandDetailsNew.xlsx', 'exceldata');
         // exec('c:\WINDOWS\system32\cmd.exe /c START C:\Sapizon\demo\runner.bat');
         return true;
     }

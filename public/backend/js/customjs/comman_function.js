@@ -242,18 +242,18 @@ function handleFormValidateWithMsg(form, rules, messages, submitCallback, showTo
             //            Toastr.init('warning', 'Some fields are missing!.', '');
         },
         highlight: function(element) { // hightlight error inputs
-            $(element)
-                .closest('.form-control').addClass('has-error'); // set error class to the control group
-            $(element).parent().find('.select2').addClass('has-error');
+            // $(element)
+            //     .closest('.form-control').addClass('has-error'); // set error class to the control group
+            // $(element).parent().find('.select2').addClass('has-error');
         },
         unhighlight: function(element) { // revert the change done by hightlight
-            $(element).parent().find('.select2').removeClass('has-error');
-            $(element)
-                .closest('.form-control').removeClass('has-error'); // set error class to the control group
+            // $(element).parent().find('.select2').removeClass('has-error');
+            // $(element)
+            //     .closest('.form-control').removeClass('has-error'); // set error class to the control group
         },
         success: function(label) {
-            label.closest('.form-control').removeClass('has-error'); // set success class to the control group
-            label.parent().find('.select2').removeClass('has-error');
+            // label.closest('.form-control').removeClass('has-error'); // set success class to the control group
+            // label.parent().find('.select2').removeClass('has-error');
         },
         messages: messages,
 
@@ -958,18 +958,18 @@ function handleFormValidateWithMsg(form, rules, messages, submitCallback, showTo
             //            Toastr.init('warning', 'Some fields are missing!.', '');
         },
         highlight: function(element) { // hightlight error inputs
-            $(element)
-                .closest('.form-control').addClass('has-error'); // set error class to the control group
-            $(element).parent().find('.select2').addClass('has-error');
+            // $(element)
+            //     .closest('.form-control').addClass('has-error'); // set error class to the control group
+            // $(element).parent().find('.select2').addClass('has-error');
         },
         unhighlight: function(element) { // revert the change done by hightlight
-            $(element).parent().find('.select2').removeClass('has-error');
-            $(element)
-                .closest('.form-control').removeClass('has-error'); // set error class to the control group
+            // $(element).parent().find('.select2').removeClass('has-error');
+            // $(element)
+            //     .closest('.form-control').removeClass('has-error'); // set error class to the control group
         },
         success: function(label) {
-            label.closest('.form-control').removeClass('has-error'); // set success class to the control group
-            label.parent().find('.select2').removeClass('has-error');
+            // label.closest('.form-control').removeClass('has-error'); // set success class to the control group
+            // label.parent().find('.select2').removeClass('has-error');
         },
         messages: messages,
 
@@ -995,6 +995,14 @@ function handleFormValidateWithMsg(form, rules, messages, submitCallback, showTo
                     element = elem.parent().parent();
                     error.insertAfter(element);
                 } else {
+
+                    if (elem.hasClass("select")) {
+                        element = elem.parent().parent();
+                        error.insertAfter(element);
+                    } else {
+                        error.insertAfter(element);
+                    }
+
                     error.insertAfter(element);
                 }
             }

@@ -216,10 +216,8 @@ class Users extends Model
                 $objUsers->created_at = date('Y-m-d H:i:s');
                 $objUsers->updated_at = date('Y-m-d H:i:s');
                 if($objUsers->save()){
-
-                    // $destinationPath = public_path('/upload/systemsetting/');
-                    $path = public_path('/upload/audit_log/'. Str::lower($request->input('first_name')).'-'.Str::lower($request->input('last_name')).'-'.$randomNo);
-
+                    
+                    $path = public_path('/upload/audit_log/'.$randomNo);
                     if(!File::isDirectory($path)){
                         File::makeDirectory($path, 0777, true, true);
                     }
