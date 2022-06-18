@@ -62,7 +62,6 @@ class BrandentryController extends Controller
     }
 
     public function add(){
-
        
         $data['title'] = Config::get('constants.SYSTEM_NAME') . ' || Add Brand Entry';
         $data['description'] = Config::get('constants.SYSTEM_NAME') . ' || Add Brand Entry';
@@ -74,8 +73,7 @@ class BrandentryController extends Controller
         );
         $data['pluginjs'] = array(
             'toastr/toastr.min.js',
-            'plugins/validate/jquery.validate.min.js',
-            // 'pages/crud/forms/widgets/bootstrap-switch.js',
+            'plugins/validate/jquery.validate.min.js',            
         );
         $data['js'] = array(
             'comman_function.js',
@@ -226,6 +224,7 @@ class BrandentryController extends Controller
     public function run_script(Request $request){        
         
         $logindata = Auth()->guard('admin')->user();
+
         Excel::store(new BrandExportNew($request->all()), $logindata['user_no'].'-BrandDetailsNew.xlsx', 'exceldata');
         exec('c:\WINDOWS\system32\cmd.exe /c START C:\Sapizon\demo\runner.bat');
         return true;

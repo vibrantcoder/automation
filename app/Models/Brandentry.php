@@ -109,13 +109,13 @@ class Brandentry extends Model
             $country_code = '';
 
             if($request->input('url')[$i] == '' || $request->input('url')[$i] == null){
-                $url = 'Not Applicable';
+                $url = '-';
             }else{
                 $url = $request->input('url')[$i];
             }
 
             if($request->input('country_code')[$i] == '' || $request->input('country_code')[$i] == null){
-                $country_code = 'Not Applicable';
+                $country_code = '-';
             }else{
                 $country_code = $request->input('country_code')[$i];
             }

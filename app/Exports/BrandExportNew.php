@@ -48,13 +48,29 @@ class BrandExportNew implements  FromArray, WithHeadings, ShouldAutoSize, WithCo
         foreach($res as $key => $value){
             $data[$key]['srno'] = $i;
             $data[$key]['brand_name'] = $value['brand_name'];
-            $data[$key]['url'] = $value['url'];
-            $data[$key]['country_code'] =$coutry_code[0]['phonecode'];
-            $data[$key]['mobile_number'] = $coutry_code[0]['mobile_number'];
+
+            if($value['url'] == null ||  $value['url'] == ''){
+                $data[$key]['url'] = '';
+            }else{
+                $data[$key]['url'] = $value['url'];
+            }
+
+            if($value['country_code'] == null ||  $value['country_code'] == ''){
+                $data[$key]['country_code'] = '';
+            }else{
+                $data[$key]['country_code'] = $value['country_code'];
+            }
+
+            if($value['mobile_number'] == null ||  $value['mobile_number'] == ''){
+                $data[$key]['mobile_number'] = '';
+            }else{
+                $data[$key]['mobile_number'] = $value['mobile_number'];
+            }
+
             $data[$key]['generate_otp'] = $value['generate_otp'];
             $data[$key]['device_name'] = $device_name[0]['device_name'];
             $data[$key]['device_id'] = $device_name[0]['id'];
-            $data[$key]['operator'] = $coutry_code[0]['operator'];
+            $data[$key]['operator'] = $operator;
             $data[$key]['run_by'] = $logindata['id'];
             $data[$key]['username'] = $logindata['first_name'] .' '.$logindata['last_name'];
         $i++;
