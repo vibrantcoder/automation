@@ -50,9 +50,10 @@ class ImportdataController extends Controller
 
 
     public function import_brands_save(Request $request){
-        // ccd($request->all());
+        
         $path = $request->file('file')->store('temp');
-        $data = Excel::import(new ImportBrands($request->input('quiz')),$path);
+        $data = Excel::import(new ImportBrands($request->input('file')),$path);
+        
         $return['status'] = 'success';
         $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");';
         $return['message'] = 'Brand entry list added successfully.';

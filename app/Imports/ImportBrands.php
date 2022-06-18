@@ -15,21 +15,25 @@ class ImportBrands implements ToModel
 
     public function model(array $row)
     {
-        // $count
-        $objImportdata = new Importdata();
-        $objImportdata->brand_name = $row[0];
-        $objImportdata->url = $row[1];
-        $objImportdata->country_code = $row[2];
-        $objImportdata->mobile_number = $row[3];
-        $objImportdata->generate_otp = $row[4];
-        $objImportdata->is_deleted = 'N';
-        $objImportdata->created_at = date('Y-m-d H:i:s');
-        $objImportdata->updated_at = date('Y-m-d H:i:s');
-        $objImportdata->save();
-    }
+        $exits_array = [];
 
-    // public function collection(Collection $collection)
-    // {
-    //     //
-    // }
+        $count  = Importdata::from('brand_entry')
+                            ->where('brand_entry.brand_name', $row[0])
+                            ->where('brand_entry.is_deleted', 'N')
+                            ->count();
+        if($count != 0){
+            array_push($exits_array, $row[0]);
+        }else{
+            $objImportdata = new Importdata();
+            $objImportdata->brand_name = $row[0];
+            $objImportdata->url = $row[1];
+            $objImportdata->country_code = $row[2];
+            $objImportdata->mobile_number = $row[3];
+            $objImportdata->generate_otp = $row[4];
+            $objImportdata->is_deleted = 'N';
+            $objImportdata->created_at = date('Y-m-d H:i:s');
+            $objImportdata->updated_at = date('Y-m-d H:i:s');
+            $objImportdata->save();
+        }
+    }
 }

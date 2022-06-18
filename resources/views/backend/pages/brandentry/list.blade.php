@@ -27,6 +27,11 @@
                     </a>
 
                     <!--begin::Button-->
+                    <a href="{{ route('import-brands') }}" class="btn btn-success font-weight-bolder mr-5">
+                       Import Brand Entry
+                    </a>
+                    <!--end::Button-->
+                    <!--begin::Button-->
                     <a href="{{ route('add-brand-entry') }}" class="btn btn-primary font-weight-bolder mr-5">
                        Add Brand Entry
                     </a>

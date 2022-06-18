@@ -43,7 +43,7 @@ if (!empty(Auth()->guard('admin')->user())) {
 
 
 
-                <li class="menu-item {{ ( $currentRoute  ==  "brand-entry-list" || $currentRoute  ==  "add-brand-entry"  || $currentRoute  ==  "edit-brand-entry"    ? 'menu-item-active' : '' ) }} " aria-haspopup="true">
+                <li class="menu-item {{ (  $currentRoute  ==  "import-brands"  || $currentRoute  ==  "brand-entry-list" || $currentRoute  ==  "add-brand-entry"  || $currentRoute  ==  "edit-brand-entry"    ? 'menu-item-active' : '' ) }} " aria-haspopup="true">
                     <a href="{{ route('brand-entry-list') }}" class="menu-link">
                         <span class="svg-icon menu-icon">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
@@ -134,7 +134,7 @@ if (!empty(Auth()->guard('admin')->user())) {
                     </a>
                 </li>
 
-                <li class="menu-item {{ ( $currentRoute  ==  "import-brands" ? 'menu-item-active' : '' ) }} " aria-haspopup="true">
+                {{-- <li class="menu-item {{ ( $currentRoute  ==  "import-brands" ? 'menu-item-active' : '' ) }} " aria-haspopup="true">
                     <a href="{{ route('import-brands') }}" class="menu-link">
                         <span class="svg-icon menu-icon">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
@@ -150,7 +150,7 @@ if (!empty(Auth()->guard('admin')->user())) {
                         </span>
                         <span class="menu-text">Import Brands</span>
                     </a>
-                </li>
+                </li> --}}
 
             </ul>
             <!--end::Menu Nav-->
