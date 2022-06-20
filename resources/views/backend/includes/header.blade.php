@@ -78,23 +78,23 @@
 
         .aside-menu .menu-nav > .menu-item > .menu-heading .menu-icon.svg-icon svg g [fill], .aside-menu .menu-nav > .menu-item > .menu-link .menu-icon.svg-icon svg g [fill] {
             transition: fill 0.3s ease;
-            fill: {{ $systemsetting['sidebar_menu_color'] }}  ;
+            fill: {{ $systemsetting['sidebar_menu_color'] }} !important ;
         }
         .svg-icon svg g [fill] {
             transition: fill 0.3s ease;
-            fill: {{ $systemsetting['sidebar_menu_color'] }}  ;
+            fill: {{ $systemsetting['sidebar_menu_color'] }} !important ;
         }
 
         .aside-menu .menu-nav>.menu-item.menu-item-active>.menu-heading, .aside-menu .menu-nav>.menu-item.menu-item-active>.menu-link {
-            background-color: {{ $systemsetting['sidebar_menu_active_color'] }};
+            background-color: {{ $systemsetting['sidebar_menu_active_color'] }} !important;
         }
 
         .aside-menu .menu-nav > .menu-item.menu-item-open > .menu-heading, .aside-menu .menu-nav > .menu-item.menu-item-open > .menu-link {
-            background-color: {{ $systemsetting['sidebar_menu_active_color'] }};
+            background-color: {{ $systemsetting['sidebar_menu_active_color'] }} !important;
         }
 
         .aside-menu .menu-nav>.menu-item .menu-submenu .menu-item.menu-item-active>.menu-heading, .aside-menu .menu-nav>.menu-item .menu-submenu .menu-item.menu-item-active>.menu-link {
-            background-color: {{ $systemsetting['sidebar_menu_active_color'] }};
+            background-color: {{ $systemsetting['sidebar_menu_active_color'] }} !important;
         }
 
 
@@ -129,22 +129,14 @@
             /* abc */
         }
 
-        .dashborad-statistics{
-            background-color: {{ $systemsetting['sidebar_color'] }} !important;
-        }
-
-        .dashborad-statistics-text{
-            color: #ffffff;
-        }
-
-        .dashborad-statistics-box{
-            background-color: {{ $systemsetting['sidebar_menu_active_color'] }} !important;
-        }
 
         .aside-menu .menu-nav > .menu-item.menu-item-active > .menu-heading .menu-text, .aside-menu .menu-nav > .menu-item.menu-item-active > .menu-link .menu-text{
             color: #ffffff !important;
         }
-        /* abv */
+        .aside-menu .menu-nav > .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-heading, .aside-menu .menu-nav > .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-link {
+            background-color:{{ $systemsetting['sidebar_menu_active_color'] }} !important;
+        }
+        /* style */
     </style>
     @if (!empty($css))
         @foreach ($css as $value)

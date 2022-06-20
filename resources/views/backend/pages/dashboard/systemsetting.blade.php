@@ -122,12 +122,12 @@
                                 <div class="">
                                     <div class="image-input image-input-outline" id="kt_image_2">
                                         <div class="image-input-wrapper" style="background-size: 300px 170px;width: 300px;height: 170px;background-image: url({{(!empty($system_details)) ? $logoimage : ''}})"></div>
-                                        <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change Login Image">
+                                        <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change Website Logo">
                                             <i class="fa fa-pencil icon-sm text-muted"></i>
                                             <input type="file" name="website_logo" accept=".png, .jpg, .jpeg" />
                                             <input type="hidden" name="website_logo_remove"/>
                                         </label>
-                                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel Login Image">
+                                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel Website Logo">
                                             <i class="ki ki-bold-close icon-xs text-muted"></i>
                                         </span>
                                     </div>
@@ -140,12 +140,12 @@
                                 <div class="">
                                     <div class="image-input image-input-outline" id="kt_image_3">
                                         <div class="image-input-wrapper" style="background-image: url({{(!empty($system_details)) ? $faviconimage : ''}})"></div>
-                                        <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                                        <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change Business Favicon Icon">
                                             <i class="fa fa-pencil icon-sm text-muted"></i>
                                             <input type="file" name="favicon_icon" accept=".png, .jpg, .jpeg" />
                                             <input type="hidden" name="website_favicon_remove"/>
                                         </label>
-                                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel Business Favicon Icon">
                                             <i class="ki ki-bold-close icon-xs text-muted"></i>
                                         </span>
                                     </div>
