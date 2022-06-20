@@ -22,8 +22,8 @@ class SystemSeeder extends Seeder
                 'footer_text' =>'metronic',
                 'footer_link' => 'metronic',
                 'website_description' =>'metronic',
-                'website_logo' =>'default.png',
-                'favicon_icon' => 'default.png',
+                'website_logo' =>'logo-new.png',
+                'favicon_icon' => 'favicon-new.png',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
         ]);

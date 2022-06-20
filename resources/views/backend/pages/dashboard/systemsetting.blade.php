@@ -11,7 +11,14 @@
     if(file_exists( public_path().'/upload/systemsetting/'.$system_details[0]['favicon_icon']) && $system_details[0]['favicon_icon'] != ''){
         $faviconimage = url("public/upload/systemsetting/".$system_details[0]['favicon_icon']);
     }else{
-        $faviconimage = url("public/upload/systemsetting/default.jpg");
+        $faviconimage = url("public/upload/systemsetting/fevicon-new.png");
+    }
+@endphp
+@php
+    if(file_exists( public_path().'/upload/systemsetting/'.$system_details[0]['login_logo']) && $system_details[0]['login_logo'] != ''){
+        $loginlogo = url("public/upload/systemsetting/".$system_details[0]['login_logo']);
+    }else{
+        $loginlogo = url("public/upload/systemsetting/default.jpg");
     }
 @endphp
 <!--begin::Entry-->
@@ -109,9 +116,9 @@
                     </div>
 
                     <div class="row">
-                        {{-- <div class="col-md-6">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label>Login Image</label>
+                                <label>Website Logo</label>
                                 <div class="">
                                     <div class="image-input image-input-outline" id="kt_image_2">
                                         <div class="image-input-wrapper" style="background-size: 300px 170px;width: 300px;height: 170px;background-image: url({{(!empty($system_details)) ? $logoimage : ''}})"></div>
@@ -126,8 +133,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> --}}
-                        {{-- <div class="col-md-6">
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>Business Favicon Icon</label>
                                 <div class="">
@@ -144,10 +151,129 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
                     </div>
 
+                    {{-- <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Login Image</label>
+                                <div class="">
+                                    <div class="image-input image-input-outline" id="kt_image_1">
+                                        <div class="image-input-wrapper" style="background-size: 300px 170px;width: 300px;height: 170px;background-image: url({{(!empty($system_details)) ? $loginlogo : ''}})"></div>
+                                        <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change Login Image">
+                                            <i class="fa fa-pencil icon-sm text-muted"></i>
+                                            <input type="file" name="login_image" accept=".png, .jpg, .jpeg" />
+                                            <input type="hidden" name="login_image_remove"/>
+                                        </label>
+                                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel Login Image">
+                                            <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> --}}
+
+                        {{-- <div class="col-md-6">
+                            <div class="form-group">
+                                <label>@lang('configuration.login_icon')</label>
+                                <div class="">
+                                    <div class="image-input image-input-outline" id="kt_image_7">
+                                        <div class="image-input-wrapper" style="background-image: url({{(!empty($system_details)) ? $loginlogo : ''}})"></div>
+                                        <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="@lang('configuration.change_login_icon')">
+                                            <i class="fa fa-pencil icon-sm text-muted"></i>
+                                            <input type="file" name="login_icon" accept=".png, .jpg, .jpeg" />
+                                            <input type="hidden" name="login_icon_remove"/>
+                                        </label>
+                                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="@lang('configuration.cancel_login_icon')">
+                                            <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> --}}
+
+
+                    {{-- </div> --}}
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Theme Color</label>
+                                <input class="form-control" name="theme_color" type="color" id="example-color-input" value="{{(!empty($system_details)) ? $system_details[0]['theme_color'] : ''}}" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Sidebar Background Color</label>
+                                <input class="form-control" name="sidebar_color" type="color" id="example-color-input" value="{{(!empty($system_details)) ? $system_details[0]['sidebar_color'] : ''}}" />
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Sidebar Active Menu Color</label>
+                                <input class="form-control" name="sidebar_active_menu_color" type="color" id="example-color-input" value="{{(!empty($system_details)) ? $system_details[0]['sidebar_menu_active_color'] : ''}}" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Sidebar Menu Font Color</label>
+                                <input class="form-control" name="sidebar_menu_color" type="color" value="{{(!empty($system_details)) ? $system_details[0]['sidebar_menu_color'] : ''}}"/>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    {{-- <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Login Background Color</label>
+                                <input class="form-control" name="login_background_color" type="color" id="example-color-input" value="{{(!empty($system_details)) ? $system_details[0]['login_background_color'] : ''}}" />
+                            </div>
+                        </div>
+                    </div> --}}
+
+                        <h5 class="card-title">Header Navbar Color</h5>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Sidebar Navbar Background Color</label>
+                                    <input class="form-control" name="sidebar_navbar_background_color" type="color" id="example-color-input" value="{{(!empty($system_details)) ? $system_details[0]['sidebar_navbar_background_color'] : ''}}" />
+                                </div>
+                            </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Sidebar Navbar Font Color</label>
+                                        <input class="form-control" name="sidebar_navbar_font_color" type="color" id="example-color-input" value="{{(!empty($system_details)) ? $system_details[0]['sidebar_navbar_font_color'] : ''}}" />
+                                    </div>
+                                </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Header Navbar Background Color</label>
+                                    <input class="form-control" name="header_navbar_background_color" type="color" id="example-color-input" value="{{(!empty($system_details)) ? $system_details[0]['header_navbar_background_color'] : ''}}" />
+                                </div>
+                            </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Header Navbar Font Color</label>
+                                        <input class="form-control" name="header_navbar_font_color" type="color" id="example-color-input" value="{{(!empty($system_details)) ? $system_details[0]['header_navbar_font_color'] : ''}}" />
+                                    </div>
+                                </div>
+
+                        </div>
+
                   </div>
+
+
+
+
                   <div class="card-footer">
                      <button type="submit" class="btn btn-primary mr-2 green-btn submitbtn">Submit</button>
                      <button type="reset" class="btn btn-secondary">Cancel</button>

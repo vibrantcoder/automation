@@ -7,13 +7,21 @@ if (!empty(Auth()->guard('admin')->user())) {
 }
 @endphp
 
+@php
+    if(file_exists( public_path().'/upload/systemsetting/'.get_system_setting_detail()->website_logo) && get_system_setting_detail()->website_logo != ''){
+        $websiteLogo = url("public/upload/systemsetting/".get_system_setting_detail()->website_logo);
+    }else{
+        $websiteLogo = url("public/upload/systemsetting/logo-new.png");
+    }
+@endphp
+
 <!--begin::Aside-->
 <div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside" >
     <!--begin::Brand-->
     <div class="brand flex-column-auto" id="kt_brand" style="padding-left: 10px !important;padding-right: 20px !important;">
         <!--begin::Logo-->
         <a href="{{ route('brand-entry-list') }}" class="brand-logo">
-            <img alt="Logo" src="{{  asset('public/upload/systemsetting/logo-new.png') }}" class="" style="max-height: 30px !important;"/>
+            <img alt="Logo" src="{{  $websiteLogo }}" class="" style="max-height: 30px !important;"/>
 
         </a>
         <!--end::Logo-->

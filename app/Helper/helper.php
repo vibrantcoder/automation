@@ -50,8 +50,10 @@ function get_device_name($id){
 function get_operator_name($id){
     $objMobilenumber = new Mobilenumber();
     return $objMobilenumber->get_mobile_operator_lists($id);
-  
+
 }
+
+
 
 
 ?>
