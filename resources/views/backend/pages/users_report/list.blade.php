@@ -36,7 +36,7 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Date<span class="text-danger">*</span></label>
-                            <input type="text" name="date" id="date" class="form-control" value="All">
+                            <input type="text" name="date" id="date" class="form-control" value="All" readonly="readonly">
                         </div>
                     </div>
 
