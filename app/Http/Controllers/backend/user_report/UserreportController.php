@@ -45,4 +45,25 @@ class UserreportController extends Controller
         );
         return view('backend.pages.users_report.list', $data);
     }
+
+    
+    public function ajaxcall(Request $request){
+        $action = $request->input('action');
+
+        switch ($action) {
+
+            case 'getdatatable':
+                $objUsersreport = new Usersreport();
+                $list = $objUsersreport->getdatatable();
+                echo json_encode($list);
+                break;
+
+
+            case 'view-user-report-histroy':                
+                $objUsersreport = new Usersreport();
+                $data['report_details'] = $objUsersreport->view_user_report_histroy($request->input('data')['data_id']);                
+
+                return view('backend.pages.users_report.report_details', $data);
+            }
+        }
 }

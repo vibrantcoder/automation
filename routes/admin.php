@@ -78,7 +78,7 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
     Route::post('mobile-number-ajaxcall', [MobilenumberController::class, 'ajaxcall'])->name('mobile-number-ajaxcall');
 
     Route::get('user-report-histroy-list', [UserreportController::class, 'list'])->name('user-report-histroy-list');
-    Route::get('user-report-histroy-ajaxcall', [UserreportController::class, 'ajaxcall'])->name('user-report-histroy-ajaxcall');
+    Route::post('user-report-histroy-ajaxcall', [UserreportController::class, 'ajaxcall'])->name('user-report-histroy-ajaxcall');
     
     Route::get('import-brands', [ImportdataController::class, 'import_brands'])->name('import-brands');
     Route::post('import-brands-save', [ImportdataController::class, 'import_brands_save'])->name('import-brands-save');
