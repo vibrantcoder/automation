@@ -14,6 +14,8 @@ use App\Http\Controllers\backend\users\SubscriberController;
 use App\Http\Controllers\backend\device\DiviceController;
 use App\Http\Controllers\backend\mobile_number\MobilenumberController;
 use App\Http\Controllers\backend\import_data\ImportdataController;
+use App\Http\Controllers\backend\user_report\UserreportController;
+
 
 Route::get('admin-logout', [LoginController::class, 'logout'])->name('admin-logout');
 
@@ -75,6 +77,9 @@ Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
 
     Route::post('mobile-number-ajaxcall', [MobilenumberController::class, 'ajaxcall'])->name('mobile-number-ajaxcall');
 
+    Route::get('user-report-histroy-list', [UserreportController::class, 'list'])->name('user-report-histroy-list');
+    Route::get('user-report-histroy-ajaxcall', [UserreportController::class, 'ajaxcall'])->name('user-report-histroy-ajaxcall');
+    
     Route::get('import-brands', [ImportdataController::class, 'import_brands'])->name('import-brands');
     Route::post('import-brands-save', [ImportdataController::class, 'import_brands_save'])->name('import-brands-save');
     // Route::post('import-brands-ajaxcall', [AuditTrailsController::class, 'ajaxcall'])->name('import-brands-ajaxcall');
