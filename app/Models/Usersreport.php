@@ -22,7 +22,10 @@ class Usersreport extends Model
     }
 
 
-    public function getdatatable(){
+    public function getdatatable($data){
+
+        $date = date("Y-m-d", strtotime($data['date']));
+
         $requestData = $_REQUEST;
         $columns = array(
             0 => 'users_report.id',
@@ -31,6 +34,13 @@ class Usersreport extends Model
         );
         $query = Usersreport ::from('users_report')
                         ->join('users', 'users.id', '=', 'users_report.user_id');
+
+                        if( $data['user_name'] != "all" ){
+                            $query->where('users.id', $data['user_name']);
+                        }
+                        if( $data['date'] != "All" ){
+                            $query->whereDate('users_report.created_at', $date);
+                        }
 
 
         if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
@@ -72,7 +82,7 @@ class Usersreport extends Model
 
             $i++;
             $nestedData = array();
-            $nestedData[] = $i;            
+            $nestedData[] = $i;
             $nestedData[] = $row['user_name'];
             $nestedData[] = date_time_formate($row['created_at']);
             $nestedData[] = $actionhtml;

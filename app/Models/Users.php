@@ -215,7 +215,7 @@ class Users extends Model
                 $objUsers->created_at = date('Y-m-d H:i:s');
                 $objUsers->updated_at = date('Y-m-d H:i:s');
                 if($objUsers->save()){
-                    
+
                     $path = public_path('/upload/audit_log/'.$randomNo);
                     if(!File::isDirectory($path)){
                         File::makeDirectory($path, 0777, true, true);
@@ -332,6 +332,15 @@ class Users extends Model
         }else{
             return false ;
         }
+    }
+
+    public function get_user_detail(){
+        return Users::from('users')
+                    ->where('users.is_deleted', 'N')
+                    ->where('users.status', 'A')
+                    ->select('users.id', DB::raw("CONCAT(users.first_name,' ',users.last_name) as full_name"))
+                    ->get()
+                    ->toArray();
     }
 
 }
