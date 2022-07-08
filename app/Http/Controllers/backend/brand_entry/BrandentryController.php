@@ -226,7 +226,7 @@ class BrandentryController extends Controller
         $logindata = Auth()->guard('admin')->user();
 
         Excel::store(new BrandExportNew($request->all()), $logindata['user_no'].'-BrandDetailsNew.xlsx', 'exceldata');
-        exec('c:\WINDOWS\system32\cmd.exe /c START C:\Sapizon\demo\runner.bat');
+        exec('c:\WINDOWS\system32\cmd.exe /c START C:\Sapizon\demo\runner.bat "'.$logindata['user_no'].'-BrandDetailsNew.xlsx'.'"');
         return true;
     }
 }

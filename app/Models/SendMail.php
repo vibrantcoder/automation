@@ -27,20 +27,18 @@ class SendMail extends Model
 
     public function sendSMTPMail($mailData)
     {
-                $pathToFile = $mailData['attachment'];
+        $pathToFile = $mailData['attachment'];
+        $mailsend = Mail::send($mailData['template'], ['data' => $mailData['data']], function ($m) use ($mailData,$pathToFile) {
+            $m->from('info@automation.vibrantcoders.in', 'Automation');
+            $m->to($mailData['mailto'], "Automation")->subject($mailData['subject']);
+            if($pathToFile != ""){
+            }
+        });
 
-                $mailsend = Mail::send($mailData['template'], ['data' => $mailData['data']], function ($m) use ($mailData,$pathToFile) {
-                    $m->from('info@automation.vibrantcoders.in', 'Automation');
-
-                    $m->to($mailData['mailto'], "Automation")->subject($mailData['subject']);
-                    if($pathToFile != ""){
-
-                    }
-                });
-                if($mailsend){
-                    return true;
-                }else{
-                    return false;
-                }
+        if($mailsend){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
