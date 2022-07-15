@@ -47,7 +47,8 @@
                             <th>#</th>
                             <th>Brand Name</th>
                             <th>URL</th>
-                            <th>Country Code - Mobile</th>
+                            <th>Country Code</th>
+                            <th>Mobile</th>
                             <th>Generate OTP</th>
                             <th>Action</th>
                         </tr>

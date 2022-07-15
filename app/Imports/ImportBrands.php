@@ -26,7 +26,16 @@ class ImportBrands implements ToModel
         }else{
             $objImportdata = new Importdata();
             $objImportdata->brand_name = $row[0];
+            if($row[1] == '' || $row[1] == null){
+                $row[1] = '-';
+            }
+
             $objImportdata->url = $row[1];
+
+            if($row[2] == '' || $row[2] == null){
+                $row[2] = '-';
+            }
+            
             $objImportdata->country_code = $row[2];
             $objImportdata->mobile_number = $row[3];
             $objImportdata->generate_otp = $row[4];

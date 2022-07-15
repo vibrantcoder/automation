@@ -109,8 +109,8 @@ class Resultreport extends Model
 
     public function update_report(){
         $logindata = Auth()->guard('admin')->user();
-        ccd(public_path().'/backend_automation/'.$logindata['first_name']."_".$logindata['last_name']."_".$logindata['user_no'].'/sample.xml');
-        $xmlString = file_get_contents(public_path().'/backend_automation/'.$logindata['first_name']."_".$logindata['last_name']."_".$logindata['user_no'].'sample.xml');
+        
+        $xmlString = file_get_contents(public_path('/backend_automation/'.$logindata['first_name']."_".$logindata['last_name']."_".$logindata['user_no'].'/sample.xml'));
         
         $xmlObject = simplexml_load_string($xmlString);
                    

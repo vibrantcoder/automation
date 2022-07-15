@@ -23,8 +23,9 @@ class Brandentry extends Model
             0 => 'brand_entry.id',
             1 => 'brand_entry.brand_name',
             2 => 'brand_entry.url',
-            3 => DB::raw("CONCAT(brand_entry.country_code,' - ',brand_entry.mobile_number)"),
-            4 => DB::raw('(CASE WHEN brand_entry.generate_otp = "Y" THEN "Yes" ELSE "No" END)'),
+            3 => 'brand_entry.country_code',
+            4 => 'brand_entry.mobile_number',
+            5 => DB::raw('(CASE WHEN brand_entry.generate_otp = "Y" THEN "Yes" ELSE "No" END)'),
 
         );
         $query = Brandentry ::from('brand_entry')
@@ -56,7 +57,7 @@ class Brandentry extends Model
 
         $resultArr = $query->skip($requestData['start'])
                     ->take($requestData['length'])
-                    ->select('brand_entry.id', 'brand_entry.brand_name', 'brand_entry.url', DB::raw("CONCAT(brand_entry.country_code,'-',brand_entry.mobile_number) as code_number"),'brand_entry.generate_otp',DB::raw('(CASE WHEN brand_entry.generate_otp = "Y" THEN "Yes" ELSE "No" END) as generate_otps '))
+                    ->select('brand_entry.id', 'brand_entry.brand_name', 'brand_entry.url', 'brand_entry.country_code', 'brand_entry.mobile_number', 'brand_entry.generate_otp',DB::raw('(CASE WHEN brand_entry.generate_otp = "Y" THEN "Yes" ELSE "No" END) as generate_otps '))
                     ->get();
 
         $data = array();
@@ -88,7 +89,8 @@ class Brandentry extends Model
             // $nestedData[] = $row['id'];
             $nestedData[] = $row['brand_name'];
             $nestedData[] = $row['url'];
-            $nestedData[] = $row['code_number'];
+            $nestedData[] = $row['country_code'];
+            $nestedData[] = $row['mobile_number'];
             $nestedData[] = $otp;
             $nestedData[] = $actionhtml;
             $data[] = $nestedData;
@@ -172,13 +174,13 @@ class Brandentry extends Model
             $url ='';
             $country_code ='';
             if($request->input('url') == '' || $request->input('url') == null){
-                $url = 'Not Applicable';
+                $url = '-';
             }
             else{
                 $url = $request->input('url');
             }
             if($request->input('country_code') == '' || $request->input('country_code') == null){
-                $country_code = 'Not Applicable';
+                $country_code = '-';
             }else{
                 $country_code = $request->input('country_code');
             }

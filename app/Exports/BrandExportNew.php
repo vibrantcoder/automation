@@ -29,14 +29,11 @@ class BrandExportNew implements  FromArray, WithHeadings, ShouldAutoSize, WithCo
     {
         if (!empty(Auth()->guard('admin')->user())) {
             $logindata = Auth()->guard('admin')->user();
-        }
-
-        // ccd($logindata);
+        }        
 
         $device_name = get_device_name($this->device);
         $operator = get_operator_name($this->opertoer);
-        $coutry_code = get_operator_name($this->mobile_number);
-        // ccd($coutry_code);
+        $coutry_code = get_operator_name($this->mobile_number);        
 
         $res=  Brandentry::where('brand_entry.is_deleted', 'N')
                 ->whereIn('brand_entry.id', $this->brand_list)
@@ -50,19 +47,19 @@ class BrandExportNew implements  FromArray, WithHeadings, ShouldAutoSize, WithCo
             $data[$key]['brand_name'] = $value['brand_name'];
 
             if($value['url'] == null ||  $value['url'] == ''){
-                $data[$key]['url'] = '';
+                $data[$key]['url'] = '-';
             }else{
                 $data[$key]['url'] = $value['url'];
             }
 
             if($value['country_code'] == null ||  $value['country_code'] == ''){
-                $data[$key]['country_code'] = '';
+                $data[$key]['country_code'] = '-';
             }else{
                 $data[$key]['country_code'] = $value['country_code'];
             }
 
             if($value['mobile_number'] == null ||  $value['mobile_number'] == ''){
-                $data[$key]['mobile_number'] = '';
+                $data[$key]['mobile_number'] = '-';
             }else{
                 $data[$key]['mobile_number'] = $value['mobile_number'];
             }
@@ -73,7 +70,7 @@ class BrandExportNew implements  FromArray, WithHeadings, ShouldAutoSize, WithCo
             $data[$key]['operator'] = $operator;
             $data[$key]['run_by'] = $logindata['id'];
             $data[$key]['username'] = $logindata['first_name'] .' '.$logindata['last_name'];
-        $i++;
+            $i++;
         }
 
         return $data;
