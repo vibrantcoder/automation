@@ -216,10 +216,10 @@ class Users extends Model
                 $objUsers->updated_at = date('Y-m-d H:i:s');
                 if($objUsers->save()){
 
-                    $path = public_path('/upload/audit_log/'.$randomNo);
-                    if(!File::isDirectory($path)){
-                        File::makeDirectory($path, 0777, true, true);
-                    }
+                    
+                    $path = public_path().'/backend_automation/'.$request->input('first_name')."_".$request->input('last_name')."_".$randomNo;
+                    File::makeDirectory($path, $mode = 0777, true, true);
+               
 
                     event (new UserCreated($request->first_name,$request->last_name,$request->email,$random_pwd));
                     $currentRoute = Route::current()->getName();

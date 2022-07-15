@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+   <event eventTimestamp="2022-03-19T13:07:02.090" originalReceivedMessageSize="40" uniqueId="1650362822.91445_PFS_1_2290175931200">
+      <result value="Allowed" />
+      <source name="MFE" host="PFS_1" />
+      <sender from="FACEBOOK" msisdn="FACEBOOK" sccpAddress="+9182********">
+         <reputations>
+            <reputation type="msisdn" value="0" breakdown="0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;10;0;0" startLevel="0" />
+         </reputations>
+      </sender>
+      <recipients>
+         <recipient code="+255786670908" imsi="64005**********" sccpAddress="+255*********" />
+      </recipients>
+      <policies>
+         <policy idTree="1.26.38" subscriberIdValue="+918299901900" subscriberIdField="CLGPA" />
+      </policies>
+      <payload>
+         <payloadType interface="DIAMETER_SMS" protocol="SMS" type="SMS-MT-FSM" path="OrigUnknown-MT" />
+         <message signature="109e023bde77b7fd7866c60913f067ae">
+            <MailFrom value="" />
+            <rcptToList />
+            <pduList>
+               <pdu type="DIAMETER_CCR" time="2022-04-19T13:07:02.090" source="DIAMETER_PEP" dest="PCF" />
+               <pdu type="DIAMETER_CCA" time="2022-04-19T13:07:02.114" source="PCF" dest="DIAMETER_PEP" />
+            </pduList>
+            <textBody>***** is your Facebook confirmation code</textBody>
+            <numberOfImages>0</numberOfImages>
+            <attachments numberOf="1">
+               <attachment index="0" size="40" contentType="text/plain" />
+            </attachments>
+            <emailSmtpDeliveryStatus value="" time="" reason="" />
+            <smsBinaryFields>
+               <dcs>00</dcs>
+               <pid>30</pid>
+               <sm>331c8e3603a5e7a0fcbb2e0719c3e3b2f8fd5e83c66fb7392d6f87e9e9b71b347e93cb</sm>
+            </smsBinaryFields>
+         </message>
+      </payload>
+      <filters>
+         <filter code="108" name="Premium Services Restriction - 108" type="PREMIUM_SERVICES_RESTRICTION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+            </diagnostic>
+         </filter>
+         <filter code="126" name="TIS - GR - Fingerprint - Analysis - 126" type="TEXT_PATTERN" profile="26" profileName="India Hub" analysisMode="true">
+            <marks>GREY_ROUTE</marks>
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+               <data>
+                  <value>BLOCK_REJECT - Matched Feature [ID:0c3e5ca6-a98a-4f54-bc7d-77cbc950,T:95,S:facebook_security,L:21,M:S,C:F] Similarity [100]</value>
+               </data>
+               <attribute name="MATCHED_SIMILARITY" value="100" />
+               <attribute name="MATCHED_ENTRY_ID" value="0c3e5ca6-a98a-4f54-bc7d-77cbc950" />
+               <attribute name="CROSSED_THRESHOLD" value="95" />
+               <attribute name="CAMPAIGN" value="facebook_security" />
+            </diagnostic>
+         </filter>
+         <filter code="127" name="TIS - Premium Services Restriction - 127" type="PREMIUM_SERVICES_RESTRICTION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+            </diagnostic>
+         </filter>
+         <filter code="128" name="TIS - GR - Regex -Discovery-Analysis - 128" type="REG_EXPRESSION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+               <attribute name="MATCHED_ENTRY" value="(^| |\:|\-)(\d{4,}|\d{3}( |\-)\d{3}|((?![A-Za-z]{4,})([A-Za-z0-9]{4,})))($| |\.|\,)" />
+            </diagnostic>
+         </filter>
+      </filters>
+   </event>
+
+   <event eventTimestamp="2022-03-19T10:56:47.021" originalReceivedMessageSize="139" uniqueId="1650362207.22784_PFS_2_72347206517248">
+      <result value="Allowed" />
+      <source name="MFE" host="PFS_2" />
+      <sender from="WHATSAPP" msisdn="WHATSAPP" sccpAddress="+91829*******">
+         <reputations>
+            <reputation type="msisdn" value="0" breakdown="0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;10;0;0" startLevel="0" />
+         </reputations>
+      </sender>
+      <recipients>
+         <recipient code="+255786670908" imsi="64005**********" sccpAddress="+255*********" />
+      </recipients>
+      <policies>
+         <policy idTree="1.26.38" subscriberIdValue="+9182********" subscriberIdField="CLGPA" />
+      </policies>
+      <payload>
+         <payloadType interface="DIAMETER_SMS" protocol="SMS" type="SMS-MT-FSM" path="OrigUnknown-MT" />
+         <message signature="2aac6d1ef40f7e0403fc6683cc3372a6">
+            <MailFrom value="" />
+            <rcptToList />
+            <pduList>
+               <pdu type="DIAMETER_CCR" time="2022-04-19T10:56:47.021" source="DIAMETER_PEP" dest="PCF" />
+               <pdu type="DIAMETER_CCA" time="2022-04-19T10:56:47.025" source="PCF" dest="DIAMETER_PEP" />
+            </pduList>
+            <textBody>&lt;#&gt; Your WhatsApp account is being registered on a new device Do not share this code with anyoneYour WhatsApp code: ***-***4sgLq1p5sV6</textBody>
+            <numberOfImages>0</numberOfImages>
+            <attachments numberOf="1">
+               <attachment index="0" size="139" contentType="text/plain" />
+            </attachments>
+            <emailSmtpDeliveryStatus value="" time="" reason="" />
+            <smsBinaryFields>
+               <dcs>00</dcs>
+               <pid>30</pid>
+               <sm>bc910f947dd7e5a02b3a4c9f07e17050783c7ed7dd74507a0e1297d3ee33485e3ea7e7f4b2bc4c06bddda030c85dbe83c8657b7a5c5628886f90fb4d07cdd16179194447a7e7a0f19b5c06ddd3743428eccebfdd658522fbaecb415774983e0fc2e1a0f19b5cd6816ab2588b168b2914b4f999198fc16b73ab0d</sm>
+            </smsBinaryFields>
+         </message>
+      </payload>
+      <filters>
+         <filter code="108" name="Premium Services Restriction - 108" type="PREMIUM_SERVICES_RESTRICTION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+            </diagnostic>
+         </filter>
+         <filter code="127" name="TIS - Premium Services Restriction - 127" type="PREMIUM_SERVICES_RESTRICTION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+            </diagnostic>
+         </filter>
+         <filter code="128" name="TIS - GR - Regex -Discovery-Analysis - 128" type="REG_EXPRESSION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+               <attribute name="MATCHED_ENTRY" value="(^| |\:|\-)(\d{4,}|\d{3}( |\-)\d{3}|((?![A-Za-z]{4,})([A-Za-z0-9]{4,})))($| |\.|\,)" />
+            </diagnostic>
+         </filter>
+         <filter code="129" name="TIS - GR - CM - Analysis - 129" type="TEXTANALYSIS" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+               <data>
+                  <value>Blocked Text [S:pmc_india hub]</value>
+               </data>
+               <attribute name="MATCHED_ENTRY" value="code" />
+               <attribute name="CAMPAIGN" value="pmc_india hub" />
+            </diagnostic>
+         </filter>
+      </filters>
+   </event>
+
+   <event eventTimestamp="2022-03-21T15:10:02.090" originalReceivedMessageSize="40" uniqueId="1650362822.91445_PFS_1_2290175931200">
+      <result value="Allowed" />
+      <source name="MFE" host="PFS_1" />
+      <sender from="GMAIL" msisdn="GMAIL" sccpAddress="+9182********">
+         <reputations>
+            <reputation type="msisdn" value="0" breakdown="0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;10;0;0" startLevel="0" />
+         </reputations>
+      </sender>
+      <recipients>
+         <recipient code="+949428177758" imsi="64005**********" sccpAddress="+949*********" />
+      </recipients>
+      <policies>
+         <policy idTree="1.26.38" subscriberIdValue="+949428177758" subscriberIdField="CLGPA" />
+      </policies>
+      <payload>
+         <payloadType interface="DIAMETER_SMS" protocol="SMS" type="SMS-MT-FSM" path="OrigUnknown-MT" />
+         <message signature="109e023bde77b7fd7866c60913f067ae">
+            <MailFrom value="" />
+            <rcptToList />
+            <pduList>
+               <pdu type="DIAMETER_CCR" time="2022-04-19T13:07:02.090" source="DIAMETER_PEP" dest="PCF" />
+               <pdu type="DIAMETER_CCA" time="2022-04-19T13:07:02.114" source="PCF" dest="DIAMETER_PEP" />
+            </pduList>
+            <textBody>***** is your gmail confirmation code</textBody>
+            <numberOfImages>0</numberOfImages>
+            <attachments numberOf="1">
+               <attachment index="0" size="40" contentType="text/plain" />
+            </attachments>
+            <emailSmtpDeliveryStatus value="" time="" reason="" />
+            <smsBinaryFields>
+               <dcs>00</dcs>
+               <pid>30</pid>
+               <sm>331c8e3603a5e7a0fcbb2e0719c3e3b2f8fd5e83c66fb7392d6f87e9e9b71b347e93cb</sm>
+            </smsBinaryFields>
+         </message>
+      </payload>
+      <filters>
+         <filter code="108" name="Premium Services Restriction - 108" type="PREMIUM_SERVICES_RESTRICTION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+            </diagnostic>
+         </filter>
+         <filter code="126" name="TIS - GR - Fingerprint - Analysis - 126" type="TEXT_PATTERN" profile="26" profileName="India Hub" analysisMode="true">
+            <marks>GREY_ROUTE</marks>
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+               <data>
+                  <value>BLOCK_REJECT - Matched Feature [ID:0c3e5ca6-a98a-4f54-bc7d-77cbc950,T:95,S:facebook_security,L:21,M:S,C:F] Similarity [100]</value>
+               </data>
+               <attribute name="MATCHED_SIMILARITY" value="100" />
+               <attribute name="MATCHED_ENTRY_ID" value="0c3e5ca6-a98a-4f54-bc7d-77cbc950" />
+               <attribute name="CROSSED_THRESHOLD" value="95" />
+               <attribute name="CAMPAIGN" value="facebook_security" />
+            </diagnostic>
+         </filter>
+         <filter code="127" name="TIS - Premium Services Restriction - 127" type="PREMIUM_SERVICES_RESTRICTION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+            </diagnostic>
+         </filter>
+         <filter code="128" name="TIS - GR - Regex -Discovery-Analysis - 128" type="REG_EXPRESSION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+               <attribute name="MATCHED_ENTRY" value="(^| |\:|\-)(\d{4,}|\d{3}( |\-)\d{3}|((?![A-Za-z]{4,})([A-Za-z0-9]{4,})))($| |\.|\,)" />
+            </diagnostic>
+         </filter>
+      </filters>
+   </event>
+ 
+   <event eventTimestamp="2022-03-22T01:10:02.090" originalReceivedMessageSize="40" uniqueId="1650362822.91445_PFS_1_2290175931200">
+      <result value="Allowed" />
+      <source name="MFE" host="PFS_1" />
+      <sender from="TWITTER" msisdn="TWITTER" sccpAddress="+9182********">
+         <reputations>
+            <reputation type="msisdn" value="0" breakdown="0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;10;0;0" startLevel="0" />
+         </reputations>
+      </sender>
+      <recipients>
+         <recipient code="+988758794800" imsi="64005**********" sccpAddress="+948*********" />
+      </recipients>
+      <policies>
+         <policy idTree="1.26.38" subscriberIdValue="+988758794800" subscriberIdField="CLGPA" />
+      </policies>
+      <payload>
+         <payloadType interface="DIAMETER_SMS" protocol="SMS" type="SMS-MT-FSM" path="OrigUnknown-MT" />
+         <message signature="109e023bde77b7fd7866c60913f067ae">
+            <MailFrom value="" />
+            <rcptToList />
+            <pduList>
+               <pdu type="DIAMETER_CCR" time="2022-04-19T13:07:02.090" source="DIAMETER_PEP" dest="PCF" />
+               <pdu type="DIAMETER_CCA" time="2022-04-19T13:07:02.114" source="PCF" dest="DIAMETER_PEP" />
+            </pduList>
+            <textBody>This is for twiter testing code.</textBody>
+            <numberOfImages>0</numberOfImages>
+            <attachments numberOf="1">
+               <attachment index="0" size="40" contentType="text/plain" />
+            </attachments>
+            <emailSmtpDeliveryStatus value="" time="" reason="" />
+            <smsBinaryFields>
+               <dcs>00</dcs>
+               <pid>30</pid>
+               <sm>331c8e3603a5e7a0fcbb2e0719c3e3b2f8fd5e83c66fb7392d6f87e9e9b71b347e93cb</sm>
+            </smsBinaryFields>
+         </message>
+      </payload>
+      <filters>
+         <filter code="108" name="Premium Services Restriction - 108" type="PREMIUM_SERVICES_RESTRICTION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+            </diagnostic>
+         </filter>
+         <filter code="126" name="TIS - GR - Fingerprint - Analysis - 126" type="TEXT_PATTERN" profile="26" profileName="India Hub" analysisMode="true">
+            <marks>GREY_ROUTE</marks>
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+               <data>
+                  <value>BLOCK_REJECT - Matched Feature [ID:0c3e5ca6-a98a-4f54-bc7d-77cbc950,T:95,S:facebook_security,L:21,M:S,C:F] Similarity [100]</value>
+               </data>
+               <attribute name="MATCHED_SIMILARITY" value="100" />
+               <attribute name="MATCHED_ENTRY_ID" value="0c3e5ca6-a98a-4f54-bc7d-77cbc950" />
+               <attribute name="CROSSED_THRESHOLD" value="95" />
+               <attribute name="CAMPAIGN" value="facebook_security" />
+            </diagnostic>
+         </filter>
+         <filter code="127" name="TIS - Premium Services Restriction - 127" type="PREMIUM_SERVICES_RESTRICTION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+            </diagnostic>
+         </filter>
+         <filter code="128" name="TIS - GR - Regex -Discovery-Analysis - 128" type="REG_EXPRESSION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+               <attribute name="MATCHED_ENTRY" value="(^| |\:|\-)(\d{4,}|\d{3}( |\-)\d{3}|((?![A-Za-z]{4,})([A-Za-z0-9]{4,})))($| |\.|\,)" />
+            </diagnostic>
+         </filter>
+      </filters>
+   </event>
+
+   <event eventTimestamp="2022-03-22T19:10:02.090" originalReceivedMessageSize="40" uniqueId="1650362822.91445_PFS_1_2290175931200">
+      <result value="Not Allowed" />
+      <source name="MFE" host="PFS_1" />
+      <sender from="INSTAGRAM" msisdn="INSTAGRAM" sccpAddress="+9182********">
+         <reputations>
+            <reputation type="msisdn" value="0" breakdown="0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;10;0;0" startLevel="0" />
+         </reputations>
+      </sender>
+      <recipients>
+         <recipient code="+145871296" imsi="64005**********" sccpAddress="+145*********" />
+      </recipients>
+      <policies>
+         <policy idTree="1.26.38" subscriberIdValue="+145871296" subscriberIdField="CLGPA" />
+      </policies>
+      <payload>
+         <payloadType interface="DIAMETER_SMS" protocol="SMS" type="SMS-MT-FSM" path="OrigUnknown-MT" />
+         <message signature="109e023bde77b7fd7866c60913f067ae">
+            <MailFrom value="" />
+            <rcptToList />
+            <pduList>
+               <pdu type="DIAMETER_CCR" time="2022-04-19T13:07:02.090" source="DIAMETER_PEP" dest="PCF" />
+               <pdu type="DIAMETER_CCA" time="2022-04-19T13:07:02.114" source="PCF" dest="DIAMETER_PEP" />
+            </pduList>
+            <textBody>This is for INSTAGRAM testing code.Thank you</textBody>
+            <numberOfImages>0</numberOfImages>
+            <attachments numberOf="1">
+               <attachment index="0" size="40" contentType="text/plain" />
+            </attachments>
+            <emailSmtpDeliveryStatus value="" time="" reason="" />
+            <smsBinaryFields>
+               <dcs>00</dcs>
+               <pid>30</pid>
+               <sm>331c8e3603a5e7a0fcbb2e0719c3e3b2f8fd5e83c66fb7392d6f87e9e9b71b347e93cb</sm>
+            </smsBinaryFields>
+         </message>
+      </payload>
+      <filters>
+         <filter code="108" name="Premium Services Restriction - 108" type="PREMIUM_SERVICES_RESTRICTION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+            </diagnostic>
+         </filter>
+         <filter code="126" name="TIS - GR - Fingerprint - Analysis - 126" type="TEXT_PATTERN" profile="26" profileName="India Hub" analysisMode="true">
+            <marks>GREY_ROUTE</marks>
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+               <data>
+                  <value>BLOCK_REJECT - Matched Feature [ID:0c3e5ca6-a98a-4f54-bc7d-77cbc950,T:95,S:facebook_security,L:21,M:S,C:F] Similarity [100]</value>
+               </data>
+               <attribute name="MATCHED_SIMILARITY" value="100" />
+               <attribute name="MATCHED_ENTRY_ID" value="0c3e5ca6-a98a-4f54-bc7d-77cbc950" />
+               <attribute name="CROSSED_THRESHOLD" value="95" />
+               <attribute name="CAMPAIGN" value="facebook_security" />
+            </diagnostic>
+         </filter>
+         <filter code="127" name="TIS - Premium Services Restriction - 127" type="PREMIUM_SERVICES_RESTRICTION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+            </diagnostic>
+         </filter>
+         <filter code="128" name="TIS - GR - Regex -Discovery-Analysis - 128" type="REG_EXPRESSION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+               <attribute name="MATCHED_ENTRY" value="(^| |\:|\-)(\d{4,}|\d{3}( |\-)\d{3}|((?![A-Za-z]{4,})([A-Za-z0-9]{4,})))($| |\.|\,)" />
+            </diagnostic>
+         </filter>
+      </filters>
+   </event>
+
+   <event eventTimestamp="2022-03-24T05:10:02.090" originalReceivedMessageSize="40" uniqueId="1650362822.91445_PFS_1_2290175931200">
+      <result value="Not Allowed" />
+      <source name="MFE" host="PFS_1" />
+      <sender from="SHOPIFY" msisdn="SHOPIFY" sccpAddress="+9182********">
+         <reputations>
+            <reputation type="msisdn" value="0" breakdown="0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;10;0;0" startLevel="0" />
+         </reputations>
+      </sender>
+      <recipients>
+         <recipient code="+204123698" imsi="64005**********" sccpAddress="+204*********" />
+      </recipients>
+      <policies>
+         <policy idTree="1.26.38" subscriberIdValue="+204123698" subscriberIdField="CLGPA" />
+      </policies>
+      <payload>
+         <payloadType interface="DIAMETER_SMS" protocol="SMS" type="SMS-MT-FSM" path="OrigUnknown-MT" />
+         <message signature="109e023bde77b7fd7866c60913f067ae">
+            <MailFrom value="" />
+            <rcptToList />
+            <pduList>
+               <pdu type="DIAMETER_CCR" time="2022-04-19T13:07:02.090" source="DIAMETER_PEP" dest="PCF" />
+               <pdu type="DIAMETER_CCA" time="2022-04-19T13:07:02.114" source="PCF" dest="DIAMETER_PEP" />
+            </pduList>
+            <textBody>This is for Shopify testing code.Tested faild</textBody>
+            <numberOfImages>0</numberOfImages>
+            <attachments numberOf="1">
+               <attachment index="0" size="40" contentType="text/plain" />
+            </attachments>
+            <emailSmtpDeliveryStatus value="" time="" reason="" />
+            <smsBinaryFields>
+               <dcs>00</dcs>
+               <pid>30</pid>
+               <sm>331c8e3603a5e7a0fcbb2e0719c3e3b2f8fd5e83c66fb7392d6f87e9e9b71b347e93cb</sm>
+            </smsBinaryFields>
+         </message>
+      </payload>
+      <filters>
+         <filter code="108" name="Premium Services Restriction - 108" type="PREMIUM_SERVICES_RESTRICTION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+            </diagnostic>
+         </filter>
+         <filter code="126" name="TIS - GR - Fingerprint - Analysis - 126" type="TEXT_PATTERN" profile="26" profileName="India Hub" analysisMode="true">
+            <marks>GREY_ROUTE</marks>
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+               <data>
+                  <value>BLOCK_REJECT - Matched Feature [ID:0c3e5ca6-a98a-4f54-bc7d-77cbc950,T:95,S:facebook_security,L:21,M:S,C:F] Similarity [100]</value>
+               </data>
+               <attribute name="MATCHED_SIMILARITY" value="100" />
+               <attribute name="MATCHED_ENTRY_ID" value="0c3e5ca6-a98a-4f54-bc7d-77cbc950" />
+               <attribute name="CROSSED_THRESHOLD" value="95" />
+               <attribute name="CAMPAIGN" value="facebook_security" />
+            </diagnostic>
+         </filter>
+         <filter code="127" name="TIS - Premium Services Restriction - 127" type="PREMIUM_SERVICES_RESTRICTION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+            </diagnostic>
+         </filter>
+         <filter code="128" name="TIS - GR - Regex -Discovery-Analysis - 128" type="REG_EXPRESSION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+               <attribute name="MATCHED_ENTRY" value="(^| |\:|\-)(\d{4,}|\d{3}( |\-)\d{3}|((?![A-Za-z]{4,})([A-Za-z0-9]{4,})))($| |\.|\,)" />
+            </diagnostic>
+         </filter>
+      </filters>
+   </event>
+
+   <event eventTimestamp="2022-03-24T12:00:02.090" originalReceivedMessageSize="40" uniqueId="1650362822.91445_PFS_1_2290175931200">
+      <result value="Allowed" />
+      <source name="MFE" host="PFS_1" />
+      <sender from="OLA BIKE" msisdn="OLA BIKE" sccpAddress="+9182********">
+         <reputations>
+            <reputation type="msisdn" value="0" breakdown="0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;10;0;0" startLevel="0" />
+         </reputations>
+      </sender>
+      <recipients>
+         <recipient code="+3098745631" imsi="64005**********" sccpAddress="+309*********" />
+      </recipients>
+      <policies>
+         <policy idTree="1.26.38" subscriberIdValue="+3098745631" subscriberIdField="CLGPA" />
+      </policies>
+      <payload>
+         <payloadType interface="DIAMETER_SMS" protocol="SMS" type="SMS-MT-FSM" path="OrigUnknown-MT" />
+         <message signature="109e023bde77b7fd7866c60913f067ae">
+            <MailFrom value="" />
+            <rcptToList />
+            <pduList>
+               <pdu type="DIAMETER_CCR" time="2022-04-19T13:07:02.090" source="DIAMETER_PEP" dest="PCF" />
+               <pdu type="DIAMETER_CCA" time="2022-04-19T13:07:02.114" source="PCF" dest="DIAMETER_PEP" />
+            </pduList>
+            <textBody>This is for ola bike testing code.Tested successfully</textBody>
+            <numberOfImages>0</numberOfImages>
+            <attachments numberOf="1">
+               <attachment index="0" size="40" contentType="text/plain" />
+            </attachments>
+            <emailSmtpDeliveryStatus value="" time="" reason="" />
+            <smsBinaryFields>
+               <dcs>00</dcs>
+               <pid>30</pid>
+               <sm>331c8e3603a5e7a0fcbb2e0719c3e3b2f8fd5e83c66fb7392d6f87e9e9b71b347e93cb</sm>
+            </smsBinaryFields>
+         </message>
+      </payload>
+      <filters>
+         <filter code="108" name="Premium Services Restriction - 108" type="PREMIUM_SERVICES_RESTRICTION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+            </diagnostic>
+         </filter>
+         <filter code="126" name="TIS - GR - Fingerprint - Analysis - 126" type="TEXT_PATTERN" profile="26" profileName="India Hub" analysisMode="true">
+            <marks>GREY_ROUTE</marks>
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+               <data>
+                  <value>BLOCK_REJECT - Matched Feature [ID:0c3e5ca6-a98a-4f54-bc7d-77cbc950,T:95,S:facebook_security,L:21,M:S,C:F] Similarity [100]</value>
+               </data>
+               <attribute name="MATCHED_SIMILARITY" value="100" />
+               <attribute name="MATCHED_ENTRY_ID" value="0c3e5ca6-a98a-4f54-bc7d-77cbc950" />
+               <attribute name="CROSSED_THRESHOLD" value="95" />
+               <attribute name="CAMPAIGN" value="facebook_security" />
+            </diagnostic>
+         </filter>
+         <filter code="127" name="TIS - Premium Services Restriction - 127" type="PREMIUM_SERVICES_RESTRICTION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+            </diagnostic>
+         </filter>
+         <filter code="128" name="TIS - GR - Regex -Discovery-Analysis - 128" type="REG_EXPRESSION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+               <attribute name="MATCHED_ENTRY" value="(^| |\:|\-)(\d{4,}|\d{3}( |\-)\d{3}|((?![A-Za-z]{4,})([A-Za-z0-9]{4,})))($| |\.|\,)" />
+            </diagnostic>
+         </filter>
+      </filters>
+   </event>
+
+   <event eventTimestamp="2022-03-24T12:00:02.090" originalReceivedMessageSize="40" uniqueId="1650362822.91445_PFS_1_2290175931200">
+      <result value="Allowed" />
+      <source name="MFE" host="PFS_1" />
+      <sender from="OLA BIKE" msisdn="OLA BIKE" sccpAddress="+9182********">
+         <reputations>
+            <reputation type="msisdn" value="0" breakdown="0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;10;0;0" startLevel="0" />
+         </reputations>
+      </sender>
+      <recipients>
+         <recipient code="+3098745631" imsi="64005**********" sccpAddress="+309*********" />
+      </recipients>
+      <policies>
+         <policy idTree="1.26.38" subscriberIdValue="+3098745631" subscriberIdField="CLGPA" />
+      </policies>
+      <payload>
+         <payloadType interface="DIAMETER_SMS" protocol="SMS" type="SMS-MT-FSM" path="OrigUnknown-MT" />
+         <message signature="109e023bde77b7fd7866c60913f067ae">
+            <MailFrom value="" />
+            <rcptToList />
+            <pduList>
+               <pdu type="DIAMETER_CCR" time="2022-04-19T13:07:02.090" source="DIAMETER_PEP" dest="PCF" />
+               <pdu type="DIAMETER_CCA" time="2022-04-19T13:07:02.114" source="PCF" dest="DIAMETER_PEP" />
+            </pduList>
+            <textBody>This is for ola bike testing code.Tested successfully</textBody>
+            <numberOfImages>0</numberOfImages>
+            <attachments numberOf="1">
+               <attachment index="0" size="40" contentType="text/plain" />
+            </attachments>
+            <emailSmtpDeliveryStatus value="" time="" reason="" />
+            <smsBinaryFields>
+               <dcs>00</dcs>
+               <pid>30</pid>
+               <sm>331c8e3603a5e7a0fcbb2e0719c3e3b2f8fd5e83c66fb7392d6f87e9e9b71b347e93cb</sm>
+            </smsBinaryFields>
+         </message>
+      </payload>
+      <filters>
+         <filter code="108" name="Premium Services Restriction - 108" type="PREMIUM_SERVICES_RESTRICTION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+            </diagnostic>
+         </filter>
+         <filter code="126" name="TIS - GR - Fingerprint - Analysis - 126" type="TEXT_PATTERN" profile="26" profileName="India Hub" analysisMode="true">
+            <marks>GREY_ROUTE</marks>
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+               <data>
+                  <value>BLOCK_REJECT - Matched Feature [ID:0c3e5ca6-a98a-4f54-bc7d-77cbc950,T:95,S:facebook_security,L:21,M:S,C:F] Similarity [100]</value>
+               </data>
+               <attribute name="MATCHED_SIMILARITY" value="100" />
+               <attribute name="MATCHED_ENTRY_ID" value="0c3e5ca6-a98a-4f54-bc7d-77cbc950" />
+               <attribute name="CROSSED_THRESHOLD" value="95" />
+               <attribute name="CAMPAIGN" value="facebook_security" />
+            </diagnostic>
+         </filter>
+         <filter code="127" name="TIS - Premium Services Restriction - 127" type="PREMIUM_SERVICES_RESTRICTION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+            </diagnostic>
+         </filter>
+         <filter code="128" name="TIS - GR - Regex -Discovery-Analysis - 128" type="REG_EXPRESSION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+               <attribute name="MATCHED_ENTRY" value="(^| |\:|\-)(\d{4,}|\d{3}( |\-)\d{3}|((?![A-Za-z]{4,})([A-Za-z0-9]{4,})))($| |\.|\,)" />
+            </diagnostic>
+         </filter>
+      </filters>
+   </event>
+
+   <event eventTimestamp="2022-03-25T22:45:02.090" originalReceivedMessageSize="40" uniqueId="1650362822.91445_PFS_1_2290175931200">
+      <result value="Allowed" />
+      <source name="MFE" host="PFS_1" />
+      <sender from="CLUBHOUSE" msisdn="CLUBHOUSE" sccpAddress="+9182********">
+         <reputations>
+            <reputation type="msisdn" value="0" breakdown="0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;10;0;0" startLevel="0" />
+         </reputations>
+      </sender>
+      <recipients>
+         <recipient code="+919727466625" imsi="64005**********" sccpAddress="+919*********" />
+      </recipients>
+      <policies>
+         <policy idTree="1.26.38" subscriberIdValue="+919727466625" subscriberIdField="CLGPA" />
+      </policies>
+      <payload>
+         <payloadType interface="DIAMETER_SMS" protocol="SMS" type="SMS-MT-FSM" path="OrigUnknown-MT" />
+         <message signature="109e023bde77b7fd7866c60913f067ae">
+            <MailFrom value="" />
+            <rcptToList />
+            <pduList>
+               <pdu type="DIAMETER_CCR" time="2022-04-19T13:07:02.090" source="DIAMETER_PEP" dest="PCF" />
+               <pdu type="DIAMETER_CCA" time="2022-04-19T13:07:02.114" source="PCF" dest="DIAMETER_PEP" />
+            </pduList>
+            <textBody>This is for CLUBHOUSE app testing code.Tested successfully</textBody>
+            <numberOfImages>0</numberOfImages>
+            <attachments numberOf="1">
+               <attachment index="0" size="40" contentType="text/plain" />
+            </attachments>
+            <emailSmtpDeliveryStatus value="" time="" reason="" />
+            <smsBinaryFields>
+               <dcs>00</dcs>
+               <pid>30</pid>
+               <sm>331c8e3603a5e7a0fcbb2e0719c3e3b2f8fd5e83c66fb7392d6f87e9e9b71b347e93cb</sm>
+            </smsBinaryFields>
+         </message>
+      </payload>
+      <filters>
+         <filter code="108" name="Premium Services Restriction - 108" type="PREMIUM_SERVICES_RESTRICTION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+            </diagnostic>
+         </filter>
+         <filter code="126" name="TIS - GR - Fingerprint - Analysis - 126" type="TEXT_PATTERN" profile="26" profileName="India Hub" analysisMode="true">
+            <marks>GREY_ROUTE</marks>
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+               <data>
+                  <value>BLOCK_REJECT - Matched Feature [ID:0c3e5ca6-a98a-4f54-bc7d-77cbc950,T:95,S:facebook_security,L:21,M:S,C:F] Similarity [100]</value>
+               </data>
+               <attribute name="MATCHED_SIMILARITY" value="100" />
+               <attribute name="MATCHED_ENTRY_ID" value="0c3e5ca6-a98a-4f54-bc7d-77cbc950" />
+               <attribute name="CROSSED_THRESHOLD" value="95" />
+               <attribute name="CAMPAIGN" value="facebook_security" />
+            </diagnostic>
+         </filter>
+         <filter code="127" name="TIS - Premium Services Restriction - 127" type="PREMIUM_SERVICES_RESTRICTION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+            </diagnostic>
+         </filter>
+         <filter code="128" name="TIS - GR - Regex -Discovery-Analysis - 128" type="REG_EXPRESSION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+               <attribute name="MATCHED_ENTRY" value="(^| |\:|\-)(\d{4,}|\d{3}( |\-)\d{3}|((?![A-Za-z]{4,})([A-Za-z0-9]{4,})))($| |\.|\,)" />
+            </diagnostic>
+         </filter>
+      </filters>
+   </event>
+
+   <event eventTimestamp="2022-03-25T01:17:45.090" originalReceivedMessageSize="40" uniqueId="1650362822.91445_PFS_1_2290175931200">
+      <result value="Allowed" />
+      <source name="MFE" host="PFS_1" />
+      <sender from="FILPKART" msisdn="FILPKART" sccpAddress="+9182********">
+         <reputations>
+            <reputation type="msisdn" value="0" breakdown="0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;10;0;0" startLevel="0" />
+         </reputations>
+      </sender>
+      <recipients>
+         <recipient code="+9198563210" imsi="64005**********" sccpAddress="+919*********" />
+      </recipients>
+      <policies>
+         <policy idTree="1.26.38" subscriberIdValue="+9198563210" subscriberIdField="CLGPA" />
+      </policies>
+      <payload>
+         <payloadType interface="DIAMETER_SMS" protocol="SMS" type="SMS-MT-FSM" path="OrigUnknown-MT" />
+         <message signature="109e023bde77b7fd7866c60913f067ae">
+            <MailFrom value="" />
+            <rcptToList />
+            <pduList>
+               <pdu type="DIAMETER_CCR" time="2022-04-19T13:07:02.090" source="DIAMETER_PEP" dest="PCF" />
+               <pdu type="DIAMETER_CCA" time="2022-04-19T13:07:02.114" source="PCF" dest="DIAMETER_PEP" />
+            </pduList>
+            <textBody>This is for filpkart web testing code.Tested successfully</textBody>
+            <numberOfImages>0</numberOfImages>
+            <attachments numberOf="1">
+               <attachment index="0" size="40" contentType="text/plain" />
+            </attachments>
+            <emailSmtpDeliveryStatus value="" time="" reason="" />
+            <smsBinaryFields>
+               <dcs>00</dcs>
+               <pid>30</pid>
+               <sm>331c8e3603a5e7a0fcbb2e0719c3e3b2f8fd5e83c66fb7392d6f87e9e9b71b347e93cb</sm>
+            </smsBinaryFields>
+         </message>
+      </payload>
+      <filters>
+         <filter code="108" name="Premium Services Restriction - 108" type="PREMIUM_SERVICES_RESTRICTION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+            </diagnostic>
+         </filter>
+         <filter code="126" name="TIS - GR - Fingerprint - Analysis - 126" type="TEXT_PATTERN" profile="26" profileName="India Hub" analysisMode="true">
+            <marks>GREY_ROUTE</marks>
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+               <data>
+                  <value>BLOCK_REJECT - Matched Feature [ID:0c3e5ca6-a98a-4f54-bc7d-77cbc950,T:95,S:facebook_security,L:21,M:S,C:F] Similarity [100]</value>
+               </data>
+               <attribute name="MATCHED_SIMILARITY" value="100" />
+               <attribute name="MATCHED_ENTRY_ID" value="0c3e5ca6-a98a-4f54-bc7d-77cbc950" />
+               <attribute name="CROSSED_THRESHOLD" value="95" />
+               <attribute name="CAMPAIGN" value="facebook_security" />
+            </diagnostic>
+         </filter>
+         <filter code="127" name="TIS - Premium Services Restriction - 127" type="PREMIUM_SERVICES_RESTRICTION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+            </diagnostic>
+         </filter>
+         <filter code="128" name="TIS - GR - Regex -Discovery-Analysis - 128" type="REG_EXPRESSION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+               <attribute name="MATCHED_ENTRY" value="(^| |\:|\-)(\d{4,}|\d{3}( |\-)\d{3}|((?![A-Za-z]{4,})([A-Za-z0-9]{4,})))($| |\.|\,)" />
+            </diagnostic>
+         </filter>
+      </filters>
+   </event>
+   
+   <event eventTimestamp="2022-03-26T05:17:45.090" originalReceivedMessageSize="40" uniqueId="1650362822.91445_PFS_1_2290175931200">
+      <result value="Allowed" />
+      <source name="MFE" host="PFS_1" />
+      <sender from="SNAPDEAL" msisdn="SNAPDEAL" sccpAddress="+9182********">
+         <reputations>
+            <reputation type="msisdn" value="0" breakdown="0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;10;0;0" startLevel="0" />
+         </reputations>
+      </sender>
+      <recipients>
+         <recipient code="+657359368015" imsi="64005**********" sccpAddress="+657*********" />
+      </recipients>
+      <policies>
+         <policy idTree="1.26.38" subscriberIdValue="+657359368015" subscriberIdField="CLGPA" />
+      </policies>
+      <payload>
+         <payloadType interface="DIAMETER_SMS" protocol="SMS" type="SMS-MT-FSM" path="OrigUnknown-MT" />
+         <message signature="109e023bde77b7fd7866c60913f067ae">
+            <MailFrom value="" />
+            <rcptToList />
+            <pduList>
+               <pdu type="DIAMETER_CCR" time="2022-04-19T13:07:02.090" source="DIAMETER_PEP" dest="PCF" />
+               <pdu type="DIAMETER_CCA" time="2022-04-19T13:07:02.114" source="PCF" dest="DIAMETER_PEP" />
+            </pduList>
+            <textBody>This is for Sanpdeal web testing code.Tested successfully</textBody>
+            <numberOfImages>0</numberOfImages>
+            <attachments numberOf="1">
+               <attachment index="0" size="40" contentType="text/plain" />
+            </attachments>
+            <emailSmtpDeliveryStatus value="" time="" reason="" />
+            <smsBinaryFields>
+               <dcs>00</dcs>
+               <pid>30</pid>
+               <sm>331c8e3603a5e7a0fcbb2e0719c3e3b2f8fd5e83c66fb7392d6f87e9e9b71b347e93cb</sm>
+            </smsBinaryFields>
+         </message>
+      </payload>
+      <filters>
+         <filter code="108" name="Premium Services Restriction - 108" type="PREMIUM_SERVICES_RESTRICTION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+            </diagnostic>
+         </filter>
+         <filter code="126" name="TIS - GR - Fingerprint - Analysis - 126" type="TEXT_PATTERN" profile="26" profileName="India Hub" analysisMode="true">
+            <marks>GREY_ROUTE</marks>
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+               <data>
+                  <value>BLOCK_REJECT - Matched Feature [ID:0c3e5ca6-a98a-4f54-bc7d-77cbc950,T:95,S:facebook_security,L:21,M:S,C:F] Similarity [100]</value>
+               </data>
+               <attribute name="MATCHED_SIMILARITY" value="100" />
+               <attribute name="MATCHED_ENTRY_ID" value="0c3e5ca6-a98a-4f54-bc7d-77cbc950" />
+               <attribute name="CROSSED_THRESHOLD" value="95" />
+               <attribute name="CAMPAIGN" value="facebook_security" />
+            </diagnostic>
+         </filter>
+         <filter code="127" name="TIS - Premium Services Restriction - 127" type="PREMIUM_SERVICES_RESTRICTION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+            </diagnostic>
+         </filter>
+         <filter code="128" name="TIS - GR - Regex -Discovery-Analysis - 128" type="REG_EXPRESSION" profile="26" profileName="India Hub" analysisMode="true">
+            <diagnostic>
+               <result value="Blocked" triggered="True" />
+               <attribute name="MATCHED_ENTRY" value="(^| |\:|\-)(\d{4,}|\d{3}( |\-)\d{3}|((?![A-Za-z]{4,})([A-Za-z0-9]{4,})))($| |\.|\,)" />
+            </diagnostic>
+         </filter>
+      </filters>
+   </event>
+</data>

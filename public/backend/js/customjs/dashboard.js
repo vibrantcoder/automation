@@ -182,9 +182,9 @@ var  Dashboard = function(){
                 var chart = new ApexCharts(document.querySelector(apexChart), options);
                 chart.render();               
             },
-            // complete: function(){
-            //     $("#loader").hide();
-            // }
+            complete: function(){
+                $("#loader").hide();
+            }
         });
     }
 

@@ -9,9 +9,11 @@
             <div class="col-md-12">
                 <!--begin::Card-->
                 <div class="card card-custom gutter-b example example-compact">
+                    
                     <div class="card-header">
                         <h3 class="card-title">{{ $header['title'] }}</h3>
                     </div>
+
                     <!--begin::Form-->
                     <form id="add-user-management"  method="POST" action="{{ route('add-save-user-management') }}">
                         @csrf

@@ -47,6 +47,7 @@ class UserManagementController extends Controller
     }
 
     public function add(){
+        
         $data['title'] = Config::get('constants.SYSTEM_NAME') . ' || Add User Management';
         $data['description'] = Config::get('constants.SYSTEM_NAME') . ' || Add User Management';
         $data['keywords'] = Config::get('constants.SYSTEM_NAME') . ' || Add User Management';

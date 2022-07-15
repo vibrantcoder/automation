@@ -55,7 +55,7 @@ return [
 
         'exceldata' => [
             'driver' => 'local',
-            'root' => public_path('excel/'),
+            'root' => public_path('backend_automation/'),
         ],
 
     ],
