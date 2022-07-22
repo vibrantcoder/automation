@@ -14,8 +14,10 @@
         $response = json_decode($report_details[0]['response']);    
     @endphp
 
-    @foreach (($response->User1)[0] as $key => $value)
-
+    @foreach (($response) as $key => $value)
+        @php
+            ccd($value);
+        @endphp
     <table class="table table-bordered table-responsive">
         <thead>
             <tr>

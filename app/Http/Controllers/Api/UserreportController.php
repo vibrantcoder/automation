@@ -24,7 +24,7 @@ class UserreportController extends Controller
         $error = $validator->errors();
         return $this->sendError($this->one_validation_message($validator), json_decode("{}"), 200);
     }else{
-        $userId = Config::get( 'constants.USER_ID');
+        $userId = $request->input('user_id');
         $systemNo = Config::get( 'constants.SYSTEM_NO');
         // ccd($userId);
         // ccd($systemNo);
