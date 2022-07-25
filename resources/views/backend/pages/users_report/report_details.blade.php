@@ -16,7 +16,7 @@
     @foreach ($response as $res_key => $res_value)
         @foreach ($res_value[0] as $key => $value)            
             <h3>Brand Name : {{ $key }}</h3>
-            <table class="table table-bordered table-responsive">
+            <table class="table  table-responsive">
                 <thead>
                     <tr>
                         @foreach ($value as $us_key => $us_value)
