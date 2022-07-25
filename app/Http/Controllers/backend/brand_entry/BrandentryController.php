@@ -226,10 +226,17 @@ class BrandentryController extends Controller
         Excel::store(new BrandExportNew($request->all()), $logindata['first_name']."_".$logindata['last_name']."_".$logindata['user_no'].'/demo/data/BrandDetails.xlsx', 'exceldata');                
 
         $path = "C:/xampp/htdocs/automation/public/backend_automation/".$logindata['first_name']."_".$logindata['last_name']."_".$logindata['user_no']."/demo/runner.py";
-        if(exec($path)){
-            ccd("Hello");
-        }else{
-            ccd("false");
+        if(exec($path)){            
+            $return['status'] = 'success';
+            $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+            $return['redirect'] = route('brand-entry-list');
+        } else {
+            $return['status'] = 'error';
+            $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+            $return['message'] = 'Something goes to wrong';
+            $return['redirect'] = route('brand-entry-list');
         }
+        echo json_encode($return);
+        exit;
     }
 }
