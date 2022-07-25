@@ -25,10 +25,8 @@
                             <select class="form-control select2" id="user_name"  name="user_name">
                                 <option value="all">All</option>
                                 @foreach ($user_details as $key => $value )
-                                <option value="{{ $value['id'] }}">{{ $value['full_name'] }}</option>
-
+                                    <option value="{{ $value['id'] }}">{{ $value['full_name'] }}</option>
                                 @endforeach
-
                             </select>
                         </div>
                     </div>

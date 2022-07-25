@@ -11,30 +11,29 @@
 
 <div class="row mt-5" style="margin-left: 0.2rem !important;margin-right: 0.2rem !important">
     @php
-        $response = json_decode($report_details[0]['response']);    
+        $response = json_decode($report_details[0]['response']);        
     @endphp
-
-    @foreach (($response) as $key => $value)
-        @php
-            ccd($value);
-        @endphp
-    <table class="table table-bordered table-responsive">
-        <thead>
-            <tr>
-                @foreach ($value as $us_key => $us_value)
-                    <th>{{ $us_key }}</th>
-                @endforeach
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                @foreach ($value as $usr_key => $usr_value)
-                    <td>{{ $usr_value }}</td>
-                @endforeach
-            </tr>
-        </tbody>
-    </table>
-    <hr>
+    @foreach ($response as $res_key => $res_value)
+        @foreach ($res_value[0] as $key => $value)            
+            <h3>Brand Name : {{ $key }}</h3>
+            <table class="table table-bordered table-responsive">
+                <thead>
+                    <tr>
+                        @foreach ($value as $us_key => $us_value)
+                            <th>{{ $us_key }}</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        @foreach ($value as $usr_key => $usr_value)
+                            <td>{{ $usr_value }}</td>
+                        @endforeach
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+        @endforeach
     @endforeach
 </div>
  
