@@ -222,6 +222,8 @@ class BrandentryController extends Controller
     }
 
     public function run_script(Request $request){        
+        ini_set('max_execution_time', '0'); // for infinite time of execution 
+        
         $logindata = Auth()->guard('admin')->user();
         Excel::store(new BrandExportNew($request->all()), $logindata['first_name']."_".$logindata['last_name']."_".$logindata['user_no'].'/demo/data/BrandDetails.xlsx', 'exceldata');                
 
