@@ -224,8 +224,12 @@ class BrandentryController extends Controller
     public function run_script(Request $request){        
         $logindata = Auth()->guard('admin')->user();
         Excel::store(new BrandExportNew($request->all()), $logindata['first_name']."_".$logindata['last_name']."_".$logindata['user_no'].'/demo/data/BrandDetails.xlsx', 'exceldata');                
-        $path = "C:/xampp/htdocs/automation/public/backend_automation/". $logindata['first_name']."_".$logindata['last_name']."_".$logindata['user_no']."/runner.bat";        
-        exec('c:\WINDOWS\system32\cmd.exe /c START '.$path);
-        return true;
+
+        $path = "C:/xampp/htdocs/automation/public/backend_automation/".$logindata['first_name']."_".$logindata['last_name']."_".$logindata['user_no']."/demo/runner.py";
+        if(exec($path)){
+            ccd("Hello");
+        }else{
+            ccd("false");
+        }
     }
 }
