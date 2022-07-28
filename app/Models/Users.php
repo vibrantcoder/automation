@@ -217,7 +217,7 @@ class Users extends Model
                 if($objUsers->save()){
 
                     
-                    $path = public_path().'/backend_automation/'.$request->input('first_name')."_".$request->input('last_name')."_".$randomNo;
+                    $path = public_path().'/backend_automation/'.str_replace(' ', '_', $request->input('first_name'))."_".str_replace(' ', '_', $request->input('last_name'))."_".$randomNo;
                     File::makeDirectory($path, $mode = 0777, true, true);
                
 

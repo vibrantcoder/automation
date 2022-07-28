@@ -225,9 +225,9 @@ class BrandentryController extends Controller
         ini_set('max_execution_time', '0'); // for infinite time of execution 
 
         $logindata = Auth()->guard('admin')->user();
-        Excel::store(new BrandExportNew($request->all()), $logindata['first_name']."_".$logindata['last_name']."_".$logindata['user_no'].'/demo/data/BrandDetails.xlsx', 'exceldata');                
+        Excel::store(new BrandExportNew($request->all()), str_replace(' ', '_', $logindata['first_name'])."_".str_replace(' ', '_', $logindata['last_name'])."_".$logindata['user_no'].'/demo/data/BrandDetails.xlsx', 'exceldata');                
 
-        $path = "C:/xampp/htdocs/automation/public/backend_automation/".$logindata['first_name']."_".$logindata['last_name']."_".$logindata['user_no']."/demo/runner.py";
+        $path = "C:/xampp/htdocs/automation/public/backend_automation/".str_replace(' ', '_', $logindata['first_name'])."_".str_replace(' ', '_', $logindata['last_name'])."_".$logindata['user_no']."/demo/runner.py";
         if(exec($path)){            
             $return['status'] = 'success';
             $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';

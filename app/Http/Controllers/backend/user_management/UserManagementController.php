@@ -82,6 +82,7 @@ class UserManagementController extends Controller
     }
 
     public function add_user_management(Request $request){
+        
         $objUsers = new Users();
         $result = $objUsers->add_user_management($request);
 
