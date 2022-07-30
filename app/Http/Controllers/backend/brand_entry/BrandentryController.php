@@ -227,7 +227,7 @@ class BrandentryController extends Controller
         $logindata = Auth()->guard('admin')->user();
         Excel::store(new BrandExportNew($request->all()), str_replace(' ', '_', $logindata['first_name'])."_".str_replace(' ', '_', $logindata['last_name'])."_".$logindata['user_no'].'/demo/data/BrandDetails.xlsx', 'exceldata');                
 
-        $path = "C:/xampp/htdocs/automation/public/backend_automation/".str_replace(' ', '_', $logindata['first_name'])."_".str_replace(' ', '_', $logindata['last_name'])."_".$logindata['user_no']."/demo/runner.py";
+        $path = "C:/xampp/htdocs/automation/public/backend_automation/".str_replace(' ', '_', $logindata['first_name'])."_".str_replace(' ', '_', $logindata['last_name'])."_".$logindata['user_no']."/runner.bat";
         if(exec($path)){            
             $return['status'] = 'success';
             $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
